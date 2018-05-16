@@ -15,12 +15,13 @@ h1, h2, h3, h4, h5, button, label{
 
 #login-container{
 	height: 50%;
+  width:100%;
 }
 
 #login-container .column{
 	background-color: #283d3b;
 	opacity: 0.9;
-	padding: 5%;
+  padding: 5%;
 	margin: 5%;
 }
 
@@ -86,6 +87,3 @@ h1, h2, h3, h4, h5, button, label{
   z-index: 2;
   border-radius: 50%;
 }
-
-
-
