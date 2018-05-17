@@ -10,8 +10,6 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 var http = require('http');
 var fs = require('fs');
-var bcrypt = require('bcrypt');
-const saltRounds = 10;
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -34,12 +32,9 @@ router.get('/lawyer/:identification', function(req, res, next) {
 });
 
 router.post('/lawyer', function(req, res, next) {
-	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-  		req.body.password = hash;
-		Lawyer.create(req.body).then(function(Lawyer){
-			console.log('success');
-		}).catch(next);
-	});
+	Lawyer.create(req.body).then(function(Lawyer){
+		console.log('success');
+	}).catch(next);
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
