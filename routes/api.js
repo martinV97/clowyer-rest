@@ -41,6 +41,7 @@ router.get('/lawyer/:identification', function(req, res, next) {
 router.post('/lawyer', function(req, res, next) {
 	req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
+		res.send('Success');
 		console.log('success');
 	}).catch(next);
 });
