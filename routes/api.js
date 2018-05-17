@@ -39,13 +39,11 @@ router.get('/lawyer/:identification', function(req, res, next) {
 });
 
 router.post('/lawyer', function(req, res, next) {
-	bcrypt.genSalt(10, function(salt) {
-	  bcrypt.hash(req.body.password, saltRounds, null, function(err, hashedPassword) {
+	bcrypt.hash(req.body.password, saltRounds, null, function(err, hashedPassword) {
 	    req.body.password = hashedPassword;
 		Lawyer.create(req.body).then(function(Lawyer){
 			console.log('success');
 		}).catch(next);
-	  });
 	});
 });
 
