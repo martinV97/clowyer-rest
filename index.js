@@ -6,6 +6,9 @@ const mongoose = require('mongoose');
 const http = require('http');
 const fs = require('fs');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+module.exports.bcrypt = bcrypt;
 
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
