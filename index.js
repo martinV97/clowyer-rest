@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const http = require('http');
 const fs = require('fs');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 module.exports.bcrypt = bcrypt;
 
