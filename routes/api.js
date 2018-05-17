@@ -10,6 +10,8 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 var http = require('http');
 var fs = require('fs');
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
