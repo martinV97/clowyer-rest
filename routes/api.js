@@ -8,6 +8,8 @@ const Document = require('../models/document');
 const Court = require('../models/court');
 const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
+var http = require('http');
+var fs = require('fs');
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -30,9 +32,21 @@ router.get('/lawyer/:identification', function(req, res, next) {
 });
 
 router.post('/lawyer', function(req, res, next) {
-	Lawyer.create(req.body).then(function(Lawyer){
-		res.send(Lawyer);
-	}).catch(next);
+	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+  		req.body.password = hash;
+		Lawyer.create(req.body).then(function(Lawyer){
+			console.log('success');
+		}).catch(next);
+	});
+});
+
+router.post('/lawyer-web', function(req, res, next) {
+	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+  		req.body.password = hash;
+		Lawyer.create(req.body).then(function(Lawyer){
+			console.log('success');
+		}).catch(next);
+	});
 });
 
 router.delete('/lawyer/:id', function(req, res, next){

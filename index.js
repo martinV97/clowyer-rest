@@ -3,7 +3,8 @@ const routes = require('./routes/api');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const http = require('http');
+const fs = require('fs');
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
