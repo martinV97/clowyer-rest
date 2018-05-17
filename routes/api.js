@@ -39,21 +39,25 @@ router.get('/lawyer/:identification', function(req, res, next) {
 });
 
 router.post('/lawyer', function(req, res, next) {
-	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-  		req.body.password = hash;
+	bcrypt.genSalt(10, function(salt) {
+	  bcrypt.hash(req.body.password, saltRounds, null, function(err, hashedPassword) {
+	    req.body.password = hashedPassword;
 		Lawyer.create(req.body).then(function(Lawyer){
 			console.log('success');
 		}).catch(next);
+	  });
 	});
 });
 
 router.post('/lawyer-web', function(req, res, next) {
-	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-  		req.body.password = hash;
+	bcrypt.genSalt(10, function(salt) {
+	  bcrypt.hash(req.body.password, saltRounds, null, function(err, hashedPassword) {
+	    req.body.password = hashedPassword;
 		Lawyer.create(req.body).then(function(Lawyer){
 			res.sendFile('main.html', {root: 'public'});
 			console.log('success');
 		}).catch(next);
+	  });
 	});
 });
 
