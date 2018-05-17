@@ -8,8 +8,6 @@ const Document = require('../models/document');
 const Court = require('../models/court');
 const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
-var http = require('http');
-var fs = require('fs');
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
