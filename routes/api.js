@@ -242,10 +242,16 @@ router.put('/controlClient/:id', function(req, res, next){
 
 router.get('/client', function(req, res, next) {
 	Client.find({}).then(function(Client){
-		res.send(Client);
+		Client = 'Client [' + Client + ']';
+		res.json(Client);
 	});
 });
 
+router.get('/client-web', function(req, res, next) {
+	Client.find({}).then(function(Client){
+		res.send(Client);
+	});
+});
 /*router.get('/Lawyer/:name', function(req, res, next) {
 	Lawyer.find({name: req.params.name}).then(function(Lawyers){
 		res.send(Lawyers);
