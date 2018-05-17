@@ -46,15 +46,11 @@ router.post('/lawyer', function(req, res, next) {
 });
 
 router.post('/lawyer-web', function(req, res, next) {
-	bcrypt.genSalt(10, function(salt) {
-	  bcrypt.hash(req.body.password, saltRounds, null, function(err, hashedPassword) {
-	    req.body.password = hashedPassword;
-		Lawyer.create(req.body).then(function(Lawyer){
-			res.sendFile('main.html', {root: 'public'});
-			console.log('success');
-		}).catch(next);
-	  });
-	});
+    req.body.password = bcrypt.hashSync(req.body.password);
+	Lawyer.create(req.body).then(function(Lawyer){
+		res.sendFile('main.html', {root: 'public'});
+		console.log('success');
+	}).catch(next);
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
