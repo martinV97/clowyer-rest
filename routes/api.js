@@ -42,15 +42,6 @@ router.post('/lawyer', function(req, res, next) {
 	});
 });
 
-router.post('/lawyer-web', function(req, res, next) {
-	bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-  		req.body.password = hash;
-		Lawyer.create(req.body).then(function(Lawyer){
-			console.log('success');
-		}).catch(next);
-	});
-});
-
 router.delete('/lawyer/:id', function(req, res, next){
 	Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
 		 res.send({Lawyer});
