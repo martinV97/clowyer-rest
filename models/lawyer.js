@@ -24,7 +24,8 @@ var LawyerSchema = new Schema({
 	},
 	email:{
 		type:String,
-		required: [true, 'Email lawyer is required']	
+		required: [true, 'Email lawyer is required'],
+		unique: [true, 'Email has already taken']	
 	},
 	password:{
 		type:String,
