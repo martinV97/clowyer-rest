@@ -4,7 +4,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const http = require('http');
-const fs = require('fs');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
@@ -13,7 +12,6 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit: '50mb'}));
-app.use(bodyParser.urlencoded({limit: '50mb'}));
 app.use(routes);
 app.use(express.static('public'))
 app.use(function(err, req, res, next){

@@ -15,7 +15,7 @@
       <div class="row align-center">
         <div class="column small-12 medium-6 text-center">
           <h1>CLOWYER</h1>
-          <form action="/lawyer-web" method="post">
+          <form action="/lawyer-web" method="post" encrypt="multipart/form-data" >
              <div class="row">
               <div class="small-12 columns">
                   <input type="text" class="error" name="identification"  placeholder="Cedula"/>
@@ -41,7 +41,7 @@
               </div>
               </div>
               <div class="small-12 columns">
-                  <input type="file" name="img" accept="image/*"/><br />
+                  <input type="file" name="img" id="img" accept="image/*"/>
               </div>
              <div class="column-12 align-center">
                 <a href="#">

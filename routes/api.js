@@ -10,6 +10,8 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
+var base64 = "";
+
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -47,11 +49,12 @@ router.post('/lawyer', function(req, res, next) {
 });
 
 router.post('/lawyer-web', function(req, res, next) {
-    req.body.password = bcrypt.hashSync(req.body.password);
+		console.log(req.body.img);
+    /*req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
 		res.sendFile('main.html', {root: 'public'});
 		console.log('success');
-	}).catch(next);
+	}).catch(next);*/
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
@@ -304,4 +307,12 @@ router.put('/client/:id', function(req, res, next){
 	});
 });
 
+//----------------------------------------------------------------------------------------
+function base64_encode(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+    	this.base64 = reader.result;
+    };
+    reader.readAsDataURL(file);
+}
 module.exports = router;
