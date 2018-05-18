@@ -264,7 +264,7 @@ router.put('/controlClient/:id', function(req, res, next){
 
 router.get('/client', function(req, res, next) {
 	Client.find({}).then(function(Client){
-		res.json('Client' : Client);
+		res.json({ 'Client' : Client});
 	});
 });
 
