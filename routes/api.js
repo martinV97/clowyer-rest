@@ -16,10 +16,15 @@ var base64 = "";
 
 router.get('/lawyer', function(req, res, next) {
 	Lawyer.find({}).then(function(Lawyer){
-		res.send(Lawyer);
+		res.json({'Lawyer' : Lawyer});
 	});
 });
 
+router.get('/lawyer-web', function(req, res, next) {
+	Lawyer.find({}).then(function(Lawyer){
+		res.send(Lawyer);
+	});
+});
 /*router.get('/Lawyer/:name', function(req, res, next) {
 	Lawyer.find({name: req.params.name}).then(function(Lawyers){
 		res.send(Lawyers);
@@ -28,12 +33,12 @@ router.get('/lawyer', function(req, res, next) {
 
 router.get('/lawyer/:identification', function(req, res, next) {
 	Lawyer.find({identification: req.params.identification}).then(function(Lawyer){
-		res.send(Lawyer);
+		res.json({'Lawyer' : Lawyer});
 	});
 
 });
 
-router.get('/lawyer/:identification', function(req, res, next) {
+router.get('/lawyer-web/:identification', function(req, res, next) {
 	Lawyer.find({identification: req.params.identification}).then(function(Lawyer){
 		res.send(Lawyer);
 	});
@@ -74,6 +79,12 @@ router.put('/lawyer/:id', function(req, res, next){
 
 router.get('/controlLawyer', function(req, res, next) {
 	ControlLawyer.find({}).then(function(ControlLawyer){
+		res.json({'ControlLawyer' : ControlLawyer});
+	});
+});
+
+router.get('/controlLawyer-web', function(req, res, next) {
+	ControlLawyer.find({}).then(function(ControlLawyer){
 		res.send(ControlLawyer);
 	});
 });
@@ -85,6 +96,12 @@ router.get('/controlLawyer', function(req, res, next) {
 });*/
 
 router.get('/controlLawyer/:caseNumber', function(req, res, next) {
+	ControlLawyer.find({caseNumber: req.params.caseNumber}).then(function(ControlLawyer){
+		res.json({'ControlLawyer' : ControlLawyer});
+	});
+});
+
+router.get('/controlLawyer-web/:caseNumber', function(req, res, next) {
 	ControlLawyer.find({caseNumber: req.params.caseNumber}).then(function(ControlLawyer){
 		res.send(ControlLawyer);
 	});
@@ -113,15 +130,26 @@ router.put('/controlLawyer/:id', function(req, res, next){
 //----------------------------------------Case-----------------------------------------------
 router.get('/case', function(req, res, next) {
 	Case.find({}).then(function(Case){
+		res.json({'Case' : Case});
+	});
+});
+
+router.get('/case-web', function(req, res, next) {
+	Case.find({}).then(function(Case){
 		res.send(Case);
 	});
 });
 
 router.get('/case/:id', function(req, res, next) {
 	Case.findById(req.params.id).then(function(Case){
+		res.json({'Case' : Case});
+	});
+});
+
+router.get('/case-web/:id', function(req, res, next) {
+	Case.findById(req.params.id).then(function(Case){
 		res.send(Case);
 	});
-
 });
 
 router.post('/case', function(req, res, next) {
@@ -147,11 +175,23 @@ router.put('/case/:id', function(req, res, next){
 //-----------------------------------------Document------------------------------------------------
 router.get('/document', function(req, res, next) {
 	Document.find({}).then(function(Document){
+		res.json({'Document' : Document});
+	});
+});
+
+router.get('/document-web', function(req, res, next) {
+	Document.find({}).then(function(Document){
 		res.send(Document);
 	});
 });
 
 router.get('/document/:caseNumber', function(req, res, next) {
+	Document.find({caseNumber: req.params.caseNumber}).then(function(Document){
+		res.json({'Document' : Document});
+	});
+});
+
+router.get('/document-web/:caseNumber', function(req, res, next) {
 	Document.find({caseNumber: req.params.caseNumber}).then(function(Document){
 		res.send(Document);
 	});
@@ -185,11 +225,23 @@ router.put('/document/:id', function(req, res, next){
 //-----------------------------------------Court------------------------------------------------
 router.get('/court', function(req, res, next) {
 	Court.find({}).then(function(Court){
+		res.json({'Court' : Court});
+	});
+});
+
+router.get('/court-web', function(req, res, next) {
+	Court.find({}).then(function(Court){
 		res.send(Court);
 	});
 });
 
 router.get('/court/:id', function(req, res, next) {
+	Court.findById({id: req.params.id}).then(function(Court){
+		res.json({'Court' : Court});
+	});
+});
+
+router.get('/court-web/:id', function(req, res, next) {
 	Court.findById({id: req.params.id}).then(function(Court){
 		res.send(Court);
 	});
@@ -224,11 +276,23 @@ router.put('/court/:id', function(req, res, next){
 //-----------------------------------------ControlClient------------------------------------------------
 router.get('/controlClient', function(req, res, next) {
 	ControlClient.find({}).then(function(ControlClient){
+		res.json({'ControlClient' : ControlClient});
+	});
+});
+
+router.get('/controlClient-web', function(req, res, next) {
+	ControlClient.find({}).then(function(ControlClient){
 		res.send(ControlClient);
 	});
 });
 
 router.get('/controlClient/:caseNumber', function(req, res, next) {
+	ControlClient.find({caseNumber: req.params.caseNumber}).then(function(ControlClient){
+		res.json({'ControlClient' : ControlClient});
+	});
+});
+
+router.get('/controlClient-web/:caseNumber', function(req, res, next) {
 	ControlClient.find({caseNumber: req.params.caseNumber}).then(function(ControlClient){
 		res.send(ControlClient);
 	});
@@ -264,7 +328,7 @@ router.put('/controlClient/:id', function(req, res, next){
 
 router.get('/client', function(req, res, next) {
 	Client.find({}).then(function(Client){
-		res.json({ 'Client' : Client});
+		res.json({'Client' : Client});
 	});
 });
 
@@ -278,6 +342,13 @@ router.get('/client-web', function(req, res, next) {
 		res.send(Lawyers);
 	});
 });*/
+
+router.get('/client/:identification', function(req, res, next) {
+	Client.find({identification: req.params.identification}).then(function(Client){
+		res.json({'Client' : Client});
+	});
+
+});
 
 router.get('/client/:identification', function(req, res, next) {
 	Client.find({identification: req.params.identification}).then(function(Client){
