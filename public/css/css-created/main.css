@@ -57,3 +57,22 @@ h1, h2, h3, h4, h5, button, label, a{
 #search-bar{
 	padding-top: 2%;
 }
+
+#lateral-menu{
+	padding-top: 2%;
+}
+
+#lateral-menu li a{
+	font-family: 'PT Sans', sans-serif;
+	font-size: 14px;
+}
+
+#lateral-menu li a:hover{
+	background-color: #772E25;
+	font-size: 14px;
+	color: white;
+}
+
+#lateral-menu i{
+	padding-right: 3%;
+}
