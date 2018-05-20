@@ -135,33 +135,88 @@
 				    </section>
 				</div>	    
 				<div class="reveal" id="modalAddCase" data-reveal>
-				  <h1>Awesome. I Have It.</h1>
-				  <p class="lead">Your couch. It is mine.</p>
-				  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+				  <form action="/case" method="post" encrypt="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Casos</h4>
+		             </div>
+		              <div class="small-12 columns">
+		                <input type="number" name="number"  placeholder="Numero de caso"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de inicio</label>
+		                <input type="date" name="dateStart" placeholder="Inicio"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de Finalización (Opcional)</label>
+		                <input type="date" name="dateFinish"  placeholder="Fin"/>
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="courtName" placeholder="Juzgado" />
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		              	<button class="button" type="submit">Aceptar</button>
+		          	  </div>
+		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
 				<div class="reveal" id="modalAddClient" data-reveal>
-				  <h1>Awesome. I Have It.</h1>
-				  <p class="lead">Your couch. It is mine.</p>
-				  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+				 <form action="/client" method="post" encrypt="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Clientes</h4>
+		             </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="identification"  placeholder="Cedula"/>
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="name" placeholder="Nombre" />
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="type"  placeholder="Tipo" />
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="date" placeholder="MM/DD/AAAA" />
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="phone" placeholder="Telefono" />
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		              	<button class="button" type="submit">Aceptar</button>
+		          	  </div>
+		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
 				<div class="reveal" id="modalAddDocument" data-reveal>
-				  <h1>Awesome. I Have It.</h1>
-				  <p class="lead">Your couch. It is mine.</p>
-				  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+				  <form action="#" method="post" encrypt="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Documentos</h4>
+		             </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="name"  placeholder="Nombre"/>
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="text" name="dateStart" placeholder="Tipo"/>
+		              </div>
+		              <div class="small-12 columns">
+		                <input type="number" name="caseNumber"  placeholder="Numero de caso"/>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		              	<button class="button" type="submit">Aceptar</button>
+		          	  </div>
+		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
 				<div class="reveal" id="modalAbout" data-reveal>
-				  <h1>Awesome. I Have It.</h1>
-				  <p class="lead">Your couch. It is mine.</p>
-				  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+				  <h1>Acerca De</h1>
+				  <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
 				    <span aria-hidden="true">&times;</span>
 				  </button>

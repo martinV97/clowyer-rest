@@ -8,11 +8,7 @@ var DocumentSchema = new Schema({
 	},
 	type:{
 		type:String,
-		required: [true, 'Date Document is required']
-	},
-	format:{
-		type:String,
-		required: [false, 'format Document is required']
+		required: [true, 'Type Document is required']
 	},
 	caseNumber:{
 		type:String,

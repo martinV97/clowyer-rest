@@ -11,11 +11,14 @@ h1, h2, h3, h4, h5, button, label, a{
  	background-color: #283d3b;
  	color: white;
  	padding-bottom: 0;
+ 	margin-bottom: 0;
 }
 
 #menu-container {
 	background-color: #E8E9F3;
 	color: white;
+	border: 1px solid #C4C4C4;
+    border-radius: 5px;
 }
 
 #menu-container .tabs{
@@ -52,6 +55,7 @@ h1, h2, h3, h4, h5, button, label, a{
 
 .tabs-panel{
 	background-color: #E8E9F3;
+	padding-top: 0;
 }
 
 #search-bar{

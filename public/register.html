@@ -18,22 +18,26 @@
           <form action="/lawyer-web" method="post" encrypt="multipart/form-data" >
              <div class="row">
               <div class="small-12 columns">
-                  <input type="text" class="error" name="identification"  placeholder="Cedula"/>
+                  <input type="number" name="identification"  placeholder="Cedula"/>
               </div>
               <div class="small-12 columns">
-                <input type="text" class="error" name="name" placeholder="Nombre" />
+                <input type="text" name="name" placeholder="Nombre" />
               </div>
               <div class="small-12 columns">
-                  <input type="text" class="error" name="speciality" placeholder="Especialidad" />
+                <input type="radio" name="speciality" value="Adminstrador" id="Administrador" required>
+                  <label for="Administrador">Administrador</label>
+                <input type="radio" name="speciality" value="Usuario" id="Usuario">
+                  <label for="Usuario">Usuario</label>
+                  <input type="text" name="speciality" placeholder="Especialidad" />
               </div>
               <div class="small-12 columns">
-                  <input type="text" class="error" name="phone" placeholder="Telefono" />
+                  <input type="text" name="phone" placeholder="Telefono" />
               </div>
               <div class="small-12 columns">
-                  <input type="text" class="error" name="type"  placeholder="Tipo" />
+                  <input type="text" name="type"  placeholder="Tipo" />
               </div>
               <div class="small-12 columns">
-                  <input type="email" class="error" name="email" placeholder="Email" />
+                  <input type="email" name="email" placeholder="Email" />
               </div>
               <div class="small-12 columns password-wrapper">
                   <input type="password" name="password" class="password" placeholder="Contraseña">
@@ -41,9 +45,10 @@
               </div>
               </div>
               <div class="small-12 columns">
-                  <input type="file" name="img" id="img" accept="image/*"/>
+                  <label for="imgFileUpload" class="button">Añadir Imagen</label>
+                  <input type="file" id="imgFileUpload" class="show-for-sr" name="img">
               </div>
-             <div class="column-12 align-center">
+              <div class="column-12 align-center">
                 <a href="#">
                    <button class="button" type="submit">Registrar</button>
                 </a>
