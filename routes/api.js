@@ -12,6 +12,11 @@ const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 
 //------------------------------------Navigation - web-----------------------------------------
+router.get('/', function(req, res, next) {
+	res.redirect('index.js');
+});
+
+
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
