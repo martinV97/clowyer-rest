@@ -12,6 +12,21 @@ const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 const session = require('express-session');
 
+//------------------------------------Navigation - web-----------------------------------------
+router.post('/login-lawyer-web', function(req, res, next) {
+	Lawyer.findOne({email: req.params.email, password: req.params.password}, function(err, Lawyer){
+		if (err) {
+			res.status(500).send();
+		}
+		if (!Lawyer){
+			res.status(404).send();
+		}
+		req.session.lawyer = Lawyer;
+		res.redirect('/main.html');
+	});
+});
+
+
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -50,7 +65,6 @@ router.post('/lawyer', function(req, res, next) {
 router.post('/lawyer-web', function(req, res, next) {
     req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
-		//res.sendFile('main.html', {root: 'public'});
 		req.session.lawyer = Lawyer;
 		console.log('success');
 	}).catch(next);
@@ -59,6 +73,8 @@ router.post('/lawyer-web', function(req, res, next) {
 router.post('/main.html', function(req, res, next) {
     if(req.session.user){
     	res.redirect('/main.html');
+    }else{
+    	res.status(404).send();
     }
 });
 
