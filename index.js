@@ -9,7 +9,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const saltRounds = 10;
 const fs = require('fs');
-var path = require('path');
+
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
@@ -28,8 +28,7 @@ app.use(function(err, req, res, next){
 		error: err.message
 	});
 });
-var publicPath = path.resolve(__dirname, 'views');
-app.use(express.static(publicPath));
+app.set('view engine', 'ejs');
 app.use(routes);
 app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
