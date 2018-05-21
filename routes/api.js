@@ -374,6 +374,12 @@ router.post('/client', function(req, res, next) {
 	}).catch(next);
 });
 
+router.post('/client-web', function(req, res, next) {
+	Client.create(req.body).then(function(Client){
+		res.send(Client);
+	}).catch(next);
+});
+
 router.delete('/client/:id', function(req, res, next){
 	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
 		 res.send({Client});
