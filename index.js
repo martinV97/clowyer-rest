@@ -32,7 +32,8 @@ app.use(function(err, req, res, next){
 //app.use(express.static(publicPath));
 app.use(routes);
 http.createServer(function(request, response) {
-}).listen(4000);
+	console.log('Esperando por request puerto 4000');
+}).listen(process.env.PORT || 4000);
 /*app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
 });*/
