@@ -14,8 +14,8 @@ const saltRounds = 10;
 //------------------------------------Navigation - web-----------------------------------------
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
-		bcrypt.compare(req.body.password, Lawyer.password, function(err, res) {
-			res.send(res);
+		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+			console.log(result);
 		});
 		/*if(){
 			req.session.lawyer = Lawyer;
