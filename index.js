@@ -14,7 +14,6 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit: '50mb'}));
-app.engine('html', require('ejs').renderFile);	
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
