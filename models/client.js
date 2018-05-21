@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var ClientSchema = new Schema({
 	identification:{
 		type: String,
-		required: [true, 'Identification client is required']
+		required: [true, 'Identification client is required'],
+		unique: [true, 'Identification has already taken']
 	},
 	name:{
 		type: String,

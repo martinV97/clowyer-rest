@@ -30,6 +30,15 @@ router.get('/exit', function(req, res, next) {
 	res.redirect('/');
 });
 
+
+router.get('/main.html', function(req, res, next) {
+    if(req.session.lawyer != null){
+    	res.redirect('/main.html');
+    }else{
+    	res.redirect('/');
+    }
+});
+
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -72,14 +81,6 @@ router.post('/lawyer-web', function(req, res, next) {
 		console.log('success');
 		res.redirect('/main.html');
 	}).catch(next);
-});
-
-router.get('/main.html', function(req, res, next) {
-    if(!req.session.lawyer){
-    	return res.status(404).send();
-    }
-    	res.redirect('/main.html');
-    
 });
 
 router.delete('/lawyer/:id', function(req, res, next){

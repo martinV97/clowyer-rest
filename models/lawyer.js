@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var LawyerSchema = new Schema({
 	identification:{
 		type: String,
-		required: [true, 'Identification lawyer is required']
+		required: [true, 'Identification lawyer is required'],
+		unique: [true, 'Identification has already taken']
 	},
 	name:{
 		type: String,

@@ -8,7 +8,8 @@ var CaseSchema = new Schema({
 	},
 	number:{
 		type: String,
-		required: [true, 'Number Case is required']
+		required: [true, 'Number Case is required'],
+		unique: [true, 'Number has already taken']
 	},
 	dateStart:{
 		type:Date,
