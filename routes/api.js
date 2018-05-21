@@ -13,7 +13,7 @@ const saltRounds = 10;
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
-	res.redirect('index.js');
+	res.sendFile('main.html', {root: 'public'});
 });
 
 
