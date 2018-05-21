@@ -14,10 +14,13 @@ const saltRounds = 10;
 //------------------------------------Navigation - web-----------------------------------------
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
-		if(bcrypt.compareSync(req.params.password, Lawyer.password)){
+		bcrypt.compare(req.body.password, Lawyer.password, function(err, res) {
+			res.send(res);
+		});
+		/*if(){
 			req.session.lawyer = Lawyer;
 			res.redirect('/main.html');
-		}
+		}*/
 	});
 });
 
