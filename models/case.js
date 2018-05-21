@@ -2,6 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CaseSchema = new Schema({
+	name:{
+		type: String,
+		required: [true, 'Name Case is required']
+	},
 	number:{
 		type: String,
 		required: [true, 'Number Case is required']
