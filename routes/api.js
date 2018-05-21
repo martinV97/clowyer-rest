@@ -10,7 +10,7 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
-var base64 = "";
+const session = require('express-session');
 
 //-----------------------------------------Lawyer----------------------------------------------
 
