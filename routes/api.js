@@ -10,19 +10,20 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
-const session = require('express-session');
 
 //------------------------------------Navigation - web-----------------------------------------
 router.post('/login-lawyer-web', function(req, res, next) {
-	Lawyer.findOne({email: req.params.email, password: req.params.password}, function(err, Lawyer){
+	Lawyer.findOne({email: req.params.email}, function(err, Lawyer){
 		if (err) {
 			res.status(500).send();
 		}
 		if (!Lawyer){
 			res.status(404).send();
 		}
-		req.session.lawyer = Lawyer;
-		res.redirect('/main.html');
+		if(bcrypt.compareSync(req.params.password, Lawyer)){
+			req.session.lawyer = Lawyer;
+			res.redirect('/main.html');
+		}
 	});
 });
 
