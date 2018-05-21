@@ -14,7 +14,7 @@ const fs = require('fs');
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
-	res.render('./public/index.html');
+	res.render('index.html');
 	/*fs.readFile('./public/index.html', null, function(args) {
 		// body
 	})*/
