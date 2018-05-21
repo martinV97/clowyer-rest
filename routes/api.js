@@ -25,11 +25,6 @@ router.get('/lawyer-web', function(req, res, next) {
 		res.send(Lawyer);
 	});
 });
-/*router.get('/Lawyer/:name', function(req, res, next) {
-	Lawyer.find({name: req.params.name}).then(function(Lawyers){
-		res.send(Lawyers);
-	});
-});*/
 
 router.get('/lawyer/:identification', function(req, res, next) {
 	Lawyer.find({identification: req.params.identification}).then(function(Lawyer){
@@ -42,7 +37,6 @@ router.get('/lawyer-web/:identification', function(req, res, next) {
 	Lawyer.find({identification: req.params.identification}).then(function(Lawyer){
 		res.send(Lawyer);
 	});
-
 });
 
 router.post('/lawyer', function(req, res, next) {
@@ -54,12 +48,11 @@ router.post('/lawyer', function(req, res, next) {
 });
 
 router.post('/lawyer-web', function(req, res, next) {
-		console.log(req.body.img);
-    /*req.body.password = bcrypt.hashSync(req.body.password);
+    req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
 		res.sendFile('main.html', {root: 'public'});
 		console.log('success');
-	}).catch(next);*/
+	}).catch(next);
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
@@ -88,12 +81,6 @@ router.get('/controlLawyer-web', function(req, res, next) {
 		res.send(ControlLawyer);
 	});
 });
-
-/*router.get('/Lawyer/:name', function(req, res, next) {
-	Lawyer.find({name: req.params.name}).then(function(Lawyers){
-		res.send(Lawyers);
-	});
-});*/
 
 router.get('/controlLawyer/:caseNumber', function(req, res, next) {
 	ControlLawyer.find({caseNumber: req.params.caseNumber}).then(function(ControlLawyer){
@@ -160,7 +147,8 @@ router.post('/case', function(req, res, next) {
 
 router.post('/case-web', function(req, res, next) {
 	Case.create(req.body).then(function(Case){
-		res.send('<script>alert("Hello")</script>');
+		//res.sendFile('main.html', {root: 'public'});
+		console.log('Success');
 	}).catch(next);
 });
 
@@ -202,12 +190,6 @@ router.get('/document-web/:caseNumber', function(req, res, next) {
 		res.send(Document);
 	});
 });
-
-/*router.get('/Document/:id', function(req, res, next) {
-	Document.findById(req.params.id).then(function(Document){
-		res.send(Document);
-	});
-});*/
 
 router.post('/document', function(req, res, next) {
 	Document.create(req.body).then(function(Document){
@@ -252,12 +234,6 @@ router.get('/court-web/:id', function(req, res, next) {
 		res.send(Court);
 	});
 });
-
-/*router.get('/Document/:id', function(req, res, next) {
-	Document.findById(req.params.id).then(function(Document){
-		res.send(Document);
-	});
-});*/
 
 router.post('/court', function(req, res, next) {
 	Court.create(req.body).then(function(Court){
@@ -304,12 +280,6 @@ router.get('/controlClient-web/:caseNumber', function(req, res, next) {
 	});
 });
 
-/*router.get('/Document/:id', function(req, res, next) {
-	Document.findById(req.params.id).then(function(Document){
-		res.send(Document);
-	});
-});*/
-
 router.post('/controlClient', function(req, res, next) {
 	ControlClient.create(req.body).then(function(ControlClient){
 		res.send(ControlClient);
@@ -343,11 +313,6 @@ router.get('/client-web', function(req, res, next) {
 		res.send(Client);
 	});
 });
-/*router.get('/Lawyer/:name', function(req, res, next) {
-	Lawyer.find({name: req.params.name}).then(function(Lawyers){
-		res.send(Lawyers);
-	});
-});*/
 
 router.get('/client/:identification', function(req, res, next) {
 	Client.find({identification: req.params.identification}).then(function(Client){
