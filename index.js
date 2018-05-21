@@ -8,6 +8,7 @@ const bcrypt = require('bcrypt-nodejs');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const saltRounds = 10;
+var http = require('http');
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
@@ -25,6 +26,10 @@ app.use(function(err, req, res, next){
 	res.send({
 		error: err.message
 	});
+});
+var server = http.createServer(function(req, res){
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	
 });
 app.use(routes);
 app.listen(process.env.PORT || 4000, function(){
