@@ -147,8 +147,7 @@ router.post('/case', function(req, res, next) {
 
 router.post('/case-web', function(req, res, next) {
 	Case.create(req.body).then(function(Case){
-		//res.sendFile('main.html', {root: 'public'});
-		console.log('Success');
+		res.sendFile('main.html', {root: 'public'});
 	}).catch(next);
 });
 
