@@ -17,25 +17,25 @@
         <div class="column small-12 medium-4 text-center">
           <img src="img/login.png" height="130" width="130">
           <h5>CLOWYER</h3>
-          <form>
+          <form action="/login-lawyer-web" method="post" encrypt="multipart/form-data">
              <div class="row">
               <div class="small-12 columns">
                 <label>Usuario
-                  <input type="text" class="error" />
+                  <input type="text" class="error" name="email" />
                 </label>
               </div>
               <div class="small-12 large-12 columns password-wrapper">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" class="password">
+                <input type="password" id="password" class="password" name="password">
                 <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
               </div>
             </div>
+            <div class="column-12 align-center">
+                <a href="#">
+                   <button class="button" type="submit">Ingresar</button>
+                </a>
+              </div>
           </form>
-          <div class="column-12 align-center">
-              <a href="/login-lawyer-web">
-                <button class="button">Ingresar</button>
-              </a>
-          </div>
           <div class="column-12 align-center">
               <a href="index.html">
                 <button class="button">Atras</button>
