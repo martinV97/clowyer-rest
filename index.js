@@ -10,7 +10,9 @@ const cookieParser = require('cookie-parser');
 const saltRounds = 10;
 const fs = require('fs');
 var path = require('path');
-
+var helmet = require('helmet');
+app.use(helmet());
+app.disable('x-powered-by');
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
