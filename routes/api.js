@@ -15,12 +15,13 @@ const saltRounds = 10;
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
-			console.log(result);
+			if(result){
+				req.session.lawyer = Lawyer;
+				res.redirect('/main.html');
+			}else{
+				res.redirect('/login.html');
+			}
 		});
-		/*if(){
-			req.session.lawyer = Lawyer;
-			res.redirect('/main.html');
-		}*/
 	});
 });
 
@@ -73,7 +74,7 @@ router.post('/lawyer-web', function(req, res, next) {
 	}).catch(next);
 });
 
-router.post('/main.html', function(req, res, next) {
+router.get('/main.html', function(req, res, next) {
     if(!req.session.lawyer){
     	return res.status(404).send();
     }
