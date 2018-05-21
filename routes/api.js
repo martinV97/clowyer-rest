@@ -50,7 +50,8 @@ router.post('/lawyer', function(req, res, next) {
 router.post('/lawyer-web', function(req, res, next) {
     req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
-		res.sendFile('main.html', {root: 'public'});
+		//res.sendFile('main.html', {root: 'public'});
+		res.redirect('/main.html');
 		console.log('success');
 	}).catch(next);
 });
