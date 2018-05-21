@@ -28,9 +28,11 @@ app.use(function(err, req, res, next){
 		error: err.message
 	});
 });
-var publicPath = path.resolve(__dirname, 'views');
-app.use(express.static(publicPath));
+//var publicPath = path.resolve(__dirname, 'views');
+//app.use(express.static(publicPath));
 app.use(routes);
-app.listen(process.env.PORT || 4000, function(){
+http.createServer(function(request, response) {
+}).listen(4000);
+/*app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
-});
+});*/
