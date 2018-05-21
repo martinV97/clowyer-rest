@@ -9,7 +9,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const saltRounds = 10;
 const fs = require('fs');
-
+var path = require('path');
 
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
