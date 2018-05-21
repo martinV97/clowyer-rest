@@ -271,7 +271,7 @@ router.get('/court/:id', function(req, res, next) {
 
 router.get('/court-web/:id', function(req, res, next) {
 	Court.findById({id: req.params.id}).then(function(Court){
-		res.send(Court);
+		res.redirect('/main.html');
 	});
 });
 
@@ -376,7 +376,7 @@ router.post('/client', function(req, res, next) {
 
 router.post('/client-web', function(req, res, next) {
 	Client.create(req.body).then(function(Client){
-		res.send(Client);
+		res.redirect('/main.html');
 	}).catch(next);
 });
 
