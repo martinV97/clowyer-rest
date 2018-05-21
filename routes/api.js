@@ -26,6 +26,9 @@ router.post('/login-lawyer-web', function(req, res, next) {
 	});
 });
 
+router.get('/exit', function(req, res, next) {
+	req.session.Lawyer = null;
+});
 
 //-----------------------------------------Lawyer----------------------------------------------
 
