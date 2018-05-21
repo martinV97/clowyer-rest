@@ -10,11 +10,17 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
+const fs = require('fs');
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
+	fs.readFile("views/index.html", function(err, data){
+	  response.writeHead(200, {'Content-Type': 'text/html'});
+	  response.write(data);
+	  response.end();
+	});
 	//res.sendFile('index.html', {root: 'html'});
-	res.render('index');
+	//res.render('index');
 	/*fs.readFile('./public/index.html', null, function(args) {
 		// body
 	})*/
