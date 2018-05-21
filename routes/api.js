@@ -136,7 +136,7 @@ router.get('/case', function(req, res, next) {
 
 router.get('/case-web', function(req, res, next) {
 	Case.find({}).then(function(Case){
-		res.send('<script>alert("Hello")</script>');
+		res.send(Case);
 	});
 });
 
@@ -155,6 +155,12 @@ router.get('/case-web/:id', function(req, res, next) {
 router.post('/case', function(req, res, next) {
 	Case.create(req.body).then(function(Case){
 		res.send(Case);
+	}).catch(next);
+});
+
+router.post('/case-web', function(req, res, next) {
+	Case.create(req.body).then(function(Case){
+		res.send('<script>alert("Hello")</script>');
 	}).catch(next);
 });
 
