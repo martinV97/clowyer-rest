@@ -34,19 +34,24 @@ router.post('/login-lawyer-web', function(req, res, next) {
 	});
 });
 
-router.get('/exit', function(req, res, next) {
-	req.session.Lawyer = null;
-	res.redirect('/');
+router.get('/login', function(req, res, next) {
+	res.render('login.html');
 });
 
 
-router.get('/main.html', function(req, res, next) {
+router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	res.redirect('/main.html');
     }else{
     	res.redirect('/');
     }
 });
+
+router.get('/exit', function(req, res, next) {
+	req.session.Lawyer = null;
+	res.redirect('/');
+});
+
 
 //-----------------------------------------Lawyer----------------------------------------------
 
