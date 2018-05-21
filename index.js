@@ -28,8 +28,13 @@ app.use(function(err, req, res, next){
 		error: err.message
 	});
 });
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 app.use(routes);
-app.listen(process.env.PORT || 4000, function(){
+var server = http.createServer(function(req, res){
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	var rS = fs.createReadStream(__dirname + '/views/index.html', 'utf8');
+	rS.pipe(res);
+});
+server.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
 });
