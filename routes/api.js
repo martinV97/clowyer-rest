@@ -136,7 +136,7 @@ router.get('/case', function(req, res, next) {
 
 router.get('/case-web', function(req, res, next) {
 	Case.find({}).then(function(Case){
-		res.send(Case);
+		res.send('<script>alert("Hello")</script>');
 	});
 });
 
