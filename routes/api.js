@@ -14,7 +14,7 @@ const saltRounds = 10;
 //------------------------------------Navigation - web-----------------------------------------
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.find({email: req.body.email}).then(function(Lawyer){
-		res.send(Lawyer);
+		res.send(Lawyer.password);
 		/*if(bcrypt.compareSync(req.params.password, Lawyer.password)){
 			req.session.lawyer = Lawyer;
 			res.redirect('/main.html');
@@ -72,11 +72,11 @@ router.post('/lawyer-web', function(req, res, next) {
 });
 
 router.post('/main.html', function(req, res, next) {
-    if(req.session.lawyer){
-    	res.redirect('/main.html');
-    }else{
-    	res.status(404).send();
+    if(!req.session.lawyer){
+    	return res.status(404).send();
     }
+    	res.redirect('/main.html');
+    
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
