@@ -13,12 +13,7 @@ const saltRounds = 10;
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
-	fs.readFile("./views/index.html", function(err, data){
-  	response.writeHead(200, {'Content-Type': 'text/html'});
-  	response.write(data);
-  	response.end();
-});
-	//res.sendFile('index.html', {root: 'html'});
+	res.sendFile('index.html', {root: 'html'});
 	/*fs.readFile('./public/index.html', null, function(args) {
 		// body
 	})*/
