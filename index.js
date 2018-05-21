@@ -27,11 +27,8 @@ app.use(function(err, req, res, next){
 		error: err.message
 	});
 });
-var server = http.createServer(function(req, res){
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	var rS = fs.createReadStream(__dirname, '/views/index.html', 'utf8');
-	rS.pipe(res);
-});
+var publicPath = path.resolve(__dirname, 'views');
+app.use(express.static(publicPath));
 app.use(routes);
 app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
