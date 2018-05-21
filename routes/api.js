@@ -66,6 +66,7 @@ router.post('/lawyer-web', function(req, res, next) {
 	Lawyer.create(req.body).then(function(Lawyer){
 		req.session.lawyer = Lawyer;
 		console.log('success');
+		res.redirect('/main.html');
 	}).catch(next);
 });
 
