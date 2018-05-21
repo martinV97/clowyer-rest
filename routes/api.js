@@ -72,7 +72,7 @@ router.post('/lawyer-web', function(req, res, next) {
 });
 
 router.post('/main.html', function(req, res, next) {
-    if(req.session.user){
+    if(req.session.lawyer){
     	res.redirect('/main.html');
     }else{
     	res.status(404).send();
