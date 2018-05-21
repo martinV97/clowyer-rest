@@ -51,9 +51,15 @@ router.post('/lawyer-web', function(req, res, next) {
     req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
 		//res.sendFile('main.html', {root: 'public'});
-		res.redirect('/main.html');
+		req.session.user = Lawyer;
 		console.log('success');
 	}).catch(next);
+});
+
+router.post('/main.html', function(req, res, next) {
+    if(req.session.user){
+    	res.redirect('/main.html');
+    }
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
