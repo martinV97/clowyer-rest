@@ -49,7 +49,7 @@ router.get('/register', function(req, res, next) {
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
-			res.render('main',{'Case': Case});
+			res.render('main',{Case: Case});
 		});
     }else{
     	res.redirect('/');
