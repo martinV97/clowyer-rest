@@ -31,8 +31,10 @@ router.post('/login-lawyer-web', function(req, res, next) {
 				res.write("<html><body><script>alert('Contraseña equivocada');</script></body>");
 				res.sendFile('login.html', {root: 'views'});
 			}
+			});
 		});
-	});
+	}else{
+		res.write("<html><body><script>alert('Usuario no encontrado');</script></body>");
 	}
 });
 
