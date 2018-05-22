@@ -22,6 +22,10 @@ var ClientSchema = new Schema({
 	phone:{
 		type:String,
 		required: [true, 'Phone client is required']
+	},
+	idLawyer:{
+		type:String,
+		required: [false, 'Id Lawyer of Document is required']	
 	}
 });
 

@@ -13,6 +13,10 @@ var DocumentSchema = new Schema({
 	caseNumber:{
 		type:String,
 		required: [true, 'Case number of Document is required']
+	},
+	idLawyer:{
+		type:String,
+		required: [false, 'Id Lawyer of Document is required']	
 	}
 });
 

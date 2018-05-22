@@ -13,7 +13,6 @@ const saltRounds = 10;
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
-	//res.sendFile('index.html', {root: 'views'});
 	res.render('index');
 });
 
@@ -22,13 +21,13 @@ router.post('/login-lawyer-web', function(req, res, next) {
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
 			if(err){
-				res.render('login');
+				res.redirect('/login');
 			}
 			if(result){
 				req.session.lawyer = Lawyer;
-				renderMain(res);
+				res.redirect('/main');
 			}else{
-				res.render('login');
+				res.redirect('/login');
 			}
 			});
 		});
@@ -38,7 +37,11 @@ router.post('/login-lawyer-web', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-	res.render('login');
+	if(req.session.lawyer != null){
+    	renderMain(res);
+    }else{
+    	res.render('login');
+    }
 });
 
 router.get('/register', function(req, res, next) {
@@ -52,10 +55,6 @@ router.get('/main', function(req, res, next) {
     	res.redirect('/');
     }
 });
-
-function renderMain(res){
-	res.render('main');
-}
 
 router.get('/exit', function(req, res, next) {
 	req.session.Lawyer = null;
@@ -102,14 +101,19 @@ router.post('/lawyer-web', function(req, res, next) {
     req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
 		req.session.lawyer = Lawyer;
-		console.log('success');
-		res.redirect('/main.html');
+		res.redirect('/main');
 	}).catch(next);
 });
 
 router.delete('/lawyer/:id', function(req, res, next){
 	Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
 		 res.send({Lawyer});
+	});
+});
+
+router.delete('/lawyer-web/:id', function(req, res, next){
+	Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
+		 res.redirect('/main');
 	});
 });
 
@@ -120,48 +124,11 @@ router.put('/lawyer/:id', function(req, res, next){
 		});
 	});
 });
-//-----------------------------------------ControlLawyer----------------------------------------------
 
-router.get('/controlLawyer', function(req, res, next) {
-	ControlLawyer.find({}).then(function(ControlLawyer){
-		res.json({'ControlLawyer' : ControlLawyer});
-	});
-});
-
-router.get('/controlLawyer-web', function(req, res, next) {
-	ControlLawyer.find({}).then(function(ControlLawyer){
-		res.send(ControlLawyer);
-	});
-});
-
-router.get('/controlLawyer/:caseNumber', function(req, res, next) {
-	ControlLawyer.find({caseNumber: req.params.caseNumber}).then(function(ControlLawyer){
-		res.json({'ControlLawyer' : ControlLawyer});
-	});
-});
-
-router.get('/controlLawyer-web/:caseNumber', function(req, res, next) {
-	ControlLawyer.find({caseNumber: req.params.caseNumber}).then(function(ControlLawyer){
-		res.send(ControlLawyer);
-	});
-});
-
-router.post('/controlLawyer', function(req, res, next) {
-	ControlLawyer.create(req.body).then(function(ControlLawyer){
-		res.send(ControlLawyer);
-	}).catch(next);
-});
-
-router.delete('/controlLawyer/:id', function(req, res, next){
-	ControlLawyer.findByIdAndRemove({_id: req.params.id}).then(function(ControlLawyer){
-		 res.send({ControlLawyer});
-	});
-});
-
-router.put('/controlLawyer/:id', function(req, res, next){
-	ControlLawyer.findByIdAndUpdate({_id:req.params.id}).then(function(ControlLawyer){
-		ControlLawyer.findOne({_id:req.params.id}).then(function(ControlLawyer){
-			res.send(ControlLawyer);
+router.put('/lawyer-web/:id', function(req, res, next){
+	Lawyer.findByIdAndUpdate({_id:req.params.id}).then(function(Lawyer){
+		Lawyer.findOne({_id:req.params.id}).then(function(Lawyer){
+			res.redirect('/main');
 		});
 	});
 });
@@ -198,8 +165,9 @@ router.post('/case', function(req, res, next) {
 });
 
 router.post('/case-web', function(req, res, next) {
+	req.body.idLawyer = req.session.lawyer._id;
 	Case.create(req.body).then(function(Case){
-		res.sendFile('main.html', {root: 'public'});
+		res.redirect('/main');
 	}).catch(next);
 });
 
@@ -209,10 +177,24 @@ router.delete('/case/:id', function(req, res, next){
 	});
 });
 
+router.delete('/case-web/:id', function(req, res, next){
+	Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
+		 res.redirect('/main');
+	});
+});
+
 router.put('/case/:id', function(req, res, next){
 	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
 		Case.findOne({_id:req.params.id}).then(function(Case){
 			res.send(Case);
+		});
+	});
+});
+
+router.put('/case-web/:id', function(req, res, next){
+	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
+		Case.findOne({_id:req.params.id}).then(function(Case){
+			res.redirect('/main');
 		});
 	});
 });
@@ -248,13 +230,33 @@ router.post('/document', function(req, res, next) {
 	}).catch(next);
 });
 
+router.post('/document-web', function(req, res, next) {
+	Document.create(req.body).then(function(Document){
+		res.send(Document);
+	}).catch(next);
+});
+
 router.delete('/document/:id', function(req, res, next){
 	Document.findByIdAndRemove({_id: req.params.id}).then(function(Document){
 		 res.send({Document});
 	});
 });
 
+router.delete('/document-web/:id', function(req, res, next){
+	Document.findByIdAndRemove({_id: req.params.id}).then(function(Document){
+		 res.send({Document});
+	});
+});
+
 router.put('/document/:id', function(req, res, next){
+	Document.findByIdAndUpdate({_id:req.params.id}).then(function(Document){
+		Document.findOne({_id:req.params.id}).then(function(Document){
+			res.send(Document);
+		});
+	});
+});
+
+router.put('/document-web/:id', function(req, res, next){
 	Document.findByIdAndUpdate({_id:req.params.id}).then(function(Document){
 		Document.findOne({_id:req.params.id}).then(function(Document){
 			res.send(Document);
@@ -282,7 +284,7 @@ router.get('/court/:id', function(req, res, next) {
 
 router.get('/court-web/:id', function(req, res, next) {
 	Court.findById({id: req.params.id}).then(function(Court){
-		res.redirect('/main.html');
+		res.redirect('/main');
 	});
 });
 
@@ -302,51 +304,6 @@ router.put('/court/:id', function(req, res, next){
 	Court.findByIdAndUpdate({_id:req.params.id}).then(function(Court){
 		Court.findOne({_id:req.params.id}).then(function(Court){
 			res.send(Court);
-		});
-	});
-});
-
-//-----------------------------------------ControlClient------------------------------------------------
-router.get('/controlClient', function(req, res, next) {
-	ControlClient.find({}).then(function(ControlClient){
-		res.json({'ControlClient' : ControlClient});
-	});
-});
-
-router.get('/controlClient-web', function(req, res, next) {
-	ControlClient.find({}).then(function(ControlClient){
-		res.send(ControlClient);
-	});
-});
-
-router.get('/controlClient/:caseNumber', function(req, res, next) {
-	ControlClient.find({caseNumber: req.params.caseNumber}).then(function(ControlClient){
-		res.json({'ControlClient' : ControlClient});
-	});
-});
-
-router.get('/controlClient-web/:caseNumber', function(req, res, next) {
-	ControlClient.find({caseNumber: req.params.caseNumber}).then(function(ControlClient){
-		res.send(ControlClient);
-	});
-});
-
-router.post('/controlClient', function(req, res, next) {
-	ControlClient.create(req.body).then(function(ControlClient){
-		res.send(ControlClient);
-	}).catch(next);
-});
-
-router.delete('/controlClient/:id', function(req, res, next){
-	ControlClient.findByIdAndRemove({_id: req.params.id}).then(function(ControlClient){
-		 res.send({ControlClient});
-	});
-});
-
-router.put('/controlClient/:id', function(req, res, next){
-	ControlClient.findByIdAndUpdate({_id:req.params.id}).then(function(ControlClient){
-		ControlClient.findOne({_id:req.params.id}).then(function(ControlClient){
-			res.send(ControlClient);
 		});
 	});
 });
@@ -387,13 +344,19 @@ router.post('/client', function(req, res, next) {
 
 router.post('/client-web', function(req, res, next) {
 	Client.create(req.body).then(function(Client){
-		res.redirect('/main.html');
+		res.redirect('/main');
 	}).catch(next);
 });
 
 router.delete('/client/:id', function(req, res, next){
 	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
 		 res.send({Client});
+	});
+});
+
+router.delete('/client-web/:id', function(req, res, next){
+	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
+		 res.redirect('/main');
 	});
 });
 
@@ -405,12 +368,12 @@ router.put('/client/:id', function(req, res, next){
 	});
 });
 
-//----------------------------------------------------------------------------------------
-function base64_encode(file) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-    	this.base64 = reader.result;
-    };
-    reader.readAsDataURL(file);
-}
+router.put('/client-web/:id', function(req, res, next){
+	Client.findByIdAndUpdate({_id:req.params.id}).then(function(Client){
+		Client.findOne({_id:req.params.id}).then(function(Client){
+			res.redirect('/main');
+		});
+	});
+});
+
 module.exports = router;
