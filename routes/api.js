@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		if(!Lawyer){
-			JSAlert.alert("Correo no encontrado");
+			alert("Correo no encontrado");
 			res.sendFile('login.html', {root: 'views'});
 		}
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
