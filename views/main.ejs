@@ -125,11 +125,7 @@
 											   <tr>
 											     <td><u><a href="#"><%= Client[i].name %></a></u></td>
 											     <td><%= Client[i].identification %></td>
-											     <%= if(Client[i].type == "N") { %>
-											     	<td><%= Natural %></td>
-											     <% }else{ %>
-											     	<td><%= Juridico %></td>
-											     <% } %>	
+											     <td><%= Client[i].type %></td>
 											     <td><%= Client[i].date %></td>
 											     <td><%= Client[i].phone %></td>
 											   </tr>
