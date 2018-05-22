@@ -17,12 +17,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
-	res.writeHeader(200, {"Content-Type": "text/html", });
-	res.write("<html><body><script>alert('Contraseña equivocada');</script></body>");
 	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
 			if(err){
+				res.writeHeader(200, {"Content-Type": "text/html", });
 				res.write("<html><body><script>alert('Error de inicio de sesion');</script></body>");
 				res.sendFile('login.html', {root: 'views'});
 			}
@@ -30,12 +29,14 @@ router.post('/login-lawyer-web', function(req, res, next) {
 				req.session.lawyer = Lawyer;
 				res.sendFile('main.html', {root: 'views'});
 			}else{
+				res.writeHeader(200, {"Content-Type": "text/html", });
 				res.write("<html><body><script>alert('Contraseña equivocada');</script></body>");
 				res.sendFile('login.html', {root: 'views'});
 			}
 			});
 		});
 	}else{
+		res.writeHeader(200, {"Content-Type": "text/html", });
 		res.write("<html><body><script>alert('Usuario no encontrado');</script></body>");
 	}
 });
