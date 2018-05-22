@@ -10,6 +10,7 @@ const ControlClient = require('../models/control-client');
 const Client = require('../models/client');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
+const JSAlert = require("js-alert");
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
@@ -18,11 +19,20 @@ router.get('/', function(req, res, next) {
 
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
+		if(!Lawyer){
+			JSAlert.alert("Correo no encontrado");
+			res.sendFile('login.html', {root: 'views'});
+		}
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+			if(err){
+				JSAlert.alert("Error de inicio de sesión");
+				res.sendFile('login.html', {root: 'views'});
+			}
 			if(result){
 				req.session.lawyer = Lawyer;
 				res.sendFile('main.html', {root: 'views'});
 			}else{
+				JSAlert.alert("Contraseña erronea");
 				res.sendFile('login.html', {root: 'views'});
 			}
 		});

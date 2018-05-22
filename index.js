@@ -9,8 +9,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const saltRounds = 10;
 const fs = require('fs');
-var path = require('path');
-var helmet = require('helmet');
+const path = require('path');
+const helmet = require('helmet');
+const JSAlert = require("js-alert");
 
 app.use(helmet());
 app.disable('x-powered-by');
@@ -23,8 +24,6 @@ app.use(cookieParser());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/js-css'));
-//var publicPath = path.resolve(__dirname, 'views');
-//app.use(express.static(publicPath));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
