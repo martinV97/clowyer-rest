@@ -11,7 +11,6 @@ const saltRounds = 10;
 const fs = require('fs');
 const path = require('path');
 const helmet = require('helmet');
-const JSAlert = require("js-alert");
 
 app.use(helmet());
 app.disable('x-powered-by');
@@ -25,7 +24,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/js-css'));
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'njaksdnkjas89as98dasdn899asuidna898627ajdb187eh71d162gd76187g2d781dg',
     resave: false,
     saveUninitialized: true
 }));
