@@ -22,20 +22,21 @@ router.post('/login-lawyer-web', function(req, res, next) {
 		if(!Lawyer){
 			alert("Correo no encontrado");
 			res.sendFile('login.html', {root: 'views'});
+		}else{
+			bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+				if(err){
+					JSAlert.alert("Error de inicio de sesión");
+					res.sendFile('login.html', {root: 'views'});
+				}
+				if(result){
+					req.session.lawyer = Lawyer;
+					res.sendFile('main.html', {root: 'views'});
+				}else{
+					JSAlert.alert("Contraseña erronea");
+					res.sendFile('login.html', {root: 'views'});
+				}
+			});
 		}
-		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
-			if(err){
-				JSAlert.alert("Error de inicio de sesión");
-				res.sendFile('login.html', {root: 'views'});
-			}
-			if(result){
-				req.session.lawyer = Lawyer;
-				res.sendFile('main.html', {root: 'views'});
-			}else{
-				JSAlert.alert("Contraseña erronea");
-				res.sendFile('login.html', {root: 'views'});
-			}
-		});
 	});
 });
 
