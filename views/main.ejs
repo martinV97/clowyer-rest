@@ -91,10 +91,15 @@
 									  </thead>
 									  <tbody>
 									    <tr>
-									      <td><u><a href="">Content Goes Here</a></u></td>
-									      <td>This is longer cont</td>
-									      <td>Content Goes Here</td>
-									      <td>Content Goes Here</td>
+									      <% for(var i=0; i < Case.length; i++) { %>
+											   <tr>
+											     <td><%= case[i].name %></td>
+											     <td><%= case[i].number %></td>
+											     <td><%= case[i].dateStart %></td>
+											     <td><%= case[i].dateFinish %></td>
+											     <td><%= case[i].courtName %></td>
+											   </tr>
+											<% } %>
 									    </tr>
 									  </tbody>
 									</table>	
