@@ -47,10 +47,20 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
+	var cases;
+	var clients;
+	var courts;
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
-			res.render('main',{Case: Case});
+    		cases = Case;
 		});
+		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
+    		clients = Client;
+		});
+		Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
+    		courts = Court;
+		});
+		res.render('main',{Case: cases, Client: clients, Court: courts});
     }else{
     	res.redirect('/');
     }
