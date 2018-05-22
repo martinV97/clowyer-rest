@@ -47,18 +47,15 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
-	var cases = "";
-	var clients;
-	var courts;
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
-    		cases = Case;
+    		var cases = Case;
 		});
 		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
-    		clients = Client;
+    		var clients = Client;
 		});
 		Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
-    		courts = Court;
+    		var courts = Court;
 		});
 		console.log(cases);
 		res.render('main',{cases: cases, clients: clients, courts: courts});
