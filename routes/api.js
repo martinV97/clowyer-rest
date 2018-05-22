@@ -55,7 +55,7 @@ router.get('/main', function(req, res, next) {
 });
 
 router.get('/exit', function(req, res, next) {
-	req.session.Lawyer = null;
+	req.session.lawyer = null;
 	res.redirect('/');
 });
 
