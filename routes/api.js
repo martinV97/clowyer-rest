@@ -49,16 +49,12 @@ router.get('/register', function(req, res, next) {
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
-    		var cases = Case;
-		});
-		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
-    		var clients = Client;
-		});
-		Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
-    		var courts = Court;
-		});
-		console.log(cases);
-		res.render('main',{cases: cases, clients: clients, courts: courts});
+    		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
+    			Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
+    				res.render('main',{Case: Case, Client: Client, Court: Court});		
+				});
+			});
+		});		
     }else{
     	res.redirect('/');
     }
