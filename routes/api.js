@@ -60,7 +60,7 @@ router.get('/main', function(req, res, next) {
 		Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
     		courts = Court;
 		});
-		res.render('main',{Case: cases, Client: clients, Court: courts});
+		res.render('main',{cases: cases, clients: clients, courts: courts});
     }else{
     	res.redirect('/');
     }
