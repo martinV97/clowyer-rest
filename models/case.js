@@ -26,6 +26,11 @@ var CaseSchema = new Schema({
 	idLawyer:{
 		type:String,
 		required: [false, 'Id Lawyer of Document is required']	
+	},
+	,
+	idClient:{
+		type:String,
+		required: [false, 'Id Client of Document is required']	
 	}
 });
 
