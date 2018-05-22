@@ -222,18 +222,6 @@ router.get('/document-web/:caseNumber', function(req, res, next) {
 	});
 });
 
-router.get('/document/:idLawyer', function(req, res, next) {
-	Document.find({caseNumber: req.params.caseNumber}).then(function(Document){
-		res.json({'Document' : Document});
-	});
-});
-
-router.get('/document-web/:idLawyer', function(req, res, next) {
-	Document.find({caseNumber: req.params.caseNumber}).then(function(Document){
-		res.send(Document);
-	});
-});
-
 router.post('/document', function(req, res, next) {
 	Document.create(req.body).then(function(Document){
 		res.send(Document);
