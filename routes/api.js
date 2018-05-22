@@ -22,13 +22,13 @@ router.post('/login-lawyer-web', function(req, res, next) {
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
 			if(err){
-				res.sendFile('login.html', {root: 'views'});
+				res.render('login');
 			}
 			if(result){
 				req.session.lawyer = Lawyer;
 				renderMain(res);
 			}else{
-				res.sendFile('login.html', {root: 'views'});
+				res.render('login');
 			}
 			});
 		});
@@ -38,11 +38,11 @@ router.post('/login-lawyer-web', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-	res.sendFile('login.html', {root: 'views'});
+	res.render('login');
 });
 
 router.get('/register', function(req, res, next) {
-	res.sendFile('register.html', {root: 'views'});
+	res.render('register');
 });
 
 router.get('/main', function(req, res, next) {
@@ -54,7 +54,7 @@ router.get('/main', function(req, res, next) {
 });
 
 function renderMain(res){
-	res.sendFile('main.html', {root: 'views'});
+	res.render('main');
 }
 
 router.get('/exit', function(req, res, next) {
