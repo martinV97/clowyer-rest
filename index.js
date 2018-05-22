@@ -11,6 +11,7 @@ const saltRounds = 10;
 const fs = require('fs');
 var path = require('path');
 var helmet = require('helmet');
+
 app.use(helmet());
 app.disable('x-powered-by');
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
@@ -18,21 +19,25 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({limit: '50mb'}));
+app.use(cookieParser());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/js-css'));
+//var publicPath = path.resolve(__dirname, 'views');
+//app.use(express.static(publicPath));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true
 }));
-app.use(cookieParser());
 app.use(function(err, req, res, next){
 	console.log({error: err.message});
 	res.send({
 		error: err.message
 	});
 });
-var publicPath = path.resolve(__dirname, 'views');
-app.use(express.static(publicPath));
 app.use(routes);
+
 app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
 });

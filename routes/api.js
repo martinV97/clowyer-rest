@@ -14,33 +14,32 @@ const saltRounds = 10;
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
 	res.sendFile('index.html', {root: 'views'});
-	/*fs.readFile('./public/index.html', null, function(args) {
-		// body
-	})*/
 });
-
 
 router.post('/login-lawyer-web', function(req, res, next) {
 	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
 			if(result){
 				req.session.lawyer = Lawyer;
-				res.redirect('/main.html');
+				res.sendFile('main.html', {root: 'views'});
 			}else{
-				res.redirect('/login.html');
+				res.sendFile('login.html', {root: 'views'});
 			}
 		});
 	});
 });
 
 router.get('/login', function(req, res, next) {
-	res.render('login.html');
+	res.sendFile('login.html', {root: 'views'});
 });
 
+router.get('/register', function(req, res, next) {
+	res.sendFile('register.html', {root: 'views'});
+});
 
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
-    	res.redirect('/main.html');
+    	res.sendFile('main.html', {root: 'views'});
     }else{
     	res.redirect('/');
     }
