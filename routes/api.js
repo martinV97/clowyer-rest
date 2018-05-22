@@ -14,7 +14,7 @@ const saltRounds = 10;
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
 	//res.sendFile('index.html', {root: 'views'});
-	res.render(index);
+	res.render('index');
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
