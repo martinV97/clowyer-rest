@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
+	res.write("<html><body><script>alert('Contraseña equivocada');</script></body>");
 	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
