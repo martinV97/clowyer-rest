@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
-	Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
+	if(req.body){
+		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
 			if(err){
 				res.write("<html><body><script>alert('Error de inicio de sesion');</script></body>");
@@ -32,6 +33,7 @@ router.post('/login-lawyer-web', function(req, res, next) {
 			}
 		});
 	});
+	}
 });
 
 router.get('/login', function(req, res, next) {
