@@ -47,7 +47,7 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/main', function(req, res, next) {
-	var cases;
+	var cases = "";
 	var clients;
 	var courts;
     if(req.session.lawyer != null){
