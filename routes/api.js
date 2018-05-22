@@ -36,7 +36,7 @@ router.post('/login-lawyer-web', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
 	if(req.session.lawyer != null){
-    	renderMain(res);
+    	res.redirect('/main');
     }else{
     	res.render('login');
     }
@@ -48,7 +48,7 @@ router.get('/register', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
-    	renderMain(res);
+    	res.render('main');
     }else{
     	res.redirect('/');
     }
