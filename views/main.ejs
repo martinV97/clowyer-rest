@@ -169,10 +169,9 @@
 		              <div class="small-12 columns">
 		              	<label>Juzgado</label>
 		                <select name="courtName">
-						    <option value="husker">Husker</option>
-						    <option value="starbuck">Starbuck</option>
-						    <option value="hotdog">Hot Dog</option>
-						    <option value="apollo">Apollo</option>
+						    <% for(var i=0; i < Court.length; i++) { %>
+							  <option id ="<%= Court[i].name %>" ><%= Court[i].name %></option>
+							<% } %>
 						  </select>
 		              </div>
 		           	  <div class="column-12 align-center text-center">
@@ -190,9 +189,11 @@
 		             	<h4>Clientes</h4>
 		             </div>
 		              <div class="small-12 columns">
+		              	<label>Cedula</label>
 		                <input type="text" name="identification"  placeholder="Cedula"/>
 		              </div>
 		              <div class="small-12 columns">
+		              	<label>Nombre</label>
 		                <input type="text" name="name" placeholder="Nombre" />
 		              </div>
 		              <div class="small-12 columns">
@@ -206,6 +207,7 @@
 		                <input type="date" name="date" placeholder="MM/DD/AAAA" />
 		              </div>
 		              <div class="small-12 columns">
+		              	<label>Telefono</label>
 		                <input type="text" name="phone" placeholder="Telefono" />
 		              </div>
 		           	  <div class="column-12 align-center text-center">
