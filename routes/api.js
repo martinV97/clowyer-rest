@@ -13,7 +13,8 @@ const saltRounds = 10;
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {
-	res.sendFile('index.html', {root: 'views'});
+	//res.sendFile('index.html', {root: 'views'});
+	res.render(index);
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
@@ -25,7 +26,7 @@ router.post('/login-lawyer-web', function(req, res, next) {
 			}
 			if(result){
 				req.session.lawyer = Lawyer;
-				res.sendFile('main.html', {root: 'views'});
+				renderMain(res);
 			}else{
 				res.sendFile('login.html', {root: 'views'});
 			}
@@ -46,11 +47,15 @@ router.get('/register', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
-    	res.sendFile('main.html', {root: 'views'});
+    	renderMain(res);
     }else{
     	res.redirect('/');
     }
 });
+
+function renderMain(res){
+	res.sendFile('main.html', {root: 'views'});
+}
 
 router.get('/exit', function(req, res, next) {
 	req.session.Lawyer = null;
