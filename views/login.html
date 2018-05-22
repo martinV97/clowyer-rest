@@ -20,13 +20,12 @@
           <form action="/login-lawyer-web" method="post" encrypt="multipart/form-data">
              <div class="row">
               <div class="small-12 columns">
-                <label>Usuario
-                  <input type="text" class="error" name="email" />
-                </label>
+                <label>Correo</label>
+                <input type="text" class="error" name="email" placeholder="Correo" />
               </div>
               <div class="small-12 large-12 columns password-wrapper">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" class="password" name="password">
+                <input type="password" id="password" class="password" name="password" placeholder="Constraseña">
                 <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
               </div>
             </div>
@@ -42,7 +41,7 @@
               </a>
           </div>
           <div class="column-12 align-center">
-            <a href="#">
+            <a href="mail">
               <label>
                 Recuperar contraseña?
               </label>
