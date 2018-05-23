@@ -200,16 +200,18 @@
 		              <div class="small-12 columns">
 		              	<label>Juzgado</label>
 		                <select name="courtName">
+		                	<option value=""></option>
 						    <% for(var i=0; i < Court.length; i++) { %>
-							  <option id ="<%= Court[i].name %>" ><%= Court[i].name %></option>
+							  <option value="<%= Court[i].name %>" ><%= Court[i].name %></option>
 							<% } %>
 						  </select>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Client (Opcional)</label>
 		                <select name="courtName">
+		                	<option value=""></option>
 						    <% for(var i=0; i < Client.length; i++) { %>
-							  <option id ="<%= Client[i]._id %>" ><%= Client[i].name %></option>
+							  <option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
 							<% } %>
 						  </select>
 		              </div>
