@@ -51,7 +51,7 @@ router.get('/main', function(req, res, next) {
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
-    				res.render('main',{Case: Case, Client: Client, Court: Court});		
+    				res.render('main',{Case: Case, Client: Client, Court: Court, idLawyer: req.session.lawyer._id});		
 				});
 			});
 		});		
