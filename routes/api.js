@@ -50,7 +50,7 @@ router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
-    			Court.find({idLawyer: req.session.lawyer._id}).then(function(Court){
+    			Court.find({}).then(function(Court){
     				res.render('main',{Case: Case, Client: Client, Court: Court});		
 				});
 			});
