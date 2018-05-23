@@ -32,10 +32,10 @@
 		                	<a href="#panelClients"><i class="fi-torsos"></i> Clientes </a>
 		                </li>
 		                <li class="tabs-title">
-		                	<a href="#panelDocuments"><i class="fi-page"></i> Documentos </a>
+		                	<a href="#panelCourts"><i class="fi-results-demographics"></i> Juzgados </a>
 		                </li>
 			            <li class="tabs-title">
-				          	<a href="#panelAccount"><i class="fi-widget"></i> Cuenta </a>
+				          	<a href="#panelAccount"><i class="fi-address-book"></i> Cuenta </a>
 				        </li>
 		            </ul>
 	      		</div>
@@ -61,10 +61,13 @@
 				            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Crear Cliente </a>
+				            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Crear Documento </a>
+				            <a href="#" data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
 				        </li>
 				        <li class="tabs-title">
 				            <a href="#" data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
@@ -136,12 +139,40 @@
 					    		</div>
 					    	</div>	
 				    	</div>
+				    	<div class="tabs-panel" id="panelCourts">
+				    		<div class="row" id="account">
+				    			<div class="column">
+				    				<table>
+									  <thead>
+									    <tr>
+									      <th width="200">Nombre</th>
+									      <th width="150">Direccion</th>
+									      <th width="150">Tipo</th>
+									      <th width="150">Telefono</th>
+									    </tr>
+									  </thead>
+									  <tbody>
+									    <tr>
+									      <% for(var i=0; i < Court.length; i++) { %>
+											   <tr>
+											     <td><u><a href="#"><%= Court[i].name %></a></u></td>
+											     <td><%= Court[i].address %></td>
+											     <td><%= Court[i].type %></td>
+											     <td><%= Court[i].phone %></td>
+											   </tr>
+											<% } %>
+									    </tr>
+									  </tbody>
+									</table>	
+				    			</div>
+				    		</div>
+				    	</div>
 				    	<div class="tabs-panel" id="panelAccount">
 				    		<div class="row" id="account">
 				    			<div class="column">
 				    			</div>
 				    		</div>
-				    	</div>
+				    	</div>			
 				    </section>
 				</div>	    
 				<div class="reveal" id="modalAddCase" data-reveal>
@@ -171,6 +202,14 @@
 		                <select name="courtName">
 						    <% for(var i=0; i < Court.length; i++) { %>
 							  <option id ="<%= Court[i].name %>" ><%= Court[i].name %></option>
+							<% } %>
+						  </select>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Client (Opcional)</label>
+		                <select name="courtName">
+						    <% for(var i=0; i < Client.length; i++) { %>
+							  <option id ="<%= Client[i]._id %>" ><%= Client[i].name %></option>
 							<% } %>
 						  </select>
 		              </div>
@@ -218,6 +257,36 @@
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
+				<div class="reveal" id="modalAddCourt" data-reveal>
+				  <form action="#" method="post" encrypt="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Juzgado</h4>
+		             </div>
+		              <div class="small-12 columns">
+		              	<label>Nombre</label>
+		                <input type="text" name="name"  placeholder="Nombre"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Direccion (Opcional)</label>
+		                <input type="text" name="address" placeholder="Direccion"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Tipo (Opcional)</label>
+		                <input type="number" name="type"  placeholder="Tipo"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Telefono (Opcional)</label>
+		                <input type="number" name="phone"  placeholder="Telefono"/>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		           	  	<button class="button" type="submit ">Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
 				<div class="reveal" id="modalAddDocument" data-reveal>
 				  <form action="#" method="post" encrypt="multipart/form-data" >
 		             <div class="row">
@@ -225,12 +294,15 @@
 		             	<h4>Documentos</h4>
 		             </div>
 		              <div class="small-12 columns">
+		              	<label>Nombre</label>
 		                <input type="text" name="name"  placeholder="Nombre"/>
 		              </div>
 		              <div class="small-12 columns">
+		              	<label>Tipo</label>
 		                <input type="text" name="dateStart" placeholder="Tipo"/>
 		              </div>
 		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
 		                <input type="number" name="caseNumber"  placeholder="Numero de caso"/>
 		              </div>
 		           	  <div class="column-12 align-center text-center">

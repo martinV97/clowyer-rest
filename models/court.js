@@ -12,7 +12,7 @@ var CourtSchema = new Schema({
 	},
 	type:{
 		type:String,
-		required: [true, 'Type Court is required']
+		required: [false, 'Type Court is required']
 	},
 	phone:{
 		type:String,

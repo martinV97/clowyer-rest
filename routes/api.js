@@ -351,14 +351,24 @@ router.get('/client/:idLawyer', function(req, res, next) {
 	Client.find({idLawyer: req.params.idLawyer}).then(function(Client){
 		res.json({'Client' : Client});
 	});
-
 });
 
 router.get('/client-web/:idLawyer', function(req, res, next) {
 	Client.find({idLawyer: req.params.idLawyer}).then(function(Client){
 		res.send(Client);
 	});
+});
 
+router.get('/specific-client/:id', function(req, res, next) {
+	Client.findOne({_id: req.params.id}).then(function(Client){
+		res.json({'Client' : Client});
+	});
+});
+
+router.get('/specific-client-web/:id', function(req, res, next) {
+	Client.findOne({_id: req.params.id}).then(function(Client){
+		res.send(Client);
+	});
 });
 
 router.post('/client', function(req, res, next) {
