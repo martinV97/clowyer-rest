@@ -9,14 +9,11 @@ var multer = require('multer')({
    dest: 'public/uploads'
 });
 const router = express.Router();
-
-var CLOUDINARY_URL = "	https://api.cloudinary.com/v1_1/clowyer/upload";
-var CLOUDINARY_UPLOAD_PRESET = "jjazhn1s";
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
-  cloud_name: 'clowyer', 
-  api_key: '482155296382456', 
-  api_secret: '5zctAUOvaqtHgxbS_RwAfv5DTJ0' 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
 });
 
 //-----------------------------------------Lawyer----------------------------------------------
