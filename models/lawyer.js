@@ -32,7 +32,7 @@ var LawyerSchema = new Schema({
 		type:String,
 		required: [true, 'Password lawyer is required']
 	},
-	img:{
+	avatar:{
 		type:String,
 		required: [false, 'Img lawyer is required']
 	}

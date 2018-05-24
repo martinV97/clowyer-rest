@@ -11,9 +11,9 @@ var multer = require('multer')({
 const router = express.Router();
 var cloudinary = require('cloudinary');
 cloudinary.config({ 
-  cloud_name: process.env.CLOUD_NAME, 
-  api_key: process.env.API_KEY, 
-  api_secret: process.env.API_SECRET 
+  cloud_name: 'clowyer', 
+  api_key: '482155296382456', 
+  api_secret: '5zctAUOvaqtHgxbS_RwAfv5DTJ0' 
 });
 
 //-----------------------------------------Lawyer----------------------------------------------
@@ -52,16 +52,27 @@ router.post('/lawyer', function(req, res, next) {
 });
 
 router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
-	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-	cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
-  		req.body.img = result.url;
-	});
-	fs.unlinkSync('public/uploads/' + req.file.originalname);
-    req.body.password = bcrypt.hashSync(req.body.password);
-	Lawyer.create(req.body).then(function(Lawyer){
-		req.session.lawyer = Lawyer;
-		res.redirect('/main');
-	}).catch(next);
+	if(req.file){
+		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
+		cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
+	  		req.body.avatar = result.secure_url;
+	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
+		    req.body.password = bcrypt.hashSync(req.body.password);
+		    console.log(req.body);
+			Lawyer.create(req.body).then(function(Lawyer){
+				req.session.lawyer = Lawyer;
+				res.redirect('/main');
+			}).catch(next);
+		});	
+	}else{
+		req.body.password = bcrypt.hashSync(req.body.password);
+		    console.log(req.body);
+			Lawyer.create(req.body).then(function(Lawyer){
+				req.session.lawyer = Lawyer;
+				res.redirect('/main');
+			}).catch(next);
+	}
+	
 });
 
 function storeWithOriginalName (file) {
