@@ -1,5 +1,31 @@
 $(document).foundation();
 
+$("button[name*='test']").click(function(){
+  //var form = $('form').serializeArray();
+  var form = $("#file").prop('files')[0];
+  console.log(form);
+    /*var jsonData = {};
+    jsonData.identification = $("input[name*='identification']").val();
+    jsonData.name = $("input[name*='name']").val();
+    jsonData.speciality = $("input[name*='speciality']").val();
+    jsonData.phone = $("input[name*='phone']").val();
+    jsonData.type = $("input[name*='type']:checked").val();
+    jsonData.email = $("input[name*='email']").val();
+    jsonData.password = $("input[name*='password']").val();
+    jsonData.img = $("#file").prop('files')[0];*/
+    /*const reader = new FileReader();
+    reader.onloadend = (e) =>{
+      jsonData.img = reader.result;
+    };
+    reader.readAsDataURL($("#file").prop('files')[0]);*/
+
+    /*console.log(jsonData);
+    console.log(jsonData.img);
+    console.log(jsonData.name);*/
+    $.post("/lawyer-web", form, function(data,status){
+       alert("Data: " + data + "\nStatus: " + status);
+    });
+});
 /*
   Switch actions
 */

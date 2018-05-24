@@ -5,10 +5,10 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clowyer-Registrar</title>
-    <link rel="shortcut icon" href="img/browser.ico"/>
-    <link rel="stylesheet" href="css/foundation-flex.css">
+    <link rel="shortcut icon" href="/js-css/img/browser.ico"/>
+    <link rel="stylesheet" href="/js-css/css/foundation-flex.css">
     <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
-    <link rel="stylesheet" href="css/css-created/register.css">
+    <link rel="stylesheet" href="/js-css/css/css-created/app.css">
   </head>
   <body>
     
@@ -16,19 +16,23 @@
       <div class="row align-center">
         <div class="column small-12 medium-6 text-center">
           <h1>CLOWYER</h1>
-          <form action="/lawyer-web" method="post" encrypt="multipart/form-data" >
+          <form name="upload-form" action="upload" method="post" enctype="multipart/form-data">
              <div class="row">
               <div class="small-12 columns">
-                  <input type="number" name="identification"  placeholder="Cedula"/>
+                <label>Cedula</label>
+                  <input type="number" name="identification"  placeholder="Cedula" required/>
               </div>
               <div class="small-12 columns">
-                <input type="text" name="name" placeholder="Nombre" />
+                <label>Nombre</label>
+                <input type="text" name="name" placeholder="Nombre" required/>
               </div>
               <div class="small-12 columns">
-                <input type="text" name="speciality" placeholder="Especialidad" />
+                <label>Especialidad</label>
+                <input type="text" name="speciality" placeholder="Especialidad" required/>
               </div>
               <div class="small-12 columns">
-                  <input type="text" name="phone" placeholder="Telefono" />
+                <label>Telefono</label>
+                  <input type="text" name="phone" placeholder="Telefono" required/>
               </div>
               <div class="small-12 columns">
                 <input type="radio" name="type" value="Administrador" id="Administrador" required>
@@ -37,21 +41,21 @@
                   <label for="Usuario">Usuario</label>
               </div>
               <div class="small-12 columns">
-                  <input type="email" name="email" placeholder="Email" />
+                <label>E-mail</label>
+                  <input type="email" name="email" placeholder="Email" required/>
               </div>
               <div class="small-12 columns password-wrapper">
-                  <input type="password" name="password" class="password" placeholder="Contraseña">
+                  <label>Contraseña</label>
+                  <input type="password" name="password" class="password" placeholder="Contraseña" required>
                   <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
               </div>
               </div>
               <div class="small-12 columns">
-                  <label for="imgFileUpload" class="button">Añadir Imagen</label>
-                  <input type="file" id="imgFileUpload" class="show-for-sr" name="img">
+                <label>Imagen (Opcional)</label>
+                  <input type="file" name="img" id="img" accept="image/x-png,image/gif,image/jpeg">
               </div>
               <div class="column-12 align-center">
-                <a href="#">
-                   <button class="button" type="submit">Registrar</button>
-                </a>
+                  <button class="button" name="test">Registrar</button>
               </div>
           </form>
           <div class="column-12 align-center">
@@ -62,10 +66,9 @@
         </div>
       </div>
     </section>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
-    <script src="https://npmcdn.com/js-alert/dist/jsalert.min.js"></script>
+    <script src="js-css/js/vendor/jquery.js"></script>
+    <script src="js-css/js/vendor/what-input.js"></script>
+    <script src="js-css/js/vendor/foundation.js"></script>
+    <script src="js-css/js/app.js"></script>
   </body>
 </html>

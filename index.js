@@ -1,41 +1,55 @@
 const express = require('express');
+
 const routes = require('./routes/api');
-const app = express();
+const lawyer = require('./routes/lawyer');
+const client = require('./routes/client');
+const caseCourt = require('./routes/case');
+const document = require('./routes/document');
+const court = require('./routes/court');
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const http = require('http');
-const bcrypt = require('bcrypt-nodejs');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const saltRounds = 10;
-const fs = require('fs');
 const path = require('path');
 const helmet = require('helmet');
+const app = express();
 
-app.use(helmet());
-app.disable('x-powered-by');
+//-----------------------------------Static-----------------------------------
+app.use(express.static(__dirname + '/public'));
+//-----------------------------------Body-Parser-----------------------------------
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+//-----------------------------------Mongoose-----------------------------------
 mongoose.connect(process.env.MONGODB_URI||'mongodb://localHost/clowyer');
 mongoose.Promise = global.Promise;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({limit: '50mb'}));
+//-----------------------------------Session-----------------------------------
+app.use(session({secret:'njaksdnkjas89as98dasdn899asuidna898627ajdb', resave: false,
+ saveUninitialized: true
+}));
+//-----------------------------------Cooki-Parser-----------------------------------
 app.use(cookieParser());
+//-----------------------------------Views-----------------------------------
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/js-css'));
-app.use(session({
-    secret: 'njaksdnkjas89as98dasdn899asuidna898627ajdb187eh71d162gd76187g2d781dg',
-    resave: false,
-    saveUninitialized: true
-}));
+//-----------------------------------Helmet-----------------------------------
+app.use(helmet());
+app.disable('x-powered-by');
+//-----------------------------------Rutas-----------------------------------
+app.use(routes);
+app.use(lawyer);
+app.use(client);
+app.use(caseCourt);
+app.use(document);
+app.use(court);
+//-----------------------------------Error-----------------------------------
 app.use(function(err, req, res, next){
 	console.log({error: err.message});
 	res.send({
 		error: err.message
 	});
 });
-app.use(routes);
-
+//-----------------------------------Listen-Port-----------------------------------
 app.listen(process.env.PORT || 4000, function(){
 	console.log('Esperando por request puerto 4000');
 });
