@@ -13,8 +13,11 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const path = require('path');
 const helmet = require('helmet');
+//const fileUpload = require('express-fileupload');
 const app = express();
 
+
+//app.use(fileUpload());
 //-----------------------------------Static-----------------------------------
 app.use(express.static(__dirname + '/public'));
 //-----------------------------------Body-Parser-----------------------------------
