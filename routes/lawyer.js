@@ -54,12 +54,12 @@ router.post('/lawyer', function(req, res, next) {
 	}).catch(next);
 });
 
-router.post('/lawyer-web', function(req, res, next) {
+router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-	console.log(req.files);
 	cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
-  		req.img = result.url;
+  		req.body.img = result.url;
 	});
+	fs.unlinkSync('public/uploads/' + req.file.originalname);
     req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
 		req.session.lawyer = Lawyer;
