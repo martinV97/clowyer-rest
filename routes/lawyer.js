@@ -58,7 +58,6 @@ router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 	  		req.body.avatar = result.secure_url;
 	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
 		    req.body.password = bcrypt.hashSync(req.body.password);
-		    console.log(req.body);
 			Lawyer.create(req.body).then(function(Lawyer){
 				req.session.lawyer = Lawyer;
 				res.redirect('/main');
