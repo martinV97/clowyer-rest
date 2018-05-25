@@ -23,7 +23,7 @@ router.get('/case/:id', function(req, res, next) {
 
 router.get('/case-web/:id', function(req, res, next) {
 	Case.findById(req.params.id).then(function(Case){
-		res.send(Case);
+		//res.send(Case, {Case: Case});
 	});
 });
 
