@@ -20,14 +20,20 @@
 				</div>
 			</div>
 		</section>
-		<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-		  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
-		  <div class="title-bar-title">Menu</div>
-		</div>
-		<div class="top-bar" id="example-menu">
+		<section id="scrollSticky" data-sticky-container>
+			 <div class="sticky-container" data-sticky data-options="marginTop:0;"
+			       data-sticky-on="small" data-top-anchor="scrollSticky">
+					<div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+						<button class="menu-icon" type="button" data-toggle="top-menu"></button>
+					<div class="title-bar-title">Menu</div>
+				</div>
+			</div>
+		</section>				
+		<div class="top-bar" id="top-menu">
 			<div class="top-bar-left">
 				<section id="scrollSticky" data-sticky-container>
-			      <div class="sticky-container" data-sticky data-options="marginTop:0;" data-sticky-on="small" data-top-anchor="scrollSticky">
+			      <div class="sticky-container" data-sticky data-options="marginTop:0;"
+			       data-sticky-on="small" data-top-anchor="scrollSticky">
 			      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
 			      		<div class="column small-10 medium-expand">
 			      			<ul class="tabs text-center" data-tabs id="lineup-tabs">
