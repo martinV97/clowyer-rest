@@ -58,7 +58,7 @@
 				<div class="column small-12 medium-2"	>
 					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
 						<li class="tabs-title">
-							<img src="<%avatar%>" alt="">
+							<img src="<%=avatar%>" alt="">
 						</li>
 						<li class="tabs-title">
 				            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
@@ -243,7 +243,7 @@
 						  </select>
 		              </div>
 		              <div class="small-12 columns">
-		              	<label>Client (Opcional)</label>
+		              	<label>Cliente (Opcional)</label>
 		                <select name="idClient">
 		                	<option value=""></option>
 						    <% for(var i=0; i < Client.length; i++) { %>
