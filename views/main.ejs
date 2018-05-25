@@ -20,7 +20,15 @@
 				</div>
 			</div>
 		</section>
-					
+		<section id="scrollSticky" data-sticky-container>
+			 <div class="sticky-container" data-sticky data-options="marginTop:0;"
+			       data-sticky-on="small" data-top-anchor="scrollSticky">
+					<div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+						<button class="menu-icon" type="button" data-toggle="top-menu"></button>
+					<div class="title-bar-title">Menu</div>
+				</div>
+			</div>
+		</section>				
 		<div class="top-bar" id="top-menu">
 			<div class="top-bar-left">
 				<section id="scrollSticky" data-sticky-container>
@@ -62,43 +70,39 @@
 		<section id="scrollSticky" data-sticky-container>
 			 <div class="sticky-container" data-sticky data-options="marginTop:0;"
 			       data-sticky-on="small" data-top-anchor="scrollSticky">
-					<div class="title-bar" data-responsive-toggle="lateral-menu" data-hide-for="medium">
-						<button class="menu-icon" type="button" data-toggle="lateral-menu"></button>
-					<div class="title-bar-title">Opciones</div>
+					<div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+						<button class="menu-icon" type="button" data-toggle="top-menu"></button>
+					<div class="title-bar-title">Menu</div>
 				</div>
 			</div>
 		</section>		
 	    <section>
 	    	<div class="expanded row" id="lateral-menu">
-				<div class="column small-12 medium-2">
-					<div class="top-bar" id="lateral-menu">
-						<div class="top-bar-right">
-							<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
-								<li class="tabs-title">
-									<img src="<%=avatar%>" alt="Avatar" width="150" height="150">
-									<h5><%=name%></h5>
-								</li>
-								<li class="tabs-title">
-						            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
-						        </li>
-						        <li class="tabs-title">
-						            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
-						        </li>
-						        <li class="tabs-title">
-						            <a href="#" data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
-						        </li>
-						        <li class="tabs-title">
-						            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
-						        </li>
-						        <li class="tabs-title">
-						            <a href="#" data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
-						        </li>
-						        <li class="tabs-title">
-						        	<a href="/exit"><i class="fi-power"></i> Salir </a>
-						        </li>
-							</ul>
-						</div>
-					</div>	
+				<div class="column small-12 medium-2"	>
+					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
+						<li class="tabs-title">
+							<img src="<%=avatar%>" alt="Avatar" width="150" height="150">
+							<h5><%=name%></h5>
+						</li>
+						<li class="tabs-title">
+				            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a href="#" data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a href="#" data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
+				        </li>
+				        <li class="tabs-title">
+				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
+				        </li>
+					</ul>
 				</div>
 				<div class="column small-12 medium-10">
 					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
