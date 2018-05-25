@@ -55,7 +55,9 @@ router.get('/main', function(req, res, next) {
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
     				res.render('main',{Case: Case, Client: Client, Court: Court,
-    				 idLawyer: req.session.lawyer._id, avatar: req.session.lawyer.avatar});		
+    				 idLawyer: req.session.lawyer._id,
+    				 avatar: req.session.lawyer.avatar,
+    				 name: req.session.lawyer.name});		
 				});
 			});
 		});		
