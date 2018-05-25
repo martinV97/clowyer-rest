@@ -131,10 +131,13 @@
 									      <% for(var i=0; i < Client.length; i++) { %>
 											   <tr>
 											     <td><u><a href="/case-web/<%= Client[i]._id %>">
-											     	<%= Client[i].name %>
-											     	</a></u></td>
+											     	<%= Client[i].name %></a></u></td>
 											     <td><%= Client[i].identification %></td>
-											     <td><%= Client[i].type %></td>
+											     <% if (Client[i].type == 'N') {%>
+											     	<td>Natural</td>
+											     	<%} else {%>
+											     	<td>Juridico</td>
+											     	<%} %>
 											     <td><%= Client[i].date %></td>
 											     <td><%= Client[i].phone %></td>
 											   </tr>
