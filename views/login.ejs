@@ -18,22 +18,20 @@
         <div class="column small-12 medium-4 text-center">
           <img src="/js-css/img/login.png" height="130" width="130">
           <h5>CLOWYER</h3>
-          <form action="/login-lawyer-web" method="post" enctype="multipart/form-data">
-             <div class="row">
-              <div class="small-12 columns">
-                <label>Correo</label>
-                <input type="text" class="error" name="email" placeholder="Correo" />
+          <form action="/login-lawyer-web" method="post">
+               <div class="row">
+                <div class="small-12 columns">
+                  <label>Correo</label>
+                  <input type="text" name="email" placeholder="Correo" required/>
+                </div>
+                <div class="small-12 columns password-wrapper">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" class="password" placeholder="Contraseña" required>
+                    <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
+                </div>
               </div>
-              <div class="small-12 large-12 columns password-wrapper">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" class="password" name="password" placeholder="Constraseña">
-                <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
-              </div>
-            </div>
-            <div class="column-12 align-center">
-                <a href="#">
-                   <button class="button" type="submit">Ingresar</button>
-                </a>
+              <div class="column-12 align-center">
+                   <input type="submit" value="Registrar" class="button">
               </div>
           </form>
           <div class="column-12 align-center">

@@ -1,6 +1,6 @@
 $(document).foundation();
 
-$("button[name*='test']").click(function(){
+/*$("button[name*='test']").click(function(){
   //var form = $('form').serializeArray();
   var form = $("#file").prop('files')[0];
   console.log(form);
@@ -21,11 +21,11 @@ $("button[name*='test']").click(function(){
 
     /*console.log(jsonData);
     console.log(jsonData.img);
-    console.log(jsonData.name);*/
+    console.log(jsonData.name);
     $.post("/lawyer-web", form, function(data,status){
        alert("Data: " + data + "\nStatus: " + status);
     });
-});
+});*/
 /*
   Switch actions
 */

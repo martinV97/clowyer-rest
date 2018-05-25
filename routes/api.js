@@ -14,22 +14,26 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer-web', function(req, res, next) {
-	if(next){
+	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
-		bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
-			if(err){
-				res.redirect('/login');
-			}
-			if(result){
-				req.session.lawyer = Lawyer;
-				res.redirect('/main');
+			if(Lawyer){
+				bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+					if(err){
+						res.redirect('/login');
+					}
+					if(result){
+						req.session.lawyer = Lawyer;
+						res.redirect('/main');
+					}else{
+						res.redirect('/login');
+					}
+				});
 			}else{
-				res.redirect('/login');
+				console.log('No se encontro el correo');
 			}
-			});
 		});
 	}else{
-		
+		console.log('Faltan datos');
 	}
 });
 
