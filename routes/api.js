@@ -76,7 +76,7 @@ router.get('/details/:id', function(req, res, next) {
 router.get('/details', function(req, res, next) {
 	if(req.session.lawyer != null){
 		console.log(req.session.temporalCase);
-    	Document.find({caseNumber: req.session.temporalCase.caseNumber}).then(function(Document){
+    	Document.find({caseNumber: req.session.temporalCase.number}).then(function(Document){
 	    	Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
 	    		Court.find({}).then(function(Court){
 	    			res.render('case',{Case: Case, Client: Client,
