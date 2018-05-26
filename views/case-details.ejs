@@ -62,13 +62,13 @@
 				           	<a href="/main"><i class="fi-folder"></i> Inicio </a>
 				        </li>
 						<li class="tabs-title">
-				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
+				            <a data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
 				        </li>
 						<li class="tabs-title">
-				            <a href="#" data-open="modalEditCase"><i class="fi-folder-add"></i> Editar Caso </a>
+				            <a data-open="modalEditCase"><i class="fi-folder-add"></i> Editar Caso </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalDeleteCase"><i class="fi-bookmark"></i> Borrar caso</a>
+				            <a data-open="modalDeleteCase"><i class="fi-bookmark"></i> Borrar caso</a>
 				        </li>
 				        <li class="tabs-title">
 				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
@@ -121,7 +121,7 @@
 		                value="<%= Case.number %>" placeholder="Numero de caso" required/>
 		              </div>
 		              <div>
-		              	<input type="file" name="url" value="Subir Archivo" required>
+		              	<input type="file" name="url" id= "url" value="Subir Archivo" required>
 		              </div>
 		           	  <div class="column-12 align-center text-center">
 		           	  	<button class="button" type="submit" >Aceptar</button>

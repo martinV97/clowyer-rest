@@ -47,7 +47,7 @@ router.post('/document', function(req, res, next) {
 	}).catch(next);
 });
 
-router.post('/document-web-main', function(req, res, next) {
+router.post('/document-web-main', [multer.single('url')], function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
 	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 	cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
