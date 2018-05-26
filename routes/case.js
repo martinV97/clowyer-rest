@@ -52,8 +52,11 @@ router.put('/case/:id', function(req, res, next){
 	});
 });
 
-router.post('/case-web-update/:id', function(req, res, next){
-	Case.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Case){
+router.post('/case-web-update/', function(req, res, next){
+	var id = req.body.id;
+	req.body.id = null;
+	console.log(req.body);
+	Case.findByIdAndUpdate(id, req.body, (err, todo) => {}).then(function(Case){
 		 res.redirect('/details/' + req.params.id);
 	});
 });

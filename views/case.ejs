@@ -134,12 +134,12 @@
 				  </button>
 				</div>	    
 				<div class="reveal" id="modalEditCase" data-reveal>
-					<input type="text" name="id" value="<%=Case._id%>" style="display:none;">
-				  <form action="/case-web-update/<%Case._id%>" method="post" name="formCase">
+				  <form action="/case-web-update" method="post" name="formCase">
 		             <div class="row">
 		             <div class="small-12 columns text-center">
 		             	<h4>Casos</h4>
 		             </div>
+					<input type="text" name="id" value="<%=Case._id%>" style="display:none;">
 		             <div class="small-12 columns">
 		             	<label>Nombre de caso</label>
 		                <input type="text" name="name"  placeholder="Nombre de caso" value="<%=Case.name%>" required/>
