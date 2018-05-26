@@ -117,6 +117,7 @@ router.post('/lawyer-web-update', [multer.single('img')], function(req, res, nex
 			}).catch(next);
 		});
 	}else{
+		console.log(req.body);
 		Lawyer.findByIdAndUpdate(req.session.lawyer.id, req.body, (err, todo) => {}).then(function(Lawyer){
 			res.redirect('/main');
 		});
