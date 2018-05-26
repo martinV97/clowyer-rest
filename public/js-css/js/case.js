@@ -6,7 +6,7 @@ function showSuccessMessage(){
 
 $("button[name*='caseForm']").click(  function () {
   console.log("click");
-  var sendData = $('#data').val();
+  var sendData = $("form[name*='formCase']").serializeArray();
   $.ajax({
     url: '/case-web/' + $("input[name*='id']").val(),    //Your api url
     type: 'PUT',   //type is any HTTP method
@@ -14,7 +14,7 @@ $("button[name*='caseForm']").click(  function () {
       data: sendData
     },      //Data as js object
     success: function () {
-      location.reload();
+      window.location.href = '/details/' + $("input[name*='id']").val();
     },
     error: alert("Error al actualizar")
   });

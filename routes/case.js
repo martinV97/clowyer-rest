@@ -48,7 +48,7 @@ router.delete('/case-web/:id', function(req, res, next){
 
 router.put('/case/:id', function(req, res, next){
 	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
-		Case.findOne({_id:req.params.id}).then(function(Case){
+		Case.find({_id:req.params.id}).then(function(Case){
 			res.send(Case);
 		});
 	});
@@ -56,9 +56,7 @@ router.put('/case/:id', function(req, res, next){
 
 router.put('/case-web/:id', function(req, res, next){
 	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
-		Case.findOne({_id:req.params.id}).then(function(Case){
-			//res.redirect('/main');
-		});
+		res.redirect('/details/' + req.params.id);
 	});
 });
 

@@ -135,7 +135,7 @@
 				</div>	    
 				<div class="reveal" id="modalEditCase" data-reveal>
 					<input type="text" name="id" value="<%=Case._id%>" style="display:none;">
-				  <form action="#" method="post">
+				  <form action="#" method="post" name="formCase">
 		             <div class="row">
 		             <div class="small-12 columns text-center">
 		             	<h4>Casos</h4>
@@ -181,7 +181,7 @@
 						  </select>
 		              </div>
 		           	  <div class="column-12 align-center text-center">
-		              	<button name="caseForm" class="button" onclick="showSuccessMessage()">Aceptar</button>
+		              	<button name="caseForm" class="button" >Aceptar</button>
 		          	  </div>
 		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
