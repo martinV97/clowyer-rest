@@ -66,7 +66,7 @@ router.get('/main', function(req, res, next) {
     }
 });
 
-router.get('/case-web/:id', function(req, res, next) {
+router.get('/details/:id', function(req, res, next) {
 	if(req.session.lawyer != null){
     	Case.findById(req.params.id).then(function(Case){
     		Document.find({caseNumber: Case.caseNumber}).then(function(Document){
