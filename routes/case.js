@@ -53,7 +53,7 @@ router.put('/case/:id', function(req, res, next){
 });
 
 router.post('/case-web-update/', function(req, res, next){
-	re.body.idLawyer = req.session.lawyer._id;
+	req.body.idLawyer = req.session.lawyer._id;
 	Case.findByIdAndUpdate(req.session.temporalCase._id, req.body, (err, todo) => {}).then(function(Case){
 		 res.redirect('/details/' + req.session.temporalCase.number);
 	});
