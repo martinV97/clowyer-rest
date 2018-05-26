@@ -5,7 +5,7 @@ const Case = require('../models/case');
 const Document = require('../models/document');
 const Court = require('../models/court');
 const bcrypt = require('bcrypt-nodejs');
-
+var temporalCase;
 const router = express.Router();
 
 //------------------------------------Navigation - web-----------------------------------------
@@ -66,9 +66,15 @@ router.get('/main', function(req, res, next) {
     }
 });
 
+router.get('/details/:id', function(req, res, next) {
+	Case.findById(req.params.id).then(function(Case){
+		temporalCase = Case;
+		res.redirect('/details');
+	});
+});
+
 router.get('/details', function(req, res, next) {
-	res.render('case');
-	/*if(req.session.lawyer != null){
+	if(req.session.lawyer != null){
     	Case.findById(req.params.id).then(function(Case){
     		Document.find({caseNumber: Case.caseNumber}).then(function(Document){
 	    		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
@@ -81,7 +87,7 @@ router.get('/details', function(req, res, next) {
 		});		
     }else{
     	res.redirect('/');
-    }*/
+    }
 });
 
 router.get('/exit', function(req, res, next) {

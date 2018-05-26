@@ -13,7 +13,179 @@
 	    <link rel="stylesheet" href="/js-css/css/css-created/main.css">
 	  </head>
 	<body>
-		
+		<section id="header-container">
+			<div class="callout">
+				<div class="column text-center">
+					<h3>CLOWYER</h2>
+				</div>
+			</div>
+		</section>				
+		<section id="scrollSticky" data-sticky-container>
+	      <div class="sticky-container" data-sticky data-options="marginTop:0;"
+		       data-sticky-on="small" data-top-anchor="scrollSticky">
+		      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
+		      		<div class="column small-12 medium-expand" id="top-menu">
+		      			<form action="" method="" accept-charset="utf-8">
+		      				<div class="input-group" id="search-bar">
+			    				<span class="input-group-label"><i class="fi-eye"></i></span>
+					          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
+					          	<div class="input-group-button">
+				          			<input type="submit" class="button" value="Buscar">
+				          		</div>
+				      		</div>	
+			   			</form>
+				    </div>
+			    </div>
+	      </div>
+	    </section>
+	    <section>
+	    	<div class="expanded row" id="lateral-menu">
+				<div class="column small-12 medium-2">
+					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
+						<li class="tabs-title">
+							<h5><%=Case.name%></h5>
+						</li>
+						<li class="tabs-title">
+				            <a data-open="modalAddDocument">
+				            	<i class="fi-page-add"></i> 
+				            	Añadir Documento 
+				        	</a>
+				        </li>
+						<li class="tabs-title">
+				            <a data-open="modalEditCase">
+				            	<i class="fi-folder-add"></i>
+				            	 Editar Caso 
+				            </a>
+				        </li>
+				        <li class="tabs-title">
+				            <a data-open="modalDeleteCase">
+				            	<i class="fi-bookmark"></i>
+				            	 Borrar caso
+				            </a>
+				        </li>
+				        <li class="tabs-title">
+				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
+				        </li>
+					</ul>
+				</div>
+				<div class="column small-12 medium-10">
+					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
+				    	<div class="tabs-panel is-active" id="panelCases">
+					    	<table class="stack">
+							  <thead>
+							    <tr>
+								<th width="200">Nombre</th>
+								<th width="150">Tipo</th>
+								<th width="150">Descargar</th>
+								</tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <% for(var i=0; i < Document.length; i++) { %>
+							 	  <tr>
+								    <td><%= Document[i].name %></td>
+								    <td><%= Document[i].type %></td>
+								    <td><u><a href="#"><%= Document[i].url %></a></u></td>
+								 </tr>
+								<% } %>
+								</tr>
+							  </tbody>
+							</table>		
+				    	</div>
+				    </section>
+				</div>
+				<div class="reveal" id="modalAddDocument" data-reveal>
+				  <form action="/document-web-case" method="post" enctype="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Documentos</h4>
+		             </div>
+		              <div class="small-12 columns">
+		              	<label>Nombre</label>
+		                <input type="text" name="name"  placeholder="Nombre" required />
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Tipo</label>
+		                <input type="text" name="dateStart" placeholder="Tipo" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
+		                <input type="number" name="caseNumber" 
+		                value="<%= Case.number %>" placeholder="Numero de caso" required/>
+		              </div>
+		              <div>
+		              	<input type="file" name="url" id= "url" value="Subir Archivo" required>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		           	  	<button class="button" type="submit" >Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>	    
+				<div class="reveal" id="modalEditCase" data-reveal>
+				  <form action="#" method="post" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Casos</h4>
+		             </div>
+		             <div class="small-12 columns">
+		             	<label>Nombre de caso</label>
+		                <input type="text" name="name"  placeholder="Nombre de caso" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
+		                <input type="number" name="number"  placeholder="Numero de caso" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de inicio</label>
+		                <input type="date" name="dateStart" placeholder="Inicio" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Fecha de Finalización (Opcional)</label>
+		                <input type="date" name="dateFinish"  placeholder="Fin"/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Juzgado</label>
+		                <select name="courtName">
+		                	<option value=""></option>
+						    <% for(var i=0; i < Court.length; i++) { %>
+							  <option value="<%= Court[i].name %>" ><%= Court[i].name %></option>
+							<% } %>
+						  </select>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Cliente (Opcional)</label>
+		                <select name="idClient">
+		                	<option value=""></option>
+						    <% for(var i=0; i < Client.length; i++) { %>
+							  <option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
+							<% } %>
+						  </select>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		              	<button class="button" type="submit" onclick="showSuccessMessage()">Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+				<div class="reveal" id="modalDeleteCase" data-reveal>
+				  <h1>Esta seguro que desa borrar este caso?</h1>
+				  <h3>Todos los documentos asociados a este se eliminaran.</h3>
+				  <div>
+				  	<a href="#">
+                		<button class="button">Borrar</button>
+              		</a>
+				  </div>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
+				</div>
+		    </div>
+	    </section>
 			<script src="js-css/js/vendor/jquery.js"></script>
 		    <script src="js-css/js/vendor/what-input.js"></script>
 		    <script src="js-css/js/vendor/foundation.js"></script>
