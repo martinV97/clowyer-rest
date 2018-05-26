@@ -65,7 +65,6 @@ router.post('/document-web-case', [multer.single('url')], function(req, res, nex
 	req.body.idLawyer = req.session.lawyer._id;
 	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 	cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
-		{ resource_type: "raw" },
 		function(result) { 
 		req.body.url = result.secure_url;
 		fs.unlinkSync('public/uploads/' + req.file.originalname);
