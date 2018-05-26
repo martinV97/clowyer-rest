@@ -21,12 +21,6 @@ router.get('/case/:id', function(req, res, next) {
 	});
 });
 
-router.get('/case-web/:id', function(req, res, next) {
-	Case.findById(req.params.id).then(function(Case){
-		//res.send(Case, {Case: Case});
-	});
-});
-
 router.post('/case', function(req, res, next) {
 	Case.create(req.body).then(function(Case){
 		res.send(Case);

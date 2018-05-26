@@ -17,6 +17,10 @@ var DocumentSchema = new Schema({
 	idLawyer:{
 		type:String,
 		required: [false, 'Id Lawyer of Document is required']	
+	},
+	url:{
+		type:String,
+		required: [true, 'Url Document is required']		
 	}
 });
 

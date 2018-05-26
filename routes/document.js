@@ -34,11 +34,32 @@ router.post('/document', function(req, res, next) {
 	}).catch(next);
 });
 
-router.post('/document-web', function(req, res, next) {
+router.post('/document-web-main', function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
-	Document.create(req.body).then(function(Document){
-		res.redirect('/main');
-	}).catch(next);
+	cloudinary.uploader
+	.upload('public/uploads/' + req.file.originalname,
+		{ resource_type: "raw" },
+		function(result) { 
+		req.body.url = result.secure_url;
+		fs.unlinkSync('public/uploads/' + req.file.originalname);
+		Document.create(req.body).then(function(Document){
+			res.redirect('/main');
+		}).catch(next);
+	});
+});
+
+router.post('/document-web-case', function(req, res, next) {
+	req.body.idLawyer = req.session.lawyer._id;
+	cloudinary.uploader
+	.upload('public/uploads/' + req.file.originalname,
+		{ resource_type: "raw" },
+		function(result) { 
+		req.body.url = result.secure_url;
+		fs.unlinkSync('public/uploads/' + req.file.originalname);
+		Document.create(req.body).then(function(Document){
+			res.redirect('/case');
+		}).catch(next);
+	});
 });
 
 router.delete('/document/:id', function(req, res, next){

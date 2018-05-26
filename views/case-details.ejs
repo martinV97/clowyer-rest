@@ -5,7 +5,7 @@
 	    <meta charset="utf-8">
 	    <meta http-equiv="x-ua-compatible" content="ie=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>Clowyer-Main</title>
+	    <title>Clowyer-Caso</title>
 	    <link rel="stylesheet" href="/js-css/icons/foundation-icons.css">
 	    <link rel="shortcut icon" href="/js-css/img/browser.ico"/>
     	<link rel="stylesheet" href="/js-css/css/foundation-flex.css">
@@ -21,60 +21,54 @@
 			</div>
 		</section>
 		<section id="scrollSticky" data-sticky-container>
-	      <div class="sticky-container" data-sticky data-options="marginTop:0;" data-sticky-on="small" data-top-anchor="scrollSticky">
-	      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
-	      		<div class="column small-10 medium-expand">
-	      			<ul class="tabs text-center" data-tabs id="lineup-tabs">
-		                <li class="tabs-title is-active">
-		                	<a href="#panelCases"><i class="fi-folder"></i> Casos </a>
-		                </li>
-		                <li class="tabs-title">
-		                	<a href="#panelClients"><i class="fi-torsos"></i> Clientes </a>
-		                </li>
-		                <li class="tabs-title">
-		                	<a href="#panelCourts"><i class="fi-results-demographics"></i> Juzgados </a>
-		                </li>
-			            <li class="tabs-title">
-				          	<a href="#panelAccount"><i class="fi-address-book"></i> Cuenta </a>
-				        </li>
-		            </ul>
-	      		</div>
-	      		<div class="column small-12 medium-expand">
-	      			<form action="" method="" accept-charset="utf-8">
-	      				<div class="input-group" id="search-bar">
-		    				<span class="input-group-label"><i class="fi-eye"></i></span>
-				          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
-				          	<div class="input-group-button">
-				          		<input type="submit" class="button" value="Buscar">
-				          	</div>
-		      			</div>	
-	   				</form>
-		        </div>
-	      	</div>
-	      </div>
-	    </section>
+			 <div class="sticky-container" data-sticky data-options="marginTop:0;"
+			       data-sticky-on="small" data-top-anchor="scrollSticky">
+					<div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
+						<button class="menu-icon" type="button" data-toggle="top-menu"></button>
+					<div class="title-bar-title">Menu</div>
+				</div>
+			</div>
+		</section>				
+		<div class="top-bar" id="top-menu">
+			<div class="top-bar-left">
+				<section id="scrollSticky" data-sticky-container>
+			      <div class="sticky-container" data-sticky data-options="marginTop:0;"
+			       data-sticky-on="small" data-top-anchor="scrollSticky">
+			      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
+			      		<div class="column small-12 medium-expand">
+			      			<form action="" method="" accept-charset="utf-8">
+			      				<div class="input-group" id="search-bar">
+				    				<span class="input-group-label"><i class="fi-eye"></i></span>
+						          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
+						          	<div class="input-group-button">
+						          		<input type="submit" class="button" value="Buscar">
+						          	</div>
+				      			</div>	
+			   				</form>
+				        </div>
+			      	</div>
+			      </div>
+			    </section>
+			</div>
+		</div>
 	    <section>
 	    	<div class="expanded row" id="lateral-menu">
 				<div class="column small-12 medium-2"	>
 					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
 						<li class="tabs-title">
-							<img src="<%=avatar%>" alt="Avatar" width="150" height="150">
-							<h5><%=name%></h5>
+							<h5><%=Case.name%></h5>
 						</li>
 						<li class="tabs-title">
-				            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
+				           	<a href="/main"><i class="fi-folder"></i> Inicio </a>
 				        </li>
-				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
-				        </li>
-				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
-				        </li>
-				        <li class="tabs-title">
+						<li class="tabs-title">
 				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
 				        </li>
+						<li class="tabs-title">
+				            <a href="#" data-open="modalEditCase"><i class="fi-folder-add"></i> Editar Caso </a>
+				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
+				            <a href="#" data-open="modalDeleteCase"><i class="fi-bookmark"></i> Borrar caso</a>
 				        </li>
 				        <li class="tabs-title">
 				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
@@ -84,141 +78,61 @@
 				<div class="column small-12 medium-10">
 					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
 				    	<div class="tabs-panel is-active" id="panelCases">
-				    		<div class="row">
-					    		<div class="column">
-					    			<table class="stack">
-									  <thead>
-									    <tr>
-									      <th width="200">Numero</th>
-									      <th width="200">Nombre</th>
-									      <th width="150">Fecha Inicio</th>
-									      <th width="150">Fecha Fin</th>
-									      <th width="150">Juzgado</th>
-									    </tr>
-									  </thead>
-									  <tbody>
-									    <tr>
-									      <% for(var i=0; i < Case.length; i++) { %>
-											   <tr>
-											     <td><u><a href="#"><%= Case[i].number %></a></u></td>
-											     <td><%= Case[i].name %></td>
-											     <td><%= Case[i].dateStart %></td>
-											     <td><%= Case[i].dateFinish %></td>
-											     <td><%= Case[i].courtName %></td>
-											   </tr>
-											<% } %>
-									    </tr>
-									  </tbody>
-									</table>	
-					    		</div>
-					    	</div>	
+					    	<table class="stack">
+							  <thead>
+							    <tr>
+								<th width="200">Nombre</th>
+								<th width="150">Tipo</th>
+								<th width="150">Descargar</th>
+								</tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <% for(var i=0; i < Document.length; i++) { %>
+							 	  <tr>
+								    <td><%= Document[i].name %></td>
+								    <td><%= Document[i].type %></td>
+								    <td><u><a href="#"><%= Document[i].url %></a></u></td>
+								 </tr>
+								<% } %>
+								</tr>
+							  </tbody>
+							</table>		
 				    	</div>
-				    	<div class="tabs-panel" id="panelClients">
-				    		<div class="row">
-					    		<div class="column">
-					    			<table class="stack">
-									  <thead>
-									    <tr>
-									      <th width="200">Nombre</th>
-									      <th width="150">Cedula</th>
-									      <th width="150">Tipo</th>
-									      <th width="150">Fecha nacimiento</th>
-									      <th width="150">Telefono</th>
-									    </tr>
-									  </thead>
-									  <tbody>
-									    <tr>
-									      <% for(var i=0; i < Client.length; i++) { %>
-											   <tr>
-											     <td><u><a href="/case-web/<%= Client[i]._id %>">
-											     	<%= Client[i].name %></a></u></td>
-											     <td><%= Client[i].identification %></td>
-											     <% if (Client[i].type == 'N') {%>
-											     	<td>Natural</td>
-											     	<%} else {%>
-											     	<td>Juridico</td>
-											     	<%} %>
-											     <td><%= Client[i].date %></td>
-											     <td><%= Client[i].phone %></td>
-											   </tr>
-											<% } %>
-									    </tr>
-									  </tbody>
-									</table>	
-					    		</div>
-					    	</div>	
-				    	</div>
-				    	<div class="tabs-panel" id="panelCourts">
-				    		<div class="row">
-				    			<div class="column">
-				    				<table class="stack">
-									  <thead>
-									    <tr>
-									      <th width="200">Nombre</th>
-									      <th width="150">Direccion</th>
-									      <th width="150">Tipo</th>
-									      <th width="150">Telefono</th>
-									    </tr>
-									  </thead>
-									  <tbody>
-									    <tr>
-									      <% for(var i=0; i < Court.length; i++) { %>
-											   <tr>
-											     <td><u><a href="#"><%= Court[i].name %></a></u></td>
-											     <td><%= Court[i].address %></td>
-											     <td><%= Court[i].type %></td>
-											     <td><%= Court[i].phone %></td>
-											   </tr>
-											<% } %>
-									    </tr>
-									  </tbody>
-									</table>	
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="tabs-panel" id="panelAccount">
-				    		<div class="row align-center">
-				    			<div class="column">
-				    				<form action="/lawyer-web/<%= idLawyer %>" method="put" enctype="multipart/form-data" >
-							             <div class="row">
-							              <div class="small-12 columns">
-							                  <input type="number" name="identification"  placeholder="Cedula"/>
-							              </div>
-							              <div class="small-12 columns">
-							                <input type="text" name="name" placeholder="Nombre" />
-							              </div>
-							              <div class="small-12 columns">
-							                <input type="text" name="speciality" placeholder="Especialidad" />
-							              </div>
-							              <div class="small-12 columns">
-							                  <input type="text" name="phone" placeholder="Telefono" />
-							              </div>
-							              <div class="small-12 columns">
-							                <input type="radio" name="type" value="Administrador" id="Administrador" required>
-							                  <label for="Administrador">Administrador</label>
-							                <input type="radio" name="type" value="Usuario" id="Usuario">
-							                  <label for="Usuario">Usuario</label>
-							              </div>
-							              <div class="small-12 columns">
-							                  <input type="email" name="email" placeholder="Email" />
-							              </div>
-							              <div class="small-12 columns password-wrapper">
-							                  <input type="password" name="password" class="password" placeholder="Contraseña">
-							              </div>
-							              </div>
-							              <div class="small-12 columns">
-							                  <label for="imgFileUpload" class="button">Cambiar Imagen</label>
-							                  <input type="file" id="imgFileUpload" class="show-for-sr" name="img">
-							                  <button class="button" type="submit">Actualizar datos</button>
-							              </div>
-							          </form>
-				    			</div>
-				    		</div>
-				    	</div>			
 				    </section>
+				</div>
+				<div class="reveal" id="modalAddDocument" data-reveal>
+				  <form action="/document-web-case" method="post" enctype="multipart/form-data" >
+		             <div class="row">
+		             <div class="small-12 columns text-center">
+		             	<h4>Documentos</h4>
+		             </div>
+		              <div class="small-12 columns">
+		              	<label>Nombre</label>
+		                <input type="text" name="name"  placeholder="Nombre" required />
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Tipo</label>
+		                <input type="text" name="dateStart" placeholder="Tipo" required/>
+		              </div>
+		              <div class="small-12 columns">
+		              	<label>Numero de caso</label>
+		                <input type="number" name="caseNumber" 
+		                value="<%= Case.number %>" placeholder="Numero de caso" required/>
+		              </div>
+		              <div>
+		              	<input type="file" name="url" value="Subir Archivo" required>
+		              </div>
+		           	  <div class="column-12 align-center text-center">
+		           	  	<button class="button" type="submit" >Aceptar</button>
+		          	  </div>
+		          </form>
+				  <button class="close-button" data-close aria-label="Close modal" type="button">
+				    <span aria-hidden="true">&times;</span>
+				  </button>
 				</div>	    
-				<div class="reveal" id="modalAddCase" data-reveal>
-				  <form action="/case-web" method="post" >
+				<div class="reveal" id="modalEditCase" data-reveal>
+				  <form action="#" method="post" >
 		             <div class="row">
 		             <div class="small-12 columns text-center">
 		             	<h4>Casos</h4>
@@ -265,101 +179,14 @@
 				    <span aria-hidden="true">&times;</span>
 				  </button>
 				</div>
-				<div class="reveal" id="modalAddClient" data-reveal>
-				 <form action="/client-web" method="post" >
-		             <div class="row">
-		             <div class="small-12 columns text-center">
-		             	<h4>Clientes</h4>
-		             </div>
-		              <div class="small-12 columns">
-		              	<label>Cedula</label>
-		                <input type="text" name="identification"  placeholder="Cedula" required/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Nombre</label>
-		                <input type="text" name="name" placeholder="Nombre" required/>
-		              </div>
-		              <div class="small-12 columns">
-		                <input type="radio" name="type" value="J" id="Juridico" required>
-		                  <label for="Juridico">Juridico</label>
-		                <input type="radio" name="type" value="N" id="Natural">
-		                  <label for="Natural">Natural</label>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Fecha nacimiento</label>
-		                <input type="date" name="date" placeholder="MM/DD/AAAA" required/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Telefono</label>
-		                <input type="text" name="phone" placeholder="Telefono" required/>
-		              </div>
-		           	  <div class="column-12 align-center text-center">
-		              	<button class="button" type="submit" onclick="showSuccessMessage()">Aceptar</button>
-		          	  </div>
-		          </form>
-				  <button class="close-button" data-close aria-label="Close modal" type="button">
-				    <span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="reveal" id="modalAddCourt" data-reveal>
-				  <form action="/court-web" method="post" >
-		             <div class="row">
-		             <div class="small-12 columns text-center">
-		             	<h4>Juzgado</h4>
-		             </div>
-		              <div class="small-12 columns">
-		              	<label>Nombre</label>
-		                <input type="text" name="name"  placeholder="Nombre" required/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Direccion (Opcional)</label>
-		                <input type="text" name="address" placeholder="Direccion"/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Tipo (Opcional)</label>
-		                <input type="text" name="type"  placeholder="Tipo"/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Telefono (Opcional)</label>
-		                <input type="number" name="phone"  placeholder="Telefono"/>
-		              </div>
-		           	  <div class="column-12 align-center text-center">
-		           	  	<button class="button" type="submit ">Aceptar</button>
-		          	  </div>
-		          </form>
-				  <button class="close-button" data-close aria-label="Close modal" type="button">
-				    <span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="reveal" id="modalAddDocument" data-reveal>
-				  <form action="#" method="post" enctype="multipart/form-data" >
-		             <div class="row">
-		             <div class="small-12 columns text-center">
-		             	<h4>Documentos</h4>
-		             </div>
-		              <div class="small-12 columns">
-		              	<label>Nombre</label>
-		                <input type="text" name="name"  placeholder="Nombre" required />
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Tipo</label>
-		                <input type="text" name="dateStart" placeholder="Tipo" required/>
-		              </div>
-		              <div class="small-12 columns">
-		              	<label>Numero de caso</label>
-		                <input type="number" name="caseNumber"  placeholder="Numero de caso" required/>
-		              </div>
-		           	  <div class="column-12 align-center text-center">
-		           	  	<button class="button" type="submit" >Aceptar</button>
-		          	  </div>
-		          </form>
-				  <button class="close-button" data-close aria-label="Close modal" type="button">
-				    <span aria-hidden="true">&times;</span>
-				  </button>
-				</div>
-				<div class="reveal" id="modalAbout" data-reveal>
-				  <h1>Acerca De</h1>
-				  <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+				<div class="reveal" id="modalDeleteCase" data-reveal>
+				  <h1>Esta seguro que desa borrar este caso?</h1>
+				  <h3>Todos los documentos asociados a este se eliminaran.</h3>
+				  <div>
+				  	<a href="#">
+                		<button class="button">Borrar</button>
+              		</a>
+				  </div>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
 				    <span aria-hidden="true">&times;</span>
 				  </button>
