@@ -16,7 +16,7 @@ $("button[name*='caseForm']").click(  function () {
     success: function () {
       location.reload();
     },
-    error: alert("Error al actualizar");
+    error: alert("Error al actualizar")
   });
 });
 
