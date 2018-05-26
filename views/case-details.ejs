@@ -19,56 +19,49 @@
 					<h3>CLOWYER</h2>
 				</div>
 			</div>
-		</section>
-		<section id="scrollSticky" data-sticky-container>
-			 <div class="sticky-container" data-sticky data-options="marginTop:0;"
-			       data-sticky-on="small" data-top-anchor="scrollSticky">
-					<div class="title-bar" data-responsive-toggle="top-menu" data-hide-for="medium">
-						<button class="menu-icon" type="button" data-toggle="top-menu"></button>
-					<div class="title-bar-title">Menu</div>
-				</div>
-			</div>
 		</section>				
-		<div class="top-bar" id="top-menu">
-			<div class="top-bar-left">
-				<section id="scrollSticky" data-sticky-container>
-			      <div class="sticky-container" data-sticky data-options="marginTop:0;"
-			       data-sticky-on="small" data-top-anchor="scrollSticky">
-			      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
-			      		<div class="column small-12 medium-expand" id="top-menu">
-			      			<form action="" method="" accept-charset="utf-8">
-			      				<div class="input-group" id="search-bar">
-				    				<span class="input-group-label"><i class="fi-eye"></i></span>
-						          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
-						          	<div class="input-group-button">
-						          		<input type="submit" class="button" value="Buscar">
-						          	</div>
-				      			</div>	
-			   				</form>
-				        </div>
-			      	</div>
-			      </div>
-			    </section>
-			</div>
-		</div>
+		<section id="scrollSticky" data-sticky-container>
+	      <div class="sticky-container" data-sticky data-options="marginTop:0;"
+		       data-sticky-on="small" data-top-anchor="scrollSticky">
+		      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
+		      		<div class="column small-12 medium-expand" id="top-menu">
+		      			<form action="" method="" accept-charset="utf-8">
+		      				<div class="input-group" id="search-bar">
+			    				<span class="input-group-label"><i class="fi-eye"></i></span>
+					          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
+					          	<div class="input-group-button">
+				          			<input type="submit" class="button" value="Buscar">
+				          		</div>
+				      		</div>	
+			   			</form>
+				    </div>
+			    </div>
+	      </div>
+	    </section>
 	    <section>
 	    	<div class="expanded row" id="lateral-menu">
-				<div class="column small-12 medium-2"	>
+				<div class="column small-12 medium-2">
 					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
 						<li class="tabs-title">
 							<h5><%=Case.name%></h5>
 						</li>
 						<li class="tabs-title">
-				           	<a href="/main"><i class="fi-folder"></i> Inicio </a>
+				            <a data-open="modalAddDocument">
+				            	<i class="fi-page-add"></i> 
+				            	Añadir Documento 
+				        	</a>
 				        </li>
 						<li class="tabs-title">
-				            <a data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
-				        </li>
-						<li class="tabs-title">
-				            <a data-open="modalEditCase"><i class="fi-folder-add"></i> Editar Caso </a>
+				            <a data-open="modalEditCase">
+				            	<i class="fi-folder-add"></i>
+				            	 Editar Caso 
+				            </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a data-open="modalDeleteCase"><i class="fi-bookmark"></i> Borrar caso</a>
+				            <a data-open="modalDeleteCase">
+				            	<i class="fi-bookmark"></i>
+				            	 Borrar caso
+				            </a>
 				        </li>
 				        <li class="tabs-title">
 				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
