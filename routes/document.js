@@ -1,7 +1,20 @@
 const express = require('express');
 const Document = require('../models/document');
+const path = require('path');
+const fs = require('fs');
+var util = require('util')
+var multer = require('multer')({
+   dest: 'public/uploads'
+});
 
 const router = express.Router();
+
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'clowyer', 
+  api_key: '482155296382456', 
+  api_secret: '5zctAUOvaqtHgxbS_RwAfv5DTJ0' 
+});
 
 //-----------------------------------------Document------------------------------------------------
 router.get('/document', function(req, res, next) {
@@ -36,8 +49,8 @@ router.post('/document', function(req, res, next) {
 
 router.post('/document-web-main', function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
-	cloudinary.uploader
-	.upload('public/uploads/' + req.file.originalname,
+	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
+	cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
 		{ resource_type: "raw" },
 		function(result) { 
 		req.body.url = result.secure_url;
@@ -48,10 +61,10 @@ router.post('/document-web-main', function(req, res, next) {
 	});
 });
 
-router.post('/document-web-case', function(req, res, next) {
+router.post('/document-web-case', [multer.single('url')], function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
-	cloudinary.uploader
-	.upload('public/uploads/' + req.file.originalname,
+	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
+	cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
 		{ resource_type: "raw" },
 		function(result) { 
 		req.body.url = result.secure_url;
@@ -61,6 +74,15 @@ router.post('/document-web-case', function(req, res, next) {
 		}).catch(next);
 	});
 });
+
+function storeWithOriginalName (file) {
+  var fullNewPath = path.join(file.destination, file.originalname)
+  var rename = util.promisify(fs.rename)
+  return rename(file.path, fullNewPath)
+    .then(() => {
+      return file.originalname
+    })
+}
 
 router.delete('/document/:id', function(req, res, next){
 	Document.findByIdAndRemove({_id: req.params.id}).then(function(Document){
