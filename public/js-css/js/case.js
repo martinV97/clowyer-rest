@@ -5,8 +5,8 @@ function showSuccessMessage(){
 }
 
 $("button[name*='caseForm']").click(  function () {
-  console.log("click");
   var sendData = $("form[name*='formCase']").serializeArray();
+  console.log(sendData);
   $.ajax({
     url: '/case-web/' + $("input[name*='id']").val(),    //Your api url
     type: 'PUT',   //type is any HTTP method
