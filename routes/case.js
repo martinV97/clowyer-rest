@@ -57,7 +57,7 @@ router.put('/case/:id', function(req, res, next){
 router.put('/case-web/:id', function(req, res, next){
 	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
 		Case.findOne({_id:req.params.id}).then(function(Case){
-			res.redirect('/main');
+			//res.redirect('/main');
 		});
 	});
 });

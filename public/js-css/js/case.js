@@ -8,7 +8,7 @@ $("button[name*='caseForm']").click(  function () {
   console.log("click");
   var sendData = $('#data').val();
   $.ajax({
-    url: 'localhost',    //Your api url
+    url: '/case-web/' + $("input[name*='id']").val(),    //Your api url
     type: 'PUT',   //type is any HTTP method
     data: {
       data: sendData
