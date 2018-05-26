@@ -35,6 +35,10 @@ var LawyerSchema = new Schema({
 	avatar:{
 		type:String,
 		required: [false, 'Img lawyer is required']
+	},
+	imgName:{
+		type:String,
+		required: [false, 'Name Img lawyer is required']
 	}
 });
 

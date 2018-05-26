@@ -56,6 +56,7 @@ router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 		cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
 	  		req.body.avatar = result.secure_url;
+	  		req.body.imgName = result.public_id;
 	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
 		    req.body.password = bcrypt.hashSync(req.body.password);
 			Lawyer.create(req.body).then(function(Lawyer){
@@ -104,13 +105,14 @@ router.put('/lawyer/:id', function(req, res, next){
 router.post('/lawyer-web-update', [multer.single('img')], function(req, res, next){
 	if(req.file){
 		console.log(req.session.lawyer.avatar);
-		cloudinary.v2.uploader.destroy('mlqfnpzeirioc1131hzl', function(error, result) {
+		cloudinary.v2.uploader.destroy(req.session.lawyer.imgName, function(error, result) {
 			console.log(result);
 		});
 		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 			cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
 				console.log(result);
 		  		req.body.avatar = result.secure_url;
+		  		req.body.imgName = result.public_id;
 		  		fs.unlinkSync('public/uploads/' + req.file.originalname);
 			    req.body.password = bcrypt.hashSync(req.body.password);
 			    Lawyer.findByIdAndUpdate(req.session.lawyer._id, req.body, (err, todo) => {}).then(function(Lawyer){
