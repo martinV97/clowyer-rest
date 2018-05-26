@@ -104,7 +104,7 @@ router.put('/lawyer/:id', function(req, res, next){
 router.post('/lawyer-web-update', [multer.single('img')], function(req, res, next){
 	if(req.file){
 		console.log(req.session.lawyer.avatar);
-		cloudinary.v2.uploader.destroy('http://res.cloudinary.com/clowyer/image/upload/v1527373253/vn0sawy56sdgquclcdfh.jpg', function(error, result) {
+		cloudinary.v2.uploader.destroy('vn0sawy56sdgquclcdfh.jpg', function(error, result) {
 			console.log(result);
 			storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 			cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
