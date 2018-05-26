@@ -96,18 +96,14 @@ router.delete('/lawyer-web/:id', function(req, res, next){
 });
 
 router.put('/lawyer/:id', function(req, res, next){
-	Lawyer.findByIdAndUpdate({_id:req.params.id}).then(function(Lawyer){
-		Lawyer.findOne({_id:req.params.id}).then(function(Lawyer){
+	Lawyer.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Lawyer){
 			res.send(Lawyer);
-		});
 	});
 });
 
 router.put('/lawyer-web/:id', function(req, res, next){
-	Lawyer.findByIdAndUpdate({_id:req.params.id}).then(function(Lawyer){
-		Lawyer.findOne({_id:req.params.id}).then(function(Lawyer){
-			res.redirect('/main');
-		});
+	Lawyer.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Lawyer){
+		res.redirect('/main');
 	});
 });
 

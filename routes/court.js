@@ -53,18 +53,14 @@ router.delete('/court-web/:id', function(req, res, next){
 });
 
 router.put('/court/:id', function(req, res, next){
-	Court.findByIdAndUpdate({_id:req.params.id}).then(function(Court){
-		Court.findOne({_id:req.params.id}).then(function(Court){
-			res.send(Court);
-		});
+	Court.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Court){
+		res.send(Court);
 	});
 });
 
 router.put('/court-web/:id', function(req, res, next){
-	Court.findByIdAndUpdate({_id:req.params.id}).then(function(Court){
-		Court.findOne({_id:req.params.id}).then(function(Court){
-			res.redirect('/main');
-		});
+	Court.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Court){
+		res.redirect('/main');
 	});
 });
 

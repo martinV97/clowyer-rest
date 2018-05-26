@@ -103,18 +103,14 @@ router.delete('/document-web/:id', function(req, res, next){
 });
 
 router.put('/document/:id', function(req, res, next){
-	Document.findByIdAndUpdate({_id:req.params.id}).then(function(Document){
-		Document.findOne({_id:req.params.id}).then(function(Document){
-			res.send(Document);
-		});
+	Document.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Document){
+		res.send(Document);
 	});
 });
 
 router.put('/document-web/:id', function(req, res, next){
-	Document.findByIdAndUpdate({_id:req.params.id}).then(function(Document){
-		Document.findOne({_id:req.params.id}).then(function(Document){
+	Document.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Document){
 			res.redirect('/main');
-		});
 	});
 });
 

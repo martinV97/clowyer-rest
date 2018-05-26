@@ -62,23 +62,20 @@ router.delete('/client/:id', function(req, res, next){
 
 router.delete('/client-web/:id', function(req, res, next){
 	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
-		 res.redirect('/main');
+		req.session.lawyer = null;
+		 res.redirect('/login');
 	});
 });
 
 router.put('/client/:id', function(req, res, next){
-	Client.findByIdAndUpdate({_id:req.params.id}).then(function(Client){
-		Client.findOne({_id:req.params.id}).then(function(Client){
-			res.send(Client);
-		});
+	Client.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Client){
+		res.send(Client);
 	});
 });
 
 router.put('/client-web/:id', function(req, res, next){
-	Client.findByIdAndUpdate({_id:req.params.id}).then(function(Client){
-		Client.findOne({_id:req.params.id}).then(function(Client){
-			res.redirect('/main');
-		});
+	Client.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Client){
+		res.redirect('/main');
 	});
 });
 
