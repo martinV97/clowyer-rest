@@ -68,14 +68,12 @@ router.get('/main', function(req, res, next) {
 router.get('/details/:id', function(req, res, next) {
 	Case.findById(req.params.id).then(function(Case){
 		req.session.temporalCase = Case;
-		console.log(req.session.temporalCase);
 		res.redirect('/details');
 	});
 });
 
 router.get('/details', function(req, res, next) {
 	if(req.session.lawyer != null){
-		console.log(req.session.temporalCase);
     	Document.find({caseNumber: req.session.temporalCase.number}).then(function(Document){
 	    	Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
 	    		Court.find({}).then(function(Court){
