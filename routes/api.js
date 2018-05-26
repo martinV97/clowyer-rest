@@ -77,7 +77,7 @@ router.get('/details', function(req, res, next) {
     	Document.find({caseNumber: req.session.temporalCase.number}).then(function(Document){
 	    	Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
 	    		Court.find({}).then(function(Court){
-	    			res.render('case',{Case: Case, Client: Client,
+	    			res.render('case',{Case: req.session.temporalCase, Client: Client,
 	    			 Court: Court, Document: Document});
 				});
 			});
