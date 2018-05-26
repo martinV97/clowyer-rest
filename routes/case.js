@@ -53,7 +53,7 @@ router.put('/case/:id', function(req, res, next){
 });
 
 router.post('/case-web-update/', function(req, res, next){
-	var id = req.body.id;
+	var id = req.body._id;
 	req.body.id = null;
 	console.log(req.body);
 	Case.findByIdAndUpdate(id, req.body, (err, todo) => {}).then(function(Case){
