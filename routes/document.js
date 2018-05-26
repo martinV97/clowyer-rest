@@ -64,13 +64,17 @@ router.post('/document-web-main', [multer.single('url')], function(req, res, nex
 router.post('/document-web-case', [multer.single('url')], function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
 	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-	cloudinary.uploader.upload('public/uploads/' + req.file.originalname,{ resource_type: "auto" }, 
-		function(result) { 
-		req.body.url = result.secure_url;
-		fs.unlinkSync('public/uploads/' + req.file.originalname);
-		Document.create(req.body).then(function(Document){
-			res.redirect('/case');
-		}).catch(next);
+	cloudinary.v2.uploader.upload('public/uploads/' + req.file.originalname,{ resource_type: "auto" }, 
+		function(error, result) { 
+			if (error) {
+				console.log(error);
+			}else{
+				req.body.url = result.secure_url;
+				fs.unlinkSync('public/uploads/' + req.file.originalname);
+				Document.create(req.body).then(function(Document){
+					res.redirect('/case');
+				}).catch(next);
+			}
 	});
 });
 
