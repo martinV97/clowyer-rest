@@ -51,17 +51,6 @@
 						        </li>
 				            </ul>
 			      		</div>
-			      		<div class="column small-12 medium-expand">
-			      			<form action="" method="" accept-charset="utf-8">
-			      				<div class="input-group" id="search-bar">
-				    				<span class="input-group-label"><i class="fi-eye"></i></span>
-						          	<input type="search" name="search" class="input-group-field" placeholder="Buscar">
-						          	<div class="input-group-button">
-						          		<input type="submit" class="button" value="Buscar">
-						          	</div>
-				      			</div>	
-			   				</form>
-				        </div>
 			      	</div>
 			      </div>
 			    </section>
@@ -72,23 +61,23 @@
 				<div class="column small-12 medium-2"	>
 					<ul class="vertical tabs text-center" data-tabs id="lineup-tabs">
 						<li class="tabs-title">
-							<img src="<%=avatar%>" alt="Avatar" width="150" height="150">
-							<h5><%=name%></h5>
+							<img src="<%=Lawyer.avatar%>" alt="Avatar" width="150" height="150">
+							<h5><%=Lawyer.name%></h5>
 						</li>
 						<li class="tabs-title">
-				            <a href="#" data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
+				            <a data-open="modalAddCase"><i class="fi-folder-add"></i> Crear Caso </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
+				            <a data-open="modalAddClient"><i class="fi-plus"></i> Añadir Cliente </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
+				            <a data-open="modalAddCourt"><i class="fi-results"></i> Añadir Juzgado </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
+				            <a data-open="modalAddDocument"><i class="fi-page-add"></i> Añadir Documento </a>
 				        </li>
 				        <li class="tabs-title">
-				            <a href="#" data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
+				            <a data-open="modalAbout"><i class="fi-bookmark"></i> Acerca de </a>
 				        </li>
 				        <li class="tabs-title">
 				        	<a href="/exit"><i class="fi-power"></i> Salir </a>
@@ -97,9 +86,10 @@
 				</div>
 				<div class="column small-12 medium-10">
 					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
-				    	<div class="tabs-panel is-active" id="panelCases">
+				    	<div class="tabs-panel is-active text-center" id="panelCases">
 				    		<div class="row">
 					    		<div class="column">
+					    			<h2>Casos</h2>
 					    			<table class="stack">
 									  <thead>
 									    <tr>
@@ -129,7 +119,8 @@
 				    	</div>
 				    	<div class="tabs-panel" id="panelClients">
 				    		<div class="row">
-					    		<div class="column">
+					    		<div class="column text-center">
+					    			<h2>Clientes</h2>
 					    			<table class="stack">
 									  <thead>
 									    <tr>
@@ -165,7 +156,8 @@
 				    	</div>
 				    	<div class="tabs-panel" id="panelCourts">
 				    		<div class="row">
-				    			<div class="column">
+				    			<div class="column text-center">
+				    				<h2>Juzgados</h2>
 				    				<table class="stack">
 									  <thead>
 									    <tr>
@@ -194,7 +186,7 @@
 				    	<div class="tabs-panel" id="panelAccount">
 				    		<div class="row align-center">
 				    			<div class="column">
-				    				<form action="/lawyer-web/<%= idLawyer %>" method="put" enctype="multipart/form-data" >
+				    				<form action="/lawyer-web" method="put" enctype="multipart/form-data" >
 							             <div class="row">
 							              <div class="small-12 columns">
 							                  <input type="number" name="identification"  placeholder="Cedula"/>
