@@ -47,10 +47,10 @@ router.delete('/case-web/:id', function(req, res, next){
 });
 
 router.put('/case/:id', function(req, res, next){
-	Case.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, todo) => {
-        if (err) return res.status(500).send(err);
-        return res.send(todo);
-    });
+	console.log(req.body);
+	Case.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Case){
+		 res.send(Case);
+	});
 });
 
 router.post('/case-web-update/:id', function(req, res, next){
