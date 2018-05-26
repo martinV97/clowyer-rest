@@ -72,7 +72,7 @@ router.post('/document-web-case', [multer.single('url')], function(req, res, nex
 				req.body.url = result.secure_url;
 				fs.unlinkSync('public/uploads/' + req.file.originalname);
 				Document.create(req.body).then(function(Document){
-					res.redirect('/case');
+					res.redirect('/details');
 				}).catch(next);
 			}
 	});
