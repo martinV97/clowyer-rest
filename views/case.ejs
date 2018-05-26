@@ -46,7 +46,7 @@
 							<h5><%=Case.name%></h5>
 						</li>
 						<li class="tabs-title">
-				            <a href="/main" data-open="modalAddDocument">
+				            <a href="/main">
 				            	<i class="fi-page-add"></i> 
 				            	Inicio 
 				        	</a>
@@ -91,11 +91,7 @@
 							 	  <tr>
 								    <td><%= Document[i].name %></td>
 								    <td><%= Document[i].type %></td>
-								    <td>
-									    <form method="get" action="<%= Document[i].url %>">
-										   <u><a type="submit" href="">Descargar</a></u>
-										</form>
-									</td>
+								    <td><u><a href="<%= Document[i].url %>" download>Descargar</a></u></td>
 								 </tr>
 								<% } %>
 								</tr>
