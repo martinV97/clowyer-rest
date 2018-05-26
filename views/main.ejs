@@ -114,7 +114,7 @@
 									    <tr>
 									      <% for(var i=0; i < Case.length; i++) { %>
 											   <tr>
-											     <td><u><a href="#"><%= Case[i].number %></a></u></td>
+											     <td><u><a href="/case-web/<%= Case[i]._id %>"><%= Case[i].number %></a></u></td>
 											     <td><%= Case[i].name %></td>
 											     <td><%= Case[i].dateStart %></td>
 											     <td><%= Case[i].dateFinish %></td>
@@ -144,7 +144,8 @@
 									    <tr>
 									      <% for(var i=0; i < Client.length; i++) { %>
 											   <tr>
-											     <td><u><a href="/case-web/<%= Client[i]._id %>">
+											     <td>
+											     	<u><a href="#">
 											     	<%= Client[i].name %></a></u></td>
 											     <td><%= Client[i].identification %></td>
 											     <% if (Client[i].type == 'N') {%>
