@@ -84,6 +84,7 @@
 								<th width="200">Nombre</th>
 								<th width="150">Tipo</th>
 								<th width="150">Descargar</th>
+								<th width="150">Borrar</th>
 								</tr>
 							  </thead>
 							  <tbody>
@@ -93,6 +94,7 @@
 								    <td><%= Document[i].name %></td>
 								    <td><%= Document[i].type %></td>
 								    <td><u><a href="<%= Document[i].url %>" download>Descargar</a></u></td>
+								    <td><u><a href="#">Borrar</a></u></td>
 								 </tr>
 								<% } %>
 								</tr>
@@ -132,47 +134,51 @@
 				  </button>
 				</div>	    
 				<div class="reveal" id="modalEditCase" data-reveal>
-				  <form action="#" method="post" >
+				  <form action="#" method="post">
 		             <div class="row">
 		             <div class="small-12 columns text-center">
 		             	<h4>Casos</h4>
 		             </div>
 		             <div class="small-12 columns">
 		             	<label>Nombre de caso</label>
-		                <input type="text" name="name"  placeholder="Nombre de caso" required/>
+		                <input type="text" name="name"  placeholder="Nombre de caso" value="<%Case.name%>" required/>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Numero de caso</label>
-		                <input type="number" name="number"  placeholder="Numero de caso" required/>
+		                <input type="number" name="number"  placeholder="Numero de caso" value="<%Case.number%>" required/>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Fecha de inicio</label>
-		                <input type="date" name="dateStart" placeholder="Inicio" required/>
+		                <input type="date" name="dateStart" placeholder="Inicio" value="<%Case.dateStart%>" required/>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Fecha de Finalización (Opcional)</label>
-		                <input type="date" name="dateFinish"  placeholder="Fin"/>
+		                <input type="date" name="dateFinish"  placeholder="Fin" value="<%Case.dateFinish%>"/>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Juzgado</label>
 		                <select name="courtName">
-		                	<option value=""></option>
+		                	<option value="<%Case.courtName%>"><%Case.courtName%></option>
 						    <% for(var i=0; i < Court.length; i++) { %>
 							  <option value="<%= Court[i].name %>" ><%= Court[i].name %></option>
 							<% } %>
-						  </select>
+						</select>
 		              </div>
 		              <div class="small-12 columns">
 		              	<label>Cliente (Opcional)</label>
 		                <select name="idClient">
-		                	<option value=""></option>
+		                	<% for(var i=0; i < Client.length; i++) { %>
+		                		<% if(Client[i]._id == Case.idClient) { %>
+							  		<option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
+							  	<% } %>
+							<% } %>
 						    <% for(var i=0; i < Client.length; i++) { %>
 							  <option value="<%= Client[i]._id %>" ><%= Client[i].name %></option>
 							<% } %>
 						  </select>
 		              </div>
 		           	  <div class="column-12 align-center text-center">
-		              	<button class="button" type="submit" onclick="showSuccessMessage()">Aceptar</button>
+		              	<button name="caseForm" class="button" onclick="showSuccessMessage()">Aceptar</button>
 		          	  </div>
 		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -196,6 +202,6 @@
 			<script src="js-css/js/vendor/jquery.js"></script>
 		    <script src="js-css/js/vendor/what-input.js"></script>
 		    <script src="js-css/js/vendor/foundation.js"></script>
-		    <script src="js-css/js/main.js"></script>
+		    <script src="js-css/js/case.js"></script>
 	</body>
 </html>

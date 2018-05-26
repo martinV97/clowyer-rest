@@ -89,6 +89,7 @@
 									      <th width="150">Fecha Inicio</th>
 									      <th width="150">Fecha Fin</th>
 									      <th width="150">Juzgado</th>
+									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
 									  <tbody>
@@ -100,6 +101,7 @@
 											     <td><%= Case[i].dateStart %></td>
 											     <td><%= Case[i].dateFinish %></td>
 											     <td><%= Case[i].courtName %></td>
+											     <td><u><a href="#">Borrar</a></u></td>
 											   </tr>
 											<% } %>
 									    </tr>
@@ -120,6 +122,7 @@
 									      <th width="150">Tipo</th>
 									      <th width="150">Fecha nacimiento</th>
 									      <th width="150">Telefono</th>
+									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
 									  <tbody>
@@ -137,6 +140,7 @@
 											     	<%} %>
 											     <td><%= Client[i].date %></td>
 											     <td><%= Client[i].phone %></td>
+											     <td><u><a href="#">Borrar</a></u></td>
 											   </tr>
 											<% } %>
 									    </tr>
@@ -156,6 +160,7 @@
 									      <th width="150">Direccion</th>
 									      <th width="150">Tipo</th>
 									      <th width="150">Telefono</th>
+									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
 									  <tbody>
@@ -166,6 +171,7 @@
 											     <td><%= Court[i].address %></td>
 											     <td><%= Court[i].type %></td>
 											     <td><%= Court[i].phone %></td>
+											     <td><u><a href="#">Borrar</a></u></td>
 											   </tr>
 											<% } %>
 									    </tr>
@@ -344,8 +350,13 @@
 		                <input type="text" name="type" placeholder="Tipo" required/>
 		              </div>
 		              <div class="small-12 columns">
-		              	<label>Numero de caso</label>
-		                <input type="number" name="caseNumber"  placeholder="Numero de caso" required/>
+		              	<label>Caso</label>
+		                <select name="caseNumber" required>
+		                	<option value=""></option>
+						    <% for(var i=0; i < Case.length; i++) { %>
+							  <option value="<%= Case[i].number %>" ><%= Case[i].name %></option>
+							<% } %>
+						</select>
 		              </div>
 		              <div class="column-12 align-center text-center">
 		              	<input type="file" name="url" id="url" value="Subir Archivo" required>
