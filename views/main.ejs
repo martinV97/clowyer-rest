@@ -183,19 +183,19 @@
 				    	<div class="tabs-panel" id="panelAccount">
 				    		<div class="row align-center">
 				    			<div class="column">
-				    				<form action="/lawyer-web" method="put" enctype="multipart/form-data" >
+				    				<form action="/lawyer-web-update" method="post" enctype="multipart/form-data" >
 							             <div class="row">
 							              <div class="small-12 columns">
-							                  <input type="number" name="identification"  placeholder="Cedula"/>
+							                  <input type="number" name="identification"  placeholder="Cedula" value="<%= Lawyer.identification%>" />
 							              </div>
 							              <div class="small-12 columns">
-							                <input type="text" name="name" placeholder="Nombre" />
+							                <input type="text" name="name" placeholder="Nombre" value="<%= Lawyer.name%>"/>
 							              </div>
 							              <div class="small-12 columns">
-							                <input type="text" name="speciality" placeholder="Especialidad" />
+							                <input type="text" name="speciality" placeholder="Especialidad" value="<%= Lawyer.speciality%>"/>
 							              </div>
 							              <div class="small-12 columns">
-							                  <input type="text" name="phone" placeholder="Telefono" />
+							                  <input type="text" name="phone" placeholder="Telefono" value="<%= Lawyer.phone%>"/>
 							              </div>
 							              <div class="small-12 columns">
 							                <input type="radio" name="type" value="Administrador" id="Administrador" required>
@@ -204,10 +204,10 @@
 							                  <label for="Usuario">Usuario</label>
 							              </div>
 							              <div class="small-12 columns">
-							                  <input type="email" name="email" placeholder="Email" />
+							                  <input type="email" name="email" placeholder="Email" value="<%= Lawyer.email%>"/>
 							              </div>
 							              <div class="small-12 columns password-wrapper">
-							                  <input type="password" name="password" class="password" placeholder="Contraseña">
+							                  <input type="password" name="password" class="password" placeholder="Contraseña" value="<%= Lawyer.password%>">
 							              </div>
 							              </div>
 							              <div class="small-12 columns">

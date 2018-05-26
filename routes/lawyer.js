@@ -101,10 +101,26 @@ router.put('/lawyer/:id', function(req, res, next){
 	});
 });
 
-router.put('/lawyer-web/:id', function(req, res, next){
-	Lawyer.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Lawyer){
-		res.redirect('/main');
-	});
+router.post('/lawyer-web-update', [multer.single('img')], function(req, res, next){
+	if(req.file){
+		cloudinary.v2.uploader.destroy(req.session.lawyer.avatar, function(error, result) {
+			console.log(result);
+		});
+		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
+		cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
+	  		req.body.avatar = result.secure_url;
+	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
+		    req.body.password = bcrypt.hashSync(req.body.password);
+		    Lawyer.findByIdAndUpdate(req.session.lawyer.id, req.body, (err, todo) => {}).then(function(Lawyer){
+				req.session.lawyer = Lawyer;
+				res.redirect('/main');
+			}).catch(next);
+		});
+	}else{
+		Lawyer.findByIdAndUpdate(req.session.lawyer.id, req.body, (err, todo) => {}).then(function(Lawyer){
+			res.redirect('/main');
+		});
+	}
 });
 
 module.exports = router;
