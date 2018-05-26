@@ -4,7 +4,7 @@ function showSuccessMessage(){
 	alert("Agregado");
 }
 
-$("button[name*='caseForm']").click(  function () {
+/*$("button[name*='caseForm']").click(  function () {
   var sendData = $("form[name*='formCase']").serializeArray();
   console.log(sendData);
   $.ajax({
@@ -14,14 +14,13 @@ $("button[name*='caseForm']").click(  function () {
       data: sendData
     },      //Data as js object
     success: function () {
-      alert("Datos actualizados")
-      /*$.get("/details/" + $("input[name*='id']").val(), function(data, status){
+      $.get("/details/" + $("input[name*='id']").val(), function(data, status){
         
-      });*/
+    });
     },
     error: alert("Error al actualizar")
   });
-});
+});*/
 
 function changeType(x, type) {
   if(x.prop('type') == type)

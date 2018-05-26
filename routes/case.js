@@ -52,9 +52,9 @@ router.put('/case/:id', function(req, res, next){
 	});
 });
 
-router.put('/case-web/:id', function(req, res, next){
+router.post('/case-web-update/:id', function(req, res, next){
 	Case.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Case){
-		 //res.redirect('/details/' + req.params.id);
+		 res.redirect('/details/' + req.params.id);
 	});
 });
 
