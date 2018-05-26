@@ -47,14 +47,13 @@ router.delete('/case-web/:id', function(req, res, next){
 });
 
 router.put('/case/:id', function(req, res, next){
-	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
-		Case.find({_id:req.params.id}).then(function(Case){
-			res.send(Case);
-		});
-	});
+	Case.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, todo) => {
+        if (err) return res.status(500).send(err);
+        return res.send(todo);
+    });
 });
 
-router.put('/case-web/:id', function(req, res, next){
+router.post('/case-web-update/:id', function(req, res, next){
 	Case.findByIdAndUpdate({_id:req.params.id}).then(function(Case){
 		res.redirect('/details/' + req.params.id);
 	});

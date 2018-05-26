@@ -4,7 +4,7 @@ function showSuccessMessage(){
 	alert("Agregado");
 }
 
-$("button[name*='caseForm']").click(  function () {
+/*$("button[name*='caseForm']").click(  function () {
   var sendData = $("form[name*='formCase']").serializeArray();
   console.log(sendData);
   $.ajax({
@@ -20,7 +20,7 @@ $("button[name*='caseForm']").click(  function () {
     },
     error: alert("Error al actualizar")
   });
-});
+});*/
 
 function changeType(x, type) {
   if(x.prop('type') == type)
