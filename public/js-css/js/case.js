@@ -14,7 +14,9 @@ $("button[name*='caseForm']").click(  function () {
       data: sendData
     },      //Data as js object
     success: function () {
-      window.location.href = '/details/' + $("input[name*='id']").val();
+      $.get("/details/" + $("input[name*='id']").val(), function(data, status){
+        
+    });
     },
     error: alert("Error al actualizar")
   });
