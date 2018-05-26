@@ -111,14 +111,14 @@ router.post('/lawyer-web-update', [multer.single('img')], function(req, res, nex
 	  		req.body.avatar = result.secure_url;
 	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
 		    req.body.password = bcrypt.hashSync(req.body.password);
-		    Lawyer.findByIdAndUpdate(req.session.lawyer.id, req.body, (err, todo) => {}).then(function(Lawyer){
+		    Lawyer.findByIdAndUpdate(req.session.lawyer._id, req.body, (err, todo) => {}).then(function(Lawyer){
 				req.session.lawyer = Lawyer;
 				res.redirect('/main');
 			}).catch(next);
 		});
 	}else{
 		console.log(req.body);
-		Lawyer.findByIdAndUpdate(req.session.lawyer.id, req.body, (err, todo) => {}).then(function(Lawyer){
+		Lawyer.findByIdAndUpdate(req.session.lawyer._id, req.body, (err, todo) => {}).then(function(Lawyer){
 			res.redirect('/main');
 		});
 	}
