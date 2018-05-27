@@ -21,6 +21,10 @@ var DocumentSchema = new Schema({
 	url:{
 		type:String,
 		required: [true, 'Url Document is required']		
+	},
+	documentName:{
+		type:String,
+		required: [true, 'Document Name uploaded is required']		
 	}
 });
 
