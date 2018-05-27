@@ -159,7 +159,7 @@
 		              <div class="small-12 columns">
 		              	<label>Juzgado</label>
 		                <select name="courtName">
-		                	<option value="<%Case.courtName%>"><%=Case.courtName%></option>
+		                	<option value="<%=Case.courtName%>"><%=Case.courtName%></option>
 						    <% for(var i=0; i < Court.length; i++) { %>
 							  <option value="<%= Court[i].name %>" ><%= Court[i].name %></option>
 							<% } %>

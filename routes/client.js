@@ -1,5 +1,6 @@
 const express = require('express');
 const Client = require('../models/client');
+const Document = require('../models/document');
 
 const router = express.Router();
 
@@ -61,9 +62,19 @@ router.delete('/client/:id', function(req, res, next){
 });
 
 router.delete('/client-web/:id', function(req, res, next){
-	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
-		req.session.lawyer = null;
-		 res.redirect('/login');
+	Client.findOne({_id: req.params.id}).then(function(Client){
+		Document.find({caseNumber: Client.caseNumber}).then(function(Document){
+			for(var i=0; i < Document.length; i++) {
+				Document.findByIdAndRemove({_id: Document[i].id}).then(function(Document){
+					cloudinary.v2.uploader.destroy(Document[i].documentName, function(error, result) {
+						console.log(result);
+					});
+				});
+			}
+			Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
+				 res.redirect('/main');
+			});
+		});
 	});
 });
 

@@ -12,6 +12,21 @@ function deleteCase(id){
   location.reload();
 }
 
+function deleteClient(id){
+  $.ajax({
+    url: '/client-web/' + id,
+    type: 'DELETE'
+  });
+  location.reload();
+}
+
+function deleteCourt(id){
+  $.ajax({
+    url: '/court-web/' + id,
+    type: 'DELETE'
+  });
+  location.reload();
+}
 
 $('.unmask').on('click', function(){
 

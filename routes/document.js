@@ -94,12 +94,18 @@ function storeWithOriginalName (file) {
 
 router.delete('/document/:id', function(req, res, next){
 	Document.findByIdAndRemove({_id: req.params.id}).then(function(Document){
-		 res.send({Document});
+		cloudinary.v2.uploader.destroy(Document.documentName, function(error, result) {
+			console.log(result);
+		});
+		 res.send(Document);
 	});
 });
 
 router.delete('/document-web/:id', function(req, res, next){
 	Document.findByIdAndRemove({_id: req.params.id}).then(function(Document){
+		cloudinary.v2.uploader.destroy(Document.documentName, function(error, result) {
+			console.log(result);
+		});
 		 res.redirect('/main');
 	});
 });
