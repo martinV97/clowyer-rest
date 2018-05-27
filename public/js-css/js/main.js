@@ -5,14 +5,14 @@ function showSuccessMessage(){
 }
 
 function deleteCase(id){
-  alert(id);
-  /*$.ajax({
-    url: '/script.cgi',
+  $.ajax({
+    url: '/case-web/' + id,
     type: 'DELETE',
     success: function(result) {
-        // Do something with the result
+        alert('Eliminado con exito');
+        location.reload();
     }
-  });*/  
+  });
 }
 
 

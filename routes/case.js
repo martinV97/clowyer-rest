@@ -40,11 +40,9 @@ router.delete('/case/:id', function(req, res, next){
 	});
 });
 
-router.delete('/case-web/:name', function(req, res, next){
-	Case.find({name: req.params.name}).then(function(Case){
-		Case.findByIdAndRemove({_id: Case._id}).then(function(Case){
-		 	res.redirect('/main');
-		});
+router.delete('/case-web/:id', function(req, res, next){
+	Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
+		 res.redirect('/main');
 	});
 });
 
