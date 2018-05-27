@@ -123,6 +123,7 @@ router.post('/lawyer-web-update', [multer.single('img')], function(req, res, nex
 				}).catch(next);
 			});
 	}else{
+		req.body.password = bcrypt.hashSync(req.body.password);
 		Lawyer.findByIdAndUpdate(req.session.lawyer._id, req.body, (err, todo) => {}).then(function(Lawyer){
 			req.session.lawyer = Lawyer;
 			res.redirect('/main');
