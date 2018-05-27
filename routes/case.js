@@ -1,5 +1,6 @@
 const express = require('express');
 const Case = require('../models/case');
+const Document = require('../models/document');
 
 const router = express.Router();
 //----------------------------------------Case-----------------------------------------------
@@ -41,8 +42,19 @@ router.delete('/case/:id', function(req, res, next){
 });
 
 router.delete('/case-web/:id', function(req, res, next){
-	Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
-		 res.redirect('/main');
+	Case.findOne({_id: req.params.id}).then(function(Case){
+		Document.find({caseNumber: Case.number}).then(function(Document){
+			for(var i=0; i < Document.length; i++) {
+				Document.findByIdAndRemove({_id: Document[i].id}).then(function(Document){
+					cloudinary.v2.uploader.destroy(Document[i].documentName, function(error, result) {
+						console.log(result);
+					});
+				});
+			}
+		});
+		Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
+			 res.redirect('/main');
+		});
 	});
 });
 
