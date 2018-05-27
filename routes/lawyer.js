@@ -58,9 +58,11 @@ router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 	  		req.body.avatar = result.secure_url;
 	  		req.body.imgName = result.public_id;
 	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
-		    req.body.password = bcrypt.hashSync(req.body.password);
+	  		var unHashedpass = req.body.password
+		    req.body.password = bcrypt.hashSync(unHashedpass);
 			Lawyer.create(req.body).then(function(Lawyer){
 				req.session.lawyer = Lawyer;
+				req.session.lawyer.password = unHashedpass;
 				res.redirect('/main');
 			}).catch(next);
 		});	

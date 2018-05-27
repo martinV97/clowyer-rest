@@ -22,6 +22,7 @@ router.post('/login-lawyer-web', function(req, res, next) {
 					}
 					if(result){
 						req.session.lawyer = Lawyer;
+						req.session.lawyer.password = req.body.password;
 						res.redirect('/main');
 					}else{
 						res.redirect('/login');
@@ -29,6 +30,7 @@ router.post('/login-lawyer-web', function(req, res, next) {
 				});
 			}else{
 				console.log('No se encontro el correo');
+				res.redirect('/login');
 			}
 		});
 	}else{
