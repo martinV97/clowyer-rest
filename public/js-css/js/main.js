@@ -4,6 +4,18 @@ function showSuccessMessage(){
 	alert("Agregado");
 }
 
+function deleteCase(id){
+  alert(id);
+  /*$.ajax({
+    url: '/script.cgi',
+    type: 'DELETE',
+    success: function(result) {
+        // Do something with the result
+    }
+  });*/  
+}
+
+
 $('.unmask').on('click', function(){
 
   if($(this).prev('input').attr('type') == 'password')
