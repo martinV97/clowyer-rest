@@ -42,11 +42,11 @@ router.delete('/case/:id', function(req, res, next){
 });
 
 router.delete('/case-web/:id', function(req, res, next){
-	Case.findOne({_id: req.params.id}).then(function(Case){
-		Document.find({caseNumber: Case.number}).then(function(Document){
-			for(var i=0; i < Document.length; i++) {
-				Document.findByIdAndRemove({_id: Document[i]._id}).then(function(Document){
-					cloudinary.v2.uploader.destroy(Document[i].documentName, function(error, result) {
+	Case.findOne({_id: req.params.id}).then(function(Cases){
+		Document.find({caseNumber: Cases.number}).then(function(Documents){
+			for(var i=0; i < Documents.length; i++) {
+				Document.findByIdAndRemove({_id: Documents[i]._id}).then(function(Document){
+					cloudinary.v2.uploader.destroy(Documents[i].documentName, function(error, result) {
 						console.log(result);
 					});
 				});
