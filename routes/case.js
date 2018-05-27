@@ -3,6 +3,12 @@ const Case = require('../models/case');
 const Document = require('../models/document');
 
 const router = express.Router();
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: process.env.CLOUD_NAME, 
+  api_key: process.env.API_KEY, 
+  api_secret: process.env.API_SECRET 
+});
 //----------------------------------------Case-----------------------------------------------
 router.get('/case', function(req, res, next) {
 	Case.find({}).then(function(Case){
