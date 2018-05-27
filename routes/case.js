@@ -45,7 +45,7 @@ router.delete('/case-web/:id', function(req, res, next){
 	Case.findOne({_id: req.params.id}).then(function(Case){
 		Document.find({caseNumber: Case.number}).then(function(Document){
 			for(var i=0; i < Document.length; i++) {
-				Document.findByIdAndRemove({_id: Document[i].id}).then(function(Document){
+				Document.findByIdAndRemove({_id: Document[i]._id}).then(function(Document){
 					cloudinary.v2.uploader.destroy(Document[i].documentName, function(error, result) {
 						console.log(result);
 					});
