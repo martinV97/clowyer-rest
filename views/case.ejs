@@ -94,7 +94,7 @@
 								    <td><%= Document[i].name %></td>
 								    <td><%= Document[i].type %></td>
 								    <td><u><a href="<%= Document[i].url %>" download>Descargar</a></u></td>
-								    <td><button class="button"											      onclick="deleteDoc('<%= Document[i]._id %>')">Borrar</button></td>
+								    <td><button class="button" onclick="deleteDoc('<%= Document[i]._id %>')">Borrar</button></td>
 								 </tr>
 								<% } %>
 								</tr>
@@ -193,7 +193,7 @@
 				  <h4>Todos los documentos asociados a este se eliminaran.</h3>
 				  <div>
 				  	<a href="#">
-                		<button class="button">Borrar</button>
+                		<button onclick="deleteDoc('<%= Case._id %>')"class="button">Borrar</button>
               		</a>
 				  </div>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">

@@ -12,6 +12,13 @@ function deleteDoc(id){
   location.reload();
 }
 
+function deleteCase(id){
+  $.ajax({
+    url: '/case-web/' + id,
+    type: 'DELETE'
+  });
+  location.reload();
+}
 /*$("button[name*='caseForm']").click(  function () {
   var sendData = $("form[name*='formCase']").serializeArray();
   console.log(sendData);
