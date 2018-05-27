@@ -7,12 +7,9 @@ function showSuccessMessage(){
 function deleteCase(id){
   $.ajax({
     url: '/case-web/' + id,
-    type: 'DELETE',
-    success: function(result) {
-        alert('Eliminado con exito');
-        location.reload();
-    }
+    type: 'DELETE'
   });
+  location.reload();
 }
 
 
