@@ -102,7 +102,7 @@
 											     <td><%= Case[i].dateFinish %></td>
 											     <td><%= Case[i].courtName %></td>
 											     <td><button class="button"
-											      onclick="deleteCase('\' + <%= Case[i]._id %> + '\')">Borrar</button></td>
+											      onclick="deleteCase('<%= Case[i]._id %>')">Borrar</button></td>
 											   </tr>
 											<% } %>
 									    </tr>
