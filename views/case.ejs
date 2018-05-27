@@ -94,7 +94,7 @@
 								    <td><%= Document[i].name %></td>
 								    <td><%= Document[i].type %></td>
 								    <td><u><a href="<%= Document[i].url %>" download>Descargar</a></u></td>
-								    <td><u><a href="#">Borrar</a></u></td>
+								    <td><button class="button"											      onclick="deleteDoc('<%= Document[i]._id %>')">Borrar</button></td>
 								 </tr>
 								<% } %>
 								</tr>

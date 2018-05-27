@@ -51,9 +51,9 @@ router.delete('/case-web/:id', function(req, res, next){
 					});
 				});
 			}
-		});
-		Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
-			 res.redirect('/main');
+			Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){
+				 res.redirect('/main');
+			});
 		});
 	});
 });

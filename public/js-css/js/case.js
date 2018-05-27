@@ -4,6 +4,14 @@ function showSuccessMessage(){
 	alert("Agregado");
 }
 
+function deleteDoc(id){
+  $.ajax({
+    url: '/document-web/' + id,
+    type: 'DELETE'
+  });
+  location.reload();
+}
+
 /*$("button[name*='caseForm']").click(  function () {
   var sendData = $("form[name*='formCase']").serializeArray();
   console.log(sendData);
