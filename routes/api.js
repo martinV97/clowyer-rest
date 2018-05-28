@@ -74,12 +74,6 @@ router.get('/register', function(req, res, next) {
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Cases){
-    		for(var i=0; i < Cases.length; i++) {
-    			Cases[i].dateStart = new Date(Cases[i].dateStart).getYear();
-    			if(Cases[i].dateFinish){
-    				Cases[i].dateFinish = new Date(Cases[i].dateFinish).getDate();
-    			}
-    		}
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
     				res.render('main',{Case: Cases, Client: Client, Court: Court,
