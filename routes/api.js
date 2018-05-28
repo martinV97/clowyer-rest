@@ -73,7 +73,7 @@ router.get('/register', function(req, res, next) {
 
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
-    	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
+    	Case.find({idLawyer: req.session.lawyer._id}).then(function(Cases){
     		for(var i=0; i < Cases.length; i++) {
     			Cases[i].dateStart = new Date(Cases[i].dateStart);
     			if(Cases[i].dateFinish.length > 0){
@@ -82,7 +82,7 @@ router.get('/main', function(req, res, next) {
     		}
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
-    				res.render('main',{Case: Case, Client: Client, Court: Court,
+    				res.render('main',{Case: Cases, Client: Client, Court: Court,
     				 Lawyer: req.session.lawyer});		
 				});
 			});
