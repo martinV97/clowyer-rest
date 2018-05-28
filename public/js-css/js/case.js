@@ -21,11 +21,12 @@ function deleteCase(id){
 }
 
 function searchFunction() {
-  var input, filter, table, tr, td, i;
+  var input, filter, table, tbody, tr, td, i;
   input = document.getElementById("searchCase");
   filter = input.value.toUpperCase();
   table = document.getElementById("tableDoc");
-  tr = table.getElementsByTagName("tr");
+  tbody = table.getElementsByTagName("tbody");
+  tr = tbody.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
