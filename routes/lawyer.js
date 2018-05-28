@@ -16,13 +16,6 @@ cloudinary.config({
   api_secret: process.env.API_SECRET 
 });
 
-var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'teamclowyer@gmail.com',
-    pass: 'clave1234'
-  }
-});
 
 //-----------------------------------------Lawyer----------------------------------------------
 
