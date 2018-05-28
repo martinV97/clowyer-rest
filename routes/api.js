@@ -12,6 +12,27 @@ router.get('/', function(req, res, next) {
 	res.render('index');
 });
 
+router.post('/login-lawyer', function(req, res, next) {
+	if(req.body){
+		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
+			if(Lawyer){
+				bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+					if(err){
+						res.send('Error de contraseña');
+					}
+					if(result){
+						res.send(true);
+					}
+				});
+			}else{
+				res.send('No se encontro el correo');
+			}
+		});
+	}else{
+		res.send('Faltan datos');
+	}
+});
+
 router.post('/login-lawyer-web', function(req, res, next) {
 	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
