@@ -19,10 +19,6 @@ var LawyerSchema = new Schema({
 		type:String,
 		required: [true, 'Phone lawyer is required']
 	},
-	type:{
-		type:String,
-		required: [true, 'Type lawyer is required']
-	},
 	email:{
 		type:String,
 		required: [true, 'Email lawyer is required'],
