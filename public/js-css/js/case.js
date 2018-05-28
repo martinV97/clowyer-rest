@@ -26,6 +26,7 @@ function searchFunction() {
   filter = input.value.toUpperCase();
   table = document.getElementById("tableDoc");
   tbody = table.getElementsByTagName("tbody");
+  console.log(tbody);
   tr = tbody.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
