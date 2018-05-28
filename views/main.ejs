@@ -131,9 +131,7 @@
 									    <tr>
 									      <% for(var i=0; i < Client.length; i++) { %>
 											   <tr>
-											     <td>
-											     	<u><a href="#">
-											     	<%= Client[i].name %></a></u></td>
+											     <td><%= Client[i].name %></td>
 											     <td><%= Client[i].identification %></td>
 											     <% if (Client[i].type == 'N') {%>
 											     	<td>Natural</td>
@@ -170,7 +168,7 @@
 									    <tr>
 									      <% for(var i=0; i < Court.length; i++) { %>
 											   <tr>
-											     <td><u><a href="#"><%= Court[i].name %></a></u></td>
+											     <td><%= Court[i].name %></td>
 											     <td><%= Court[i].address %></td>
 											     <td><%= Court[i].type %></td>
 											     <td><%= Court[i].phone %></td>
