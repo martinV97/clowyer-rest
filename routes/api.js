@@ -6,6 +6,7 @@ const Document = require('../models/document');
 const Court = require('../models/court');
 const bcrypt = require('bcrypt-nodejs');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
 //------------------------------------Navigation - web-----------------------------------------
 router.get('/', function(req, res, next) {

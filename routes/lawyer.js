@@ -16,6 +16,14 @@ cloudinary.config({
   api_secret: process.env.API_SECRET 
 });
 
+var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'teamclowyer@gmail.com',
+    pass: 'clave1234'
+  }
+});
+
 //-----------------------------------------Lawyer----------------------------------------------
 
 router.get('/lawyer', function(req, res, next) {
@@ -67,6 +75,21 @@ router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 			}).catch(next);
 		});	
 	}else{
+		var mailOptions = {
+		  from: 'teamclowyer@gmail.com',
+		  to: req.body.email,
+		  subject: 'Equipo Clowyer: Datos de cuenta',
+		  text: 'Su usuario es:' + req.body.email + 
+		  		' y su contraseña es:' + req.body.password
+		};
+
+		transporter.sendMail(mailOptions, function(error, info){
+		  if (error) {
+		    console.log(error);
+		  } else {
+		    console.log('Email sent: ' + info.response);
+		  }
+		});
 		req.body.password = bcrypt.hashSync(req.body.password);
 		    console.log(req.body);
 			Lawyer.create(req.body).then(function(Lawyer){
