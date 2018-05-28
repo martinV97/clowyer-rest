@@ -76,7 +76,7 @@ router.get('/main', function(req, res, next) {
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Cases){
     		for(var i=0; i < Cases.length; i++) {
     			Cases[i].dateStart = new Date(Cases[i].dateStart);
-    			if(Cases[i].dateFinish.length > 0){
+    			if(Cases[i].dateFinish){
     				Cases[i].dateFinish = new Date(Cases[i].dateFinish);
     			}
     		}
