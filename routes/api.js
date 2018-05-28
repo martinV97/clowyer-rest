@@ -24,7 +24,6 @@ router.post('/login-lawyer', function(req, res, next) {
 					if(result){
 						console.log('Entrooooo');
 						console.log(result);
-						res.send(result);
 					}
 				});
 			}else{
