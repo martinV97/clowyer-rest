@@ -22,7 +22,6 @@ router.post('/login-lawyer', function(req, res, next) {
 						res.send('Error de contraseña');
 					}
 					if(result){
-						console.log('Entrooooo');
 						console.log(result);
 					}
 				});
@@ -75,6 +74,12 @@ router.get('/register', function(req, res, next) {
 router.get('/main', function(req, res, next) {
     if(req.session.lawyer != null){
     	Case.find({idLawyer: req.session.lawyer._id}).then(function(Case){
+    		for(var i=0; i < Cases.length; i++) {
+    			Cases[i].dateStart = new Date(Cases[i].dateStart);
+    			if(Cases[i].dateFinish.length > 0){
+    				Cases[i].dateFinish = new Date(Cases[i].dateFinish);
+    			}
+    		}
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
     				res.render('main',{Case: Case, Client: Client, Court: Court,
