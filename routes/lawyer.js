@@ -54,8 +54,7 @@ router.post('/lawyer', function(req, res, next) {
 router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 	if(req.file){
 		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-		cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
-			{ width: 1068, height: 600, crop: "limit" }, function(result) { 
+		cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
 	  		req.body.avatar = result.secure_url;
 	  		req.body.imgName = result.public_id;
 	  		fs.unlinkSync('public/uploads/' + req.file.originalname);
@@ -112,8 +111,7 @@ router.post('/lawyer-web-update', [multer.single('img')], function(req, res, nex
 			console.log(result);
 		});
 		storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-			cloudinary.uploader.upload('public/uploads/' + req.file.originalname,
-			{ width: 1068, height: 600, crop: "limit" }, function(result) { 
+			cloudinary.uploader.upload('public/uploads/' + req.file.originalname, function(result) { 
 				console.log(result);
 		  		req.body.avatar = result.secure_url;
 		  		req.body.imgName = result.public_id;
