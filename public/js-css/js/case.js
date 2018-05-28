@@ -20,25 +20,12 @@ function deleteCase(id){
   location.reload();
 }
 
-function searchFunction() {
-  var input, filter, table, tbody, tr, td, i;
-  input = document.getElementById("searchCase");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("tableDoc");
-  tbody = table.getElementsByTagName("tbody");
-  console.log(tbody);
-  tr = tbody.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+$("#searchCase").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableDoc tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 /*$("button[name*='caseForm']").click(  function () {
   var sendData = $("form[name*='formCase']").serializeArray();
   console.log(sendData);

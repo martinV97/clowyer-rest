@@ -27,7 +27,7 @@
 		      		<div class="column small-12 medium-6" id="top-menu">
 		      			<div class="input-group" id="search-bar">
 			    			<span class="input-group-label"><i class="fi-eye"></i></span>
-					       	<input id="searchCase" type="search" name="search" class="input-group-field" placeholder="Buscar">
+					       	<input id="searchCase" type="text" name="search" class="input-group-field" placeholder="Buscar">
 					       	<div class="input-group-button">
 				       			<input type="submit" onclick="searchFunction()" class="button" value="Buscar">
 				        	</div>
@@ -76,7 +76,7 @@
 					<section class="tabs-content" id="table-container" data-tabs-content="lineup-tabs">
 				    	<div class="tabs-panel is-active text-center" id="panelCases">
 				    		<h2>Documentos</h2>
-					    	<table class="stack" id="tableDoc">
+					    	<table class="stack">
 							  <thead>
 							    <tr>
 								<th width="200">Nombre</th>
@@ -85,7 +85,7 @@
 								<th width="150">Borrar</th>
 								</tr>
 							  </thead>
-							  <tbody>
+							  <tbody id="tableDoc">
 							      <% for(var i=0; i < Document.length; i++) { %>
 							 	  <tr>
 								    <td><%= Document[i].name %></td>
