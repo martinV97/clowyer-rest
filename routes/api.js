@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer', function(req, res, next) {
+	console.log(req.body);
 	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 			if(Lawyer){
