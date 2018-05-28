@@ -23,7 +23,8 @@ router.post('/login-lawyer', function(req, res, next) {
 					}
 					if(result){
 						console.log('Entrooooo');
-						res.send(true);
+						console.log(result);
+						res.send(result);
 					}
 				});
 			}else{
