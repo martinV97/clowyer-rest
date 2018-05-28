@@ -81,6 +81,7 @@
 				    		<div class="row">
 					    		<div class="column">
 					    			<h2>Casos</h2>
+					    			<input id="searchCase" type="text" placeholder="Buscar en Casos">
 					    			<table class="stack">
 									  <thead>
 									    <tr>
@@ -92,7 +93,7 @@
 									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
-									  <tbody>
+									  <tbody id="tableCase">
 									    <tr>
 									      <% for(var i=0; i < Case.length; i++) { %>
 											   <tr>
@@ -114,6 +115,7 @@
 				    		<div class="row">
 					    		<div class="column text-center">
 					    			<h2>Clientes</h2>
+					    			<input id="searchClient" type="text" placeholder="Buscar en Clientes">
 					    			<table class="stack">
 									  <thead>
 									    <tr>
@@ -125,7 +127,7 @@
 									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
-									  <tbody>
+									  <tbody id="tableClient">
 									    <tr>
 									      <% for(var i=0; i < Client.length; i++) { %>
 											   <tr>
@@ -153,6 +155,7 @@
 				    		<div class="row">
 				    			<div class="column text-center">
 				    				<h2>Juzgados</h2>
+				    				<input id="searchCourt" type="text" placeholder="Buscar en Juzgados">
 				    				<table class="stack">
 									  <thead>
 									    <tr>
@@ -163,7 +166,7 @@
 									      <th width="150">Borrar</th>
 									    </tr>
 									  </thead>
-									  <tbody>
+									  <tbody id="tableCourt">
 									    <tr>
 									      <% for(var i=0; i < Court.length; i++) { %>
 											   <tr>

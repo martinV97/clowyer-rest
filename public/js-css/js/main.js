@@ -28,6 +28,26 @@ function deleteCourt(id){
   location.reload();
 }
 
+$("#searchCase").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableCase tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+$("#searchClient").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableClient tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+$("#searchCourt").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#tableCourt tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 $('.unmask').on('click', function(){
 
   if($(this).prev('input').attr('type') == 'password')
