@@ -52,6 +52,8 @@ router.post('/login-lawyer-web', function(req, res, next) {
 				});
 			}else{
 				console.log('No se encontro el correo');
+				res.write('<script > alert ('.l.') </script>');
+				res.endd();
 			}
 		});
 	}else{
