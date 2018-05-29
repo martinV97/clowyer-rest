@@ -207,7 +207,7 @@
 							              </div>
 							              <div class="small-12 columns">
 							                  <label for="imgFileUpload" class="button">Cambiar Imagen</label>
-							                  <input type="file" id="imgFileUpload" class="show-for-sr" name="img">
+							                  <input type="file" id="imgFileUpload" accept="image/*" class="show-for-sr" name="img">
 							                  <button class="button" type="submit">Actualizar datos</button>
 							              </div>
 							          </form>
@@ -323,7 +323,7 @@
 		                <input type="number" name="phone"  placeholder="Telefono"/>
 		              </div>
 		           	  <div class="column-12 align-center text-center">
-		           	  	<button class="button" type="submit ">Aceptar</button>
+		           	  	<button class="button" type="submit" onclick="showSuccessMessage()">Aceptar</button>
 		          	  </div>
 		          </form>
 				  <button class="close-button" data-close aria-label="Close modal" type="button">

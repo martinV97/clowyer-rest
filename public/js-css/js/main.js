@@ -7,7 +7,9 @@ function showSuccessMessage(){
 function deleteCase(id){
   $.ajax({
     url: '/case-web/' + id,
-    type: 'DELETE'
+    type: 'DELETE',
+    success: alert('Caso borrado'),
+    error: alert('Error al borrar caso')
   });
   location.reload();
 }
@@ -16,7 +18,8 @@ function deleteClient(id){
   $.ajax({
     url: '/client-web/' + id,
     type: 'DELETE',
-    success: alert('Cliente borrado')
+    success: alert('Cliente borrado'),
+    error: alert('Error al borrar cliente')
   });
   location.reload();
 }
@@ -25,7 +28,8 @@ function deleteCourt(id){
   $.ajax({
     url: '/court-web/' + id,
     type: 'DELETE',
-    success: alert('Juzgado borrado')
+    success: alert('Juzgado borrado'),
+    error: alert('Error al borrar Juzgado')
   });
   location.reload();
 }
