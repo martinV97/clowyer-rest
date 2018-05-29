@@ -15,7 +15,8 @@ function deleteCase(id){
 function deleteClient(id){
   $.ajax({
     url: '/client-web/' + id,
-    type: 'DELETE'
+    type: 'DELETE',
+    success: alert('Cliente borrado');
   });
   location.reload();
 }
@@ -23,7 +24,8 @@ function deleteClient(id){
 function deleteCourt(id){
   $.ajax({
     url: '/court-web/' + id,
-    type: 'DELETE'
+    type: 'DELETE',
+    success: alert('Juzgado borrado');
   });
   location.reload();
 }
