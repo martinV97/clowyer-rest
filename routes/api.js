@@ -64,7 +64,7 @@ router.get('/login', function(req, res, next) {
 	if(req.session.lawyer != null){
     	res.redirect('/main');
     }else{
-    	res.render('login', {Email: true});
+    	res.render('login', {Email: false});
     }
 });
 
