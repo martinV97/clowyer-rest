@@ -1,4 +1,4 @@
-h9const express = require('express');
+const express = require('express');
 const Lawyer = require('../models/lawyer');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
