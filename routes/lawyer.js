@@ -1,4 +1,4 @@
-const express = require('express');
+h9const express = require('express');
 const Lawyer = require('../models/lawyer');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
@@ -47,7 +47,7 @@ router.get('/lawyer-web/:identification', function(req, res, next) {
 router.post('/lawyer', function(req, res, next) {
 	req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.create(req.body).then(function(Lawyer){
-		res.send('Success');
+		res.send(Lawyer);
 		console.log('success');
 	}).catch(next);
 });
