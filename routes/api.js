@@ -18,6 +18,7 @@ router.post('/login-lawyer', function(req, res, next) {
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 			if(Lawyer){
 				bcrypt.compare(req.body.password, Lawyer.password, function(err, result) {
+					Lawyer.password = req.body.password;
 					if(err){
 						res.send('Error de contraseña');
 					}
