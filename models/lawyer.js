@@ -37,6 +37,5 @@ var LawyerSchema = new Schema({
 		required: [false, 'Name Img lawyer is required']
 	}
 });
-
 const Lawyer = mongoose.model('lawyer', LawyerSchema);
 module.exports = Lawyer;
