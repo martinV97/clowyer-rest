@@ -48,16 +48,17 @@ router.post('/login-lawyer-web', function(req, res, next) {
 						req.session.lawyer.password = req.body.password;
 						res.redirect('/main');
 					}else{
-						res.redirect('/login');
+						res.render('login', {Email: false, Password: true, Empty: false});
 					}
 				});
 			}else{
 				console.log('No se encontro el correo');
-				res.render('login', {Email: true});
+				res.render('login', {Email: true, Password: false, Empty: false});
 			}
 		});
 	}else{
 		console.log('Faltan datos');
+		res.render('login', {Email: false, Password: false, Empty: true});
 	}
 });
 
@@ -65,7 +66,7 @@ router.get('/login', function(req, res, next) {
 	if(req.session.lawyer != null){
     	res.redirect('/main');
     }else{
-    	res.render('login', {Email: false});
+    	res.render('login', {Email: false, Password: false, Empty: false});
     }
 });
 

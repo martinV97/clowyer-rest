@@ -15,6 +15,12 @@
     <%if(Email){%>
       <script>alert('No se encontro el correo.');</script>
     <%}%>
+    <%if(Password){%>
+      <script>alert('Contraseña equivocada.');</script>
+    <%}%>
+    <%if(Empty){%>
+      <script>alert('Faltan datos.');</script>
+    <%}%>
     <script type="text/javascript"></script>
     <section id="login-container">
       <div class="row align-center">
