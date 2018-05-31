@@ -64,7 +64,6 @@ router.post('/login-lawyer-web', function(req, res, next) {
 
 router.get('/login', function(req, res, next) {
 	if(req.session.lawyer != null){
-		req.session.tab = 'Case';
     	res.redirect('/main');
     }else{
     	res.render('login', {Email: false, Password: false, Empty: false});
@@ -81,7 +80,7 @@ router.get('/main', function(req, res, next) {
     		Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
     			Court.find({}).then(function(Court){
     				res.render('main',{Case: Cases, Client: Client, Court: Court,
-    				 Lawyer: req.session.lawyer, Tab: req.session.tab});		
+    				 Lawyer: req.session.lawyer});		
 				});
 			});
 		});		
