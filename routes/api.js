@@ -23,7 +23,7 @@ router.post('/login-lawyer', function(req, res, next) {
 						res.send('Error de contraseña');
 					}
 					if(result){
-						res.send(Lawyer);
+						res.json({'Lawyer' : Lawyer});
 					}
 				});
 			}else{
