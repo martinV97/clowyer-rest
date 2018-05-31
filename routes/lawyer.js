@@ -10,7 +10,6 @@ var multer = require('multer')({
 });
 const router = express.Router();
 var cloudinary = require('cloudinary');
-var okrabyte = require("okrabyte");
 cloudinary.config({ 
   cloud_name: process.env.CLOUD_NAME, 
   api_key: process.env.API_KEY, 
@@ -51,15 +50,6 @@ router.post('/lawyer', function(req, res, next) {
 		res.send(Lawyer);
 		console.log('success');
 	}).catch(next);
-});
-
-router.post('/prueba', [multer.single('ocr')], function(req, res, next) {
-	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
-	okrabyte.decodeFile('public/uploads/' + req.file.originalname, function(error, data){
-  		console.log(data); // Hello World!
-  		console.log(error); // Hello World!
-	});
-	fs.unlinkSync('public/uploads/' + req.file.originalname);
 });
 
 router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
