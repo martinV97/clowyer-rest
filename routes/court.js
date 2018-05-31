@@ -36,6 +36,7 @@ router.post('/court', function(req, res, next) {
 
 router.post('/court-web', function(req, res, next) {
 	Court.create(req.body).then(function(Court){
+		req.session.tab = 'Court';
 		res.redirect('/main');
 	}).catch(next);
 });
@@ -48,6 +49,7 @@ router.delete('/court/:id', function(req, res, next){
 
 router.delete('/court-web/:id', function(req, res, next){
 	Court.findByIdAndRemove({_id: req.params.id}).then(function(Court){
+		req.session.tab = 'Court';
 		 res.redirect('/main');
 	});
 });
