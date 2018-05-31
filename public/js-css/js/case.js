@@ -7,9 +7,7 @@ function showSuccessMessage(){
 function deleteDoc(id){
   $.ajax({
     url: '/document-web/' + id,
-    type: 'DELETE',
-    success: alert('Documento borrado'),
-    error: alert('Error al borrar documento')
+    type: 'DELETE'
   });
   location.reload();
 }
@@ -17,9 +15,7 @@ function deleteDoc(id){
 function deleteCase(id){
   $.ajax({
     url: '/case-web/' + id,
-    type: 'DELETE',
-    success: alert('Caso borrado'),
-    error: alert('Error al borrar caso')
+    type: 'DELETE'
   });
   location.reload();
 }

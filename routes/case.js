@@ -40,8 +40,7 @@ router.post('/case-web', function(req, res, next) {
 		res.redirect('/main');
 	});
 	if (next) {
-			console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
-		
+			res.redirect('/main');
 	}
 });
 
