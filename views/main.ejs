@@ -28,13 +28,25 @@
 			      	<div class="expanded row align-center align-middle" id="menu-container" data-magellan>
 			      		<div class="column small-10 medium-expand">
 			      			<ul class="tabs text-center" data-tabs id="lineup-tabs">
-				                <li class="tabs-title is-active">
+			      				<%if(Tab == "Case"){%>
+				                	<li class="tabs-title is-active">
+							    <%} else {%>
+							    	<li class="tabs-title">
+							    <%}%>
 				                	<a href="#panelCases"><i class="fi-folder"></i> Casos </a>
 				                </li>
-				                <li class="tabs-title">
+				                <%if(Tab == "Client"){%>
+				                	<li class="tabs-title is-active">
+							    <%} else {%>
+							    	<li class="tabs-title">
+							    <%}%>
 				                	<a href="#panelClients"><i class="fi-torsos"></i> Clientes </a>
 				                </li>
-				                <li class="tabs-title">
+				                <%if(Tab == "Doc"){%>
+				                	<li class="tabs-title is-active">
+							    <%} else {%>
+							    	<li class="tabs-title">
+							    <%}%>
 				                	<a href="#panelCourts"><i class="fi-results-demographics"></i> Juzgados </a>
 				                </li>
 					            <li class="tabs-title">

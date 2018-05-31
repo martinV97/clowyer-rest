@@ -37,6 +37,7 @@ router.post('/case', function(req, res, next) {
 router.post('/case-web', function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
 	Case.create(req.body).then(function(Case){
+		req.session.tab = 'Case';
 		res.redirect('/main');
 	});
 	if (next) {
@@ -61,6 +62,7 @@ router.delete('/case-web/:id', function(req, res, next){
 					});
 				});
 			}
+			req.session.tab = 'Case';
 			res.redirect('/main');
 		});
 	});

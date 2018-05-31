@@ -56,6 +56,7 @@ router.post('/document-web-main', [multer.single('url')], function(req, res, nex
 			}else{
 				req.body.url = result.secure_url;
 				req.body.documentName = result.public_id;
+				req.session.tab = 'Doc';
 				fs.unlinkSync('public/uploads/' + req.file.originalname);
 				Document.create(req.body).then(function(Document){
 					res.redirect('/main');
@@ -105,6 +106,7 @@ router.delete('/document-web/:id', function(req, res, next){
 		cloudinary.v2.uploader.destroy(Document.documentName, function(error, result) {
 			console.log(result);
 		});
+		req.session.tab = 'Doc';
 		 res.redirect('/main');
 	});
 });

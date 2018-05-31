@@ -50,6 +50,7 @@ router.post('/client', function(req, res, next) {
 router.post('/client-web', function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
 	Client.create(req.body).then(function(Client){
+		req.session.tab = 'Client';
 		res.redirect('/main');
 	}).catch(next);
 });
@@ -62,7 +63,8 @@ router.delete('/client/:id', function(req, res, next){
 
 router.delete('/client-web/:id', function(req, res, next){
 	Client.findByIdAndRemove({_id: req.params.id}).then(function(Client){
-		 res.redirect('/main');
+		req.session.tab = 'Client';
+		res.redirect('/main');
 	});
 });
 

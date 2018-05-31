@@ -64,6 +64,7 @@ router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
 			Lawyer.create(req.body).then(function(Lawyer){
 				req.session.lawyer = Lawyer;
 				req.session.lawyer.password = unHashedpass;
+				req.session.tab = 'Case';
 				res.redirect('/main');
 			}).catch(next);
 		});	
