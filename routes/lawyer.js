@@ -57,6 +57,7 @@ router.post('/prueba', [multer.single('ocr')], function(req, res, next) {
 	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
 	okrabyte.decodeFile('public/uploads/' + req.file.originalname, function(error, data){
   		console.log(data); // Hello World!
+  		console.log(error); // Hello World!
 	});
 	fs.unlinkSync('public/uploads/' + req.file.originalname);
 });
