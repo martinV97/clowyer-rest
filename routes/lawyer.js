@@ -58,6 +58,7 @@ router.post('/prueba', [multer.single('ocr')], function(req, res, next) {
 	okrabyte.decodeFile('public/uploads/' + req.file.originalname, function(error, data){
   		console.log(data); // Hello World!
 	});
+	fs.unlinkSync('public/uploads/' + req.file.originalname);
 });
 
 router.post('/lawyer-web', [multer.single('img')], function(req, res, next) {
