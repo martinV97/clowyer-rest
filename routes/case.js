@@ -38,7 +38,11 @@ router.post('/case-web', function(req, res, next) {
 	req.body.idLawyer = req.session.lawyer._id;
 	Case.create(req.body).then(function(Case){
 		res.redirect('/main');
-	}).catch(next);
+	}).catch(next){
+		if (next) {
+			console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA');
+		}
+	};
 });
 
 router.delete('/case/:id', function(req, res, next){
