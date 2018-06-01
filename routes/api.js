@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login-lawyer', function(req, res, next) {
-	console.log(req.body);
 	if(req.body){
 		Lawyer.findOne({email: req.body.email}).then(function(Lawyer){
 			if(Lawyer){
@@ -23,7 +22,6 @@ router.post('/login-lawyer', function(req, res, next) {
 						res.send('Error de contraseña');
 					}
 					if(result){
-						console.log(Lawyer);
 						res.json({'Lawyer' : Lawyer});
 					}
 				});
