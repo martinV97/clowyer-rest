@@ -13,6 +13,7 @@ function deleteCase(id){
     url: '/case-web/' + id,
     type: 'DELETE'
   });
+  window.location.replace("https://clowyer.herokuapp.com/main");
 }
 
 $("#searchCase").on("keyup", function() {
