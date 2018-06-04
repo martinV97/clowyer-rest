@@ -1,9 +1,5 @@
 $(document).foundation();
 
-function showSuccessMessage(){
-	alert("Agregado");
-}
-
 function deleteDoc(id){
   $.ajax({
     url: '/document-web/' + id,
@@ -17,7 +13,6 @@ function deleteCase(id){
     url: '/case-web/' + id,
     type: 'DELETE'
   });
-  location.reload();
 }
 
 $("#searchCase").on("keyup", function() {

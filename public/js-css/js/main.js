@@ -1,9 +1,5 @@
 $(document).foundation();
 
-function showSuccessMessage(){
-	alert("Agregado");
-}
-
 function deleteCase(id){
   $.ajax({
     url: '/case-web/' + id,

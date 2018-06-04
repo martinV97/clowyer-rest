@@ -61,6 +61,7 @@ router.delete('/case-web/:id', function(req, res, next){
 					});
 				});
 			}
+			req.session.temporalCase = null;
 			res.redirect('/main');
 		});
 	});

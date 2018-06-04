@@ -97,14 +97,18 @@ router.get('/details/:id', function(req, res, next) {
 
 router.get('/details', function(req, res, next) {
 	if(req.session.lawyer != null){
-    	Document.find({caseNumber: req.session.temporalCase.number}).then(function(Document){
-	    	Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
-	    		Court.find({}).then(function(Court){
-	    			res.render('case',{Case: req.session.temporalCase, Client: Client,
-	    			 Court: Court, Document: Document});
+		if (req.session.temporalCase != null) {
+	    	Document.find({caseNumber: req.session.temporalCase.number}).then(function(Document){
+		    	Client.find({idLawyer: req.session.lawyer._id}).then(function(Client){
+		    		Court.find({}).then(function(Court){
+		    			res.render('case',{Case: req.session.temporalCase, Client: Client,
+		    			 Court: Court, Document: Document});
+					});
 				});
-			});
-		});	
+			});	
+		}else{
+			res.redirect('/main');	
+		}
     }else{
     	res.redirect('/');
     }
