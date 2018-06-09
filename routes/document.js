@@ -40,10 +40,21 @@ router.get('/document-web/:caseNumber', function(req, res, next) {
 	});
 });
 
-router.post('/document', function(req, res, next) {
-	Document.create(req.body).then(function(Document){
-		res.send(Document);
-	}).catch(next);
+router.post('/document', [multer.single('url')], function(req, res, next) {
+	storeWithOriginalName(req.file).then(encodeURIComponent).then(encoded => {}).catch(next);
+	cloudinary.v2.uploader.upload('public/uploads/' + req.file.originalname,{ resource_type: "auto" }, 
+		function(error, result) { 
+			if (error) {
+				console.log(error);
+			}else{
+				req.body.url = result.secure_url;
+				req.body.documentName = result.public_id;
+				fs.unlinkSync('public/uploads/' + req.file.originalname);
+				Document.create(req.body).then(function(Document){
+					res.send(Document);
+				}).catch(next);
+			}
+	});
 });
 
 router.post('/document-web-main', [multer.single('url')], function(req, res, next) {
