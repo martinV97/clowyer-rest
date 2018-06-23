@@ -186,29 +186,31 @@
 				    			<div class="column">
 				    				<form action="/lawyer-web-update" method="post" enctype="multipart/form-data" autocomplete="off">
 							             <div class="row">
-							              <div class="small-12 columns">
-							                  <input type="number" name="identification"  placeholder="Cedula" value="<%= Lawyer.identification%>" />
+								              <div class="small-12 columns">
+								                  <input type="number" name="identification"  placeholder="Cedula" value="<%= Lawyer.identification%>" />
+								              </div>
+								              <div class="small-12 columns">
+								                <input type="text" name="name" placeholder="Nombre" value="<%= Lawyer.name%>"/>
+								              </div>
+								              <div class="small-12 columns">
+								                <input type="text" name="speciality" placeholder="Especialidad" value="<%= Lawyer.speciality%>"/>
+								              </div>
+								              <div class="small-12 columns">
+								                  <input type="text" name="phone" placeholder="Telefono" value="<%= Lawyer.phone%>"/>
+								              </div>
+								              <div class="small-12 columns">
+								                  <input type="email" name="email" placeholder="Email" value="<%= Lawyer.email%>"/>
+								              </div>
+								              <div class="small-12 columns password-wrapper">
+								                  <input type="password" name="password" class="password" placeholder="Contraseña">
+								              </div>
+								              <div class="small-12 columns">
+								                  <input type="file" value="Cambiar imagen" id="imgFileUpload" accept="image/*" class="show-for-sr" name="img">
+								              </div>
 							              </div>
-							              <div class="small-12 columns">
-							                <input type="text" name="name" placeholder="Nombre" value="<%= Lawyer.name%>"/>
-							              </div>
-							              <div class="small-12 columns">
-							                <input type="text" name="speciality" placeholder="Especialidad" value="<%= Lawyer.speciality%>"/>
-							              </div>
-							              <div class="small-12 columns">
-							                  <input type="text" name="phone" placeholder="Telefono" value="<%= Lawyer.phone%>"/>
-							              </div>
-							              <div class="small-12 columns">
-							                  <input type="email" name="email" placeholder="Email" value="<%= Lawyer.email%>"/>
-							              </div>
-							              <div class="small-12 columns password-wrapper">
-							                  <input type="password" name="password" class="password" placeholder="Contraseña">
-							              </div>
-							              </div>
-							              <div class="small-12 columns">
-							                  <label for="imgFileUpload" class="button">Cambiar Imagen</label>
-							                  <input type="file" id="imgFileUpload" accept="image/*" class="show-for-sr" name="img">
-							                  <button class="button" type="submit">Actualizar datos</button>
+							              
+							              <div>
+							              	<button class="button" type="submit">Actualizar datos</button>
 							              </div>
 							          </form>
 				    			</div>
