@@ -8,14 +8,7 @@ $('.unmask').on('click', function(){
   return false;
 });
 
-$( "loginForm" ).validate({
-  rules: {
-    field: {
-      required: true,
-      minlength: 6
-    }
-  }
-});
+$("#password_login").minlength({max: 50});
 
 function changeType(x, type) {
   if(x.prop('type') == type)
