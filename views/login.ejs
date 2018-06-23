@@ -27,18 +27,16 @@
         <div class="column small-12 medium-4 text-center">
           <img src="/js-css/img/login.png" height="130" width="130">
           <h5>CLOWYER</h3>
-          <form action="/login-lawyer-web" method="post" data-abide>
+          <form action="/login-lawyer-web" method="post">
                <div class="row">
                 <div class="small-12 columns">
                   <label>Correo</label>
                   <input type="text" name="email" id="email" placeholder="Correo" required/>
                 </div>
-                <div class="small-12 columns password-field">
-                      
-                   <label>Password <small>required</small>
-                    <input type="password" id="password_login" name="password" class="password" placeholder="Contraseña" required>
-                  </label>
-                  <small class="error">Your password must match the requirements</small>
+                <div class="small-12 columns password-wrapper">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" name="password" class="password" placeholder="Contraseña" required>
+                    <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
                 </div>
               </div>
               <div class="column-12 align-center">
