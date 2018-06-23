@@ -8,7 +8,7 @@ $('.unmask').on('click', function(){
   return false;
 });
 
-$("#password").minlength({max: 50});
+$("#password").minlength({min: 6});
 
 function changeType(x, type) {
   if(x.prop('type') == type)
