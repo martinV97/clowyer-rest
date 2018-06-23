@@ -55,6 +55,14 @@ $('.unmask').on('click', function(){
   return false;
 });
 
+$("#password").keypress(function() {
+    if($(this).val().length > 5) {
+          $("#updateDataUser").removeAttr("disabled");
+    } else {
+          $("#updateDataUser").attr("disabled", true);
+    }
+});
+
 function changeType(x, type) {
   if(x.prop('type') == type)
   return x; //That was easy.

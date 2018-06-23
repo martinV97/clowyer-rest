@@ -9,10 +9,10 @@ $('.unmask').on('click', function(){
 });
 
 $("#password").keypress(function() {
-    if($(this).val().length > 1) {
-          $("#loginSubmit").attr("disabled", true);
+    if($(this).val().length > 5) {
+          $("#loginSubmit").removeAttr("disabled");
     } else {
-         $("#loginSubmit").removeAttr("disabled");
+          $("#loginSubmit").attr("disabled", true);
     }
 });
 
