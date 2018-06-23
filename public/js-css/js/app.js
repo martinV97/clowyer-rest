@@ -8,7 +8,13 @@ $('.unmask').on('click', function(){
   return false;
 });
 
-$("#password").minlength({min: 6});
+$("#password").keypress(function() {
+    if($(this).val().length > 1) {
+          $("#loginSubmit").attr("disabled", true);
+    } else {
+         $("#loginSubmit").removeAttr("disabled");
+    }
+});
 
 function changeType(x, type) {
   if(x.prop('type') == type)
