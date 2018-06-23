@@ -34,7 +34,10 @@
                   <input type="text" name="email" id="email" placeholder="Correo" required/>
                 </div>
                 <div class="small-12 columns password-wrapper">
-                    <label>Contraseña</label>
+                    <label>Contraseña
+                      <input type="password" id="password" required pattern="[a-zA-Z]+">
+                    </label>
+                    <small class="error">Your password must match the requirements</small>
                     <input type="password" id="password_login" name="password" class="password" placeholder="Contraseña" required>
                     <button class="unmask" type="button" title="Mask/Unmask password to check content">Unmask</button>
                 </div>
