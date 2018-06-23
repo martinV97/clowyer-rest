@@ -102,6 +102,7 @@ router.delete('/lawyer-web/:id', function(req, res, next){
 });
 
 router.put('/lawyer/:id', function(req, res, next){
+	req.body.password = bcrypt.hashSync(req.body.password);
 	Lawyer.findByIdAndUpdate(req.params.id, req.body, (err, todo) => {}).then(function(Lawyer){
 			res.send(Lawyer);
 	});
