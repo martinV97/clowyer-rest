@@ -17,11 +17,11 @@
       <div class="row align-center">
         <div class="column small-12 medium-6 text-center">
           <h1>CLOWYER</h1>
-          <form name="upload-form" action="/lawyer-web" method="post" enctype="multipart/form-data">
+          <form name="upload-form" data-abide action="/lawyer-web" method="post" enctype="multipart/form-data">
              <div class="row">
                 <div class="small-12 columns">
                   <label>Cedula</label>
-                    <input type="number" name="identification" min="5" max="10" placeholder="Cedula" required/>
+                    <input type="number" name="identification" pattern="^.{1,5}$" min="5" max="10" placeholder="Cedula" required/>
                 </div>
                 <div class="small-12 columns">
                   <label>Nombre</label>
