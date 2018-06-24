@@ -8,7 +8,7 @@ $('.unmask').on('click', function(){
   return false;
 });
 
-$("#password").keypress(function() {
+$("#password").on("keyup", function() {
     if($(this).val().length > 5) {
           $("#loginSubmit").removeAttr("disabled");
     } else {

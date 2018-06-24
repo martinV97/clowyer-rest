@@ -52,7 +52,6 @@ router.delete('/case/:id', function(req, res, next){
 
 router.delete('/case-web/:id', function(req, res, next){
 	Case.findOne({_id: req.params.id}).then(function(Cases){
-		Case.findByIdAndRemove({_id: req.params.id}).then(function(Case){});
 		Document.find({caseNumber: Cases.number}).then(function(Documents){
 			for(var i=0; i < Documents.length; i++) {
 				Document.findByIdAndRemove({_id: Documents[i]._id}).then(function(Document){
@@ -61,6 +60,7 @@ router.delete('/case-web/:id', function(req, res, next){
 					});
 				});
 			}
+			Case.findByIdAndRemove({_id: req.params.id});
 			req.session.temporalCase = null;
 			res.redirect('/main');
 		});
