@@ -1,5 +1,11 @@
 $(document).foundation();
 
+function checkLength(el) {
+  if (el.value.length <= 10) {
+    alert("La ceula puede tener maximo 10 digitos")
+  }
+}
+
 $('.unmask').on('click', function(){
   if($(this).prev('input').attr('type') == 'password')
     changeType($(this).prev('input'), 'text');
