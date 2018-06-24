@@ -1,7 +1,5 @@
 $(document).foundation();
-$(document).ready(function(){
-  $("#identification").attr('maxlength','10');
-});
+
 $('.unmask').on('click', function(){
   if($(this).prev('input').attr('type') == 'password')
     changeType($(this).prev('input'), 'text');
