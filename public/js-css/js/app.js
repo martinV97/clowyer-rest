@@ -1,12 +1,10 @@
 $(document).foundation();
 
-$("#password").on("onblur", function() {
-  if (this.val().length <= 10) {
+function checkLength() {
+  if (el.val().length <= 10) {
     alert("La cedula puede tener maximo 10 digitos")
   }
-});
-
-
+}
 
 $('.unmask').on('click', function(){
   if($(this).prev('input').attr('type') == 'password')
