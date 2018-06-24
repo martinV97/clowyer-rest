@@ -56,7 +56,7 @@ $('.unmask').on('click', function(){
 });
 
 $("#password").on("keyup", function() {
-    if($(this).val().length > 5) {
+    if($(this).val().length >= 5) {
           $("#updateDataUser").removeAttr("disabled");
     } else {
           $("#updateDataUser").attr("disabled", true);
