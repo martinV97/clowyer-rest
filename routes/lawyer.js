@@ -103,8 +103,7 @@ router.delete('/lawyer-web/:id', function(req, res, next){
 		for(var i=0; i < Clients.length; i++) {
 			Client.findByIdAndRemove({_id: Clients[i]._id});
 		}
-	});
-	Case.find({idLawyer: req.params.id}).then(function(Cases){
+		Case.find({idLawyer: req.params.id}).then(function(Cases){
 			for(var i=0; i < Cases.length; i++) {
 				Document.find({caseNumber: Cases[i].number}).then(function(Documents){
 				for(var i=0; j < Documents.length; j++) {
@@ -117,10 +116,10 @@ router.delete('/lawyer-web/:id', function(req, res, next){
 				Case.findByIdAndRemove({_id: Cases[i]._id});
 				});
 			}
-	});
-	Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
-		req.session.lawyer = null;
-		res.redirect('/');
+		});
+		Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
+			req.session.lawyer = null;
+		});	
 	});
 });
 
