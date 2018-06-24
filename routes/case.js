@@ -24,7 +24,7 @@ router.get('/case-web', function(req, res, next) {
 
 router.get('/case/:id', function(req, res, next) {
 	Case.find({idLawyer: req.params.id}).then(function(Cases){
-		res.json({Case});
+		res.json({Cases});
 	});
 });
 
