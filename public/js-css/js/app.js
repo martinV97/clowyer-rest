@@ -8,6 +8,8 @@ $('.unmask').on('click', function(){
   return false;
 });
 
+$("#identification").attr('maxlength','10');
+
 $("#password").on("keyup", function() {
     if($(this).val().length >= 5) {
           $("#loginSubmit").removeAttr("disabled");
