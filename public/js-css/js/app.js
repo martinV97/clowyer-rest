@@ -1,5 +1,7 @@
 $(document).foundation();
-
+$(document).ready(function(){
+  $("#identification").attr('maxlength','10');
+});
 $('.unmask').on('click', function(){
   if($(this).prev('input').attr('type') == 'password')
     changeType($(this).prev('input'), 'text');
@@ -7,8 +9,6 @@ $('.unmask').on('click', function(){
     changeType($(this).prev('input'), 'password');
   return false;
 });
-
-$("#identification").attr('maxlength','10');
 
 $("#password").on("keyup", function() {
     if($(this).val().length >= 5) {
