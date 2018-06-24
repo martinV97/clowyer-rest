@@ -1,5 +1,8 @@
 const express = require('express');
 const Lawyer = require('../models/lawyer');
+const Client = require('../models/client');
+const Case = require('../models/case');
+const Document = require('../models/document');
 const bcrypt = require('bcrypt-nodejs');
 const saltRounds = 10;
 const path = require('path');
@@ -96,6 +99,11 @@ router.delete('/lawyer/:id', function(req, res, next){
 });
 
 router.delete('/lawyer-web/:id', function(req, res, next){
+	Client.find({idLawyer: req.params.id}).then(function(Clients){
+		for(var i=0; i < Clients.length; i++) {
+			Client.findByIdAndRemove({_id: Clients[i]._id});
+		}
+	});
 	Case.find({idLawyer: req.params.id}).then(function(Cases){
 			for(var i=0; i < Cases.length; i++) {
 				Document.find({caseNumber: Cases[i].number}).then(function(Documents){

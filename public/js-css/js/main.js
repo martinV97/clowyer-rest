@@ -71,6 +71,14 @@ $("#password").on("keyup", function() {
     }
 });
 
+$("#numberCase").on("keyup", function() {
+    if($(this).val().length >= 24) {
+          $("#addCaseButton").removeAttr("disabled");
+    } else {
+          $("#addCaseButton").attr("disabled", true);
+    }
+});
+
 function changeType(x, type) {
   if(x.prop('type') == type)
   return x; //That was easy.
