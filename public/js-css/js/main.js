@@ -24,6 +24,14 @@ function deleteCourt(id){
   location.reload();
 }
 
+function deleteAccount(id){
+  $.ajax({
+    url: '/lawyer-web/' + id,
+    type: 'DELETE'
+  });
+  window.location.replace("https://clowyer.herokuapp.com/");
+}
+
 $("#searchCase").on("keyup", function() {
     var value = $(this).val().toLowerCase();
     $("#tableCase tr").filter(function() {
