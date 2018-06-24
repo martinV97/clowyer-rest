@@ -99,28 +99,28 @@ router.delete('/lawyer/:id', function(req, res, next){
 });
 
 router.delete('/lawyer-web/:id', function(req, res, next){
-	Client.find({idLawyer: req.params.id}).then(function(Clients){
+	Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
+		Client.find({idLawyer: req.params.id}).then(function(Clients){
 		for(var i=0; i < Clients.length; i++) {
 			Client.findByIdAndRemove({_id: Clients[i]._id});
 		}
 		Case.find({idLawyer: req.params.id}).then(function(Cases){
-			for(var i=0; i < Cases.length; i++) {
-				Document.find({caseNumber: Cases[i].number}).then(function(Documents){
-				for(var i=0; j < Documents.length; j++) {
-					Document.findByIdAndRemove({_id: Documents[j]._id}).then(function(Document){
-						cloudinary.v2.uploader.destroy(Documents[j].documentName, function(error, result) {
-							console.log(result);
+				for(var i=0; i < Cases.length; i++) {
+					Document.find({caseNumber: Cases[i].number}).then(function(Documents){
+					for(var i=0; j < Documents.length; j++) {
+						Document.findByIdAndRemove({_id: Documents[j]._id}).then(function(Document){
+							cloudinary.v2.uploader.destroy(Documents[j].documentName, function(error, result) {
+								console.log(result);
+							});
 						});
-					});
+					}
+					Case.findByIdAndRemove({_id: Cases[i]._id});
+						});
 				}
-				Case.findByIdAndRemove({_id: Cases[i]._id});
-				});
-			}
+			});	
 		});
-		Lawyer.findByIdAndRemove({_id: req.params.id}).then(function(Lawyer){
 			req.session.lawyer = null;
-		});	
-	});
+	});	
 });
 
 router.put('/lawyer/:id', function(req, res, next){
