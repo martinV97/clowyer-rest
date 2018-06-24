@@ -6,7 +6,7 @@ const router = express.Router();
 //-----------------------------------------Court------------------------------------------------
 router.get('/court', function(req, res, next) {
 	Court.find({}).then(function(Court){
-		res.json({'Court' : Court});
+		res.json({Court});
 	});
 });
 

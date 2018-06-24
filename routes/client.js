@@ -19,7 +19,7 @@ router.get('/client-web', function(req, res, next) {
 
 router.get('/client/:idLawyer', function(req, res, next) {
 	Client.find({idLawyer: req.params.idLawyer}).then(function(Client){
-		res.json({'Client' : Client});
+		res.json({Client});
 	});
 });
 

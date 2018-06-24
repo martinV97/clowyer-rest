@@ -23,8 +23,8 @@ router.get('/case-web', function(req, res, next) {
 });
 
 router.get('/case/:id', function(req, res, next) {
-	Case.findById(req.params.id).then(function(Case){
-		res.json({'Case' : Case});
+	Case.find({idLawyer: req.params.id}).then(function(Cases){
+		res.json({Case});
 	});
 });
 
