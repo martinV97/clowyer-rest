@@ -30,7 +30,7 @@ router.get('/document-web', function(req, res, next) {
 
 router.get('/document/:caseNumber', function(req, res, next) {
 	Document.find({caseNumber: req.params.caseNumber}).then(function(Document){
-		res.json({Document});
+		res.json(Document);
 	});
 });
 
