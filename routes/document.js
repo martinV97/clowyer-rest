@@ -18,7 +18,7 @@ cloudinary.config({
 //-----------------------------------------Document------------------------------------------------
 router.get('/document', function(req, res, next) {
 	Document.find({}).then(function(Document){
-		res.json({Document});
+		res.send(Document);
 	});
 });
 
